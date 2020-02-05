@@ -20,4 +20,4 @@ Ivan - Front End / GUI / UI work / simulated objects (video game names, details,
 
 Avin - Classes / Objects (making sure all the object content is correct) / assistant project manager (helping make sure the schedule and roadmap is correct and feasible)
 
-Yu - Database / assistance with front end and back end -> all-around code management
+Yew - Database / assistance with front end and back end -> all-around code management
