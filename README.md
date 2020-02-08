@@ -1,6 +1,11 @@
 # CS401VideoGameRentals
 Online Video Game Rental Service Software Engineering Project - Ivan / Avin / Yew
 
+
+Original Document with updates:
+https://docs.google.com/document/d/1CSSmDDlWO1rs_DJ-SeI1JjeNgQizCKHYyoFQCplOLsQ/edit?usp=sharing
+
+
 IDEA:
 
 This project will be an online service which rents out physical copies of video games to customers for a cheap weekly fee across the United States. 
