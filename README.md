@@ -8,6 +8,9 @@ https://docs.google.com/document/d/1CSSmDDlWO1rs_DJ-SeI1JjeNgQizCKHYyoFQCplOLsQ/
 Requirements Document with updates:
 https://docs.google.com/document/d/1RAi_6JH4F8BVnggddIR13Nd0lWyH2LkIZ6Sc6FRp3Ag/edit?usp=sharing
 
+Current to-do list -- updated:
+https://docs.google.com/document/d/1i_EboRh1S0xGtKfXOs21yBESSaOst9xlV8o6wyYs03s/edit?usp=sharing
+
 
 IDEA:
 
