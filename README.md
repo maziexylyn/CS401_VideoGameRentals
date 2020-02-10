@@ -5,6 +5,9 @@ Online Video Game Rental Service Software Engineering Project - Ivan / Avin / Ye
 Original Document with updates:
 https://docs.google.com/document/d/1CSSmDDlWO1rs_DJ-SeI1JjeNgQizCKHYyoFQCplOLsQ/edit?usp=sharing
 
+Requirements Document with updates:
+https://docs.google.com/document/d/1RAi_6JH4F8BVnggddIR13Nd0lWyH2LkIZ6Sc6FRp3Ag/edit?usp=sharing
+
 
 IDEA:
 
