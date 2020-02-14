@@ -5,17 +5,11 @@ Online Video Game Rental Service Software Engineering Project - Ivan / Avin / Ye
 Original Document with updates:
 https://docs.google.com/document/d/1CSSmDDlWO1rs_DJ-SeI1JjeNgQizCKHYyoFQCplOLsQ/edit?usp=sharing
 
-Requirements Document with updates:
-https://docs.google.com/document/d/1RAi_6JH4F8BVnggddIR13Nd0lWyH2LkIZ6Sc6FRp3Ag/edit?usp=sharing
-
 Roles & Responsibilities with updates:
 https://docs.google.com/document/d/1f7T_inlKMVxlvuAsp9DmHx6c8kFi6chW69aFwvF_JDM/edit?usp=sharing
 
 Gantt Chart with updates:
 https://docs.google.com/spreadsheets/d/1Kyx1q5LQkM83gWGqX452dnIJuq7eosjIUvylEhSElXw/edit?usp=sharing
-
-Current to-do list -- updated:
-https://docs.google.com/document/d/1i_EboRh1S0xGtKfXOs21yBESSaOst9xlV8o6wyYs03s/edit?usp=sharing
 
 
 IDEA:
