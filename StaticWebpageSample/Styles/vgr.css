@@ -1,0 +1,66 @@
+h1 {
+  color: rgb(0, 167, 255);	
+}
+
+h2 {
+    font-size: 1.65em
+}
+
+ul {
+  font-style: oblique;	
+}
+
+.navBar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: inline;
+    float: left;
+    background-color: #d8d8d8
+
+}
+
+a {
+    display: block;
+    padding: 8px;
+}
+
+p {
+    
+}
+
+.features {
+    text-decoration:underline;
+    font-weight: bold;
+}
+
+.category {
+    font-weight: bold;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#FrontPage {
+    margin-left: auto;
+    margin-right: auto;
+    display: block; 
+}
+
+a:hover, a:focus {
+    color:darkgreen;
+}
+
+a:visited {
+    color: #542ef2;
+}
+
+footer p{
+    font-size: 80%;
+    text-align: left;
+}
+
+body{
+    /*background-color: black;*/
+}
