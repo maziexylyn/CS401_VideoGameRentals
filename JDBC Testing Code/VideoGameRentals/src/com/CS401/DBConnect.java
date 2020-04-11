@@ -1,6 +1,4 @@
-// This is a class that connects to a database by using JDBC.
-
-package com.CS401;
+package com.company;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,15 +11,19 @@ public class DBConnect {
 
     public static void main (String [] args) {
         try {
-            String host = "jdbc:mysql://localhost:3306/dbgame";
-            String username = ""; // Your username on MySQL
-            String password = ""; // Your password on MySQL
+            //Trying to get database to connect to view if info is correct
+            //Has my own mysql user info input
+            //Will fix for overall use
+            String host = "jdbc:mysql://127.0.0.1:3306/VideoGameDatabase";
+            String username = "root"; // Your username on MySQL
+            String password = "foxgirl94"; // Your password on MySQL
             Connection con = DriverManager.getConnection(host, username, password);
 
             Statement stmt = con.createStatement();
             String sql = "SELECT * FROM games";
             ResultSet rs = stmt.executeQuery(sql);
 
+            //Need to fix this, I redid database library with slightly different fields
             while(rs.next()) {
                 int game_id = rs.getInt("game_id");
                 String title = rs.getString("title");
@@ -38,3 +40,4 @@ public class DBConnect {
         }
     }
 }
+
