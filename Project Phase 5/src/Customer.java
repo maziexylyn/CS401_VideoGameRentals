@@ -14,13 +14,13 @@ public class Customer {
 		this.shippingAddress = "";
 		
 	}
-	public Customer( String n, String e, String pn, String ci, String sa)
+	public Customer( String name, String email, String phoneNumber, String cardInfo, String shippingAddress)
 	{
-		this.name = n;
-		this.email = e;
-		this.phoneNumber = pn;
-		this.cardInfo = ci;
-		this.shippingAddress = sa;
+		this.name = name;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.cardInfo = cardInfo;
+		this.shippingAddress = shippingAddress;
 		
 	}
 	/**

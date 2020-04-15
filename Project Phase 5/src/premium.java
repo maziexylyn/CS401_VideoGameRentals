@@ -2,8 +2,6 @@
 public class premium {
 	
 	private float accountBalance;
-
-	
 	
 	public premium()
 	{

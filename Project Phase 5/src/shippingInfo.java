@@ -10,10 +10,10 @@ public class shippingInfo
 		this.shippingFee = 0;
 	}
 	
-	public shippingInfo(String shi, float sf)
+	public shippingInfo(String shippingId, float shippingFee)
 	{
-		this.shippingId = shi;
-		this.shippingFee = sf;
+		this.shippingId = shippingId;
+		this.shippingFee = shippingFee;
 	}
 	
 	

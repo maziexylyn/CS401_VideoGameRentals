@@ -3,8 +3,7 @@ public class inventory {
 	
 	private String gameId, location;
 	private int quantity;
-	
-	
+
 	public inventory()
 	{
 		this.gameId = "";
@@ -12,11 +11,11 @@ public class inventory {
 		this.quantity = 0;
 	}
 	
-	public inventory(String gi,String l, int q)
+	public inventory(String gameId,String location, int quantity)
 	{
-		this.gameId = gi;
-		this.location = l;
-		this.quantity = q;
+		this.gameId = gameId;
+		this.location = location;
+		this.quantity = quantity;
 	}
 
 	/**

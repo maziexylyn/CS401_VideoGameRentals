@@ -13,13 +13,13 @@ public class orderDetail {
 		this.quantity = 0;
 		this.price = 0;
 	}
-	public orderDetail(String oi, String gi, String gn, int q, float pr)
+	public orderDetail(String orderId, String gameId, String gameName, int quantity, float price)
 	{
-		this.orderId = oi;
-		this.gameId = gi;
-		this.gameName = gn;
-		this.quantity = q;
-		this.price = pr;
+		this.orderId = orderId;
+		this.gameId = gameId;
+		this.gameName = gameName;
+		this.quantity = quantity;
+		this.price = price;
 	}
 				
 	

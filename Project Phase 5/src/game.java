@@ -13,12 +13,12 @@ public class game {
 		this.price = 0;
 	}
 	
-	public game(String t, String s, String g, float pr)
+	public game(String title, String status, String genre, float price)
 	{
-		this.title = t;
-		this.status = s;
-		this.genre = g;
-		this.price = pr;
+		this.title = title;
+		this.status = status;
+		this.genre = genre;
+		this.price = price;
 	}
 	
 	/**

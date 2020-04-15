@@ -14,11 +14,11 @@ public class shoppingCart {
 		this.subTotal = 0;
 	}
 	
-	public shoppingCart(String cid,int q, float st)
+	public shoppingCart(String cartId,int quantity, float subTotal)
 	{
-		this.cartId = cid;
-		this.quantity = q;
-		this.subTotal = st;
+		this.cartId = cartId;
+		this.quantity = quantity;
+		this.subTotal = subTotal;
 	}
 	
 	

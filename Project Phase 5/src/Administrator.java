@@ -2,9 +2,7 @@
 public class Administrator {
 	
 	private String name, email;
-	
-	
-	
+
 	public Administrator()
 	{
 		this.name = "";
@@ -12,13 +10,12 @@ public class Administrator {
 		
 	}
 	
-	public Administrator(String na, String em)
+	public Administrator(String name, String email)
 	{
-		this.name = na;
-		this.email = em;
+		this.name = name;
+		this.email = email;
 	}
-	
-	
+
 	/**
 	 * @return the name
 	 */
