@@ -1,0 +1,27 @@
+.primary1 {
+    background-color: #263238;
+}
+
+.primary2 {
+    background-color: #ffcb9a;
+}
+
+.secondary1 {
+
+}
+
+.parallax-container {
+    height: 1080px;
+    width: 1920px;
+}
+
+<!-- Footer -->
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
