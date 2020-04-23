@@ -75,7 +75,7 @@ public class shoppingCart {
 	}
 	
 	/*
-	 * The addNewItem() method takes the Customer's item 
+	 * The addNewItem() method takes the Classes.Customer's item
 	 * selection and adds it to the cart for check out.
 	 */
 	public void addNewItem()
@@ -83,7 +83,7 @@ public class shoppingCart {
 		
 	}
 	/*
-	 * The updateQuantity() method allows the Customer to modify the quantity of items selected 
+	 * The updateQuantity() method allows the Classes.Customer to modify the quantity of items selected
 	 * and updates the total quantity of the items
 	 */
 	public void updateQuantity()
