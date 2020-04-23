@@ -10,9 +10,12 @@
 
 }
 
-.parallax-container {
-    height: 1080px;
-    width: 1920px;
+.text1 {
+    color: #f5f5f5 !important;
+}
+
+body {
+    background-color: #cfd8dc;
 }
 
 <!-- Footer -->
