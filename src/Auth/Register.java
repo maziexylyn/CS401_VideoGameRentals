@@ -23,42 +23,55 @@ public class Register extends HttpServlet {
         String card = request.getParameter("card");
         String address = request.getParameter("address");
 
-        int status = response.SC_NOT_FOUND;
-        String msg = "Not Found";
+        int status = response.SC_NOT_ACCEPTABLE;
+        String msg = "Invalid information";
 
-        DB db = new DB();
+        if(     Validation.checkEmail(email) &&
+                Validation.checkPassword(password) &&
+                Validation.checkName(name) &&
+                Validation.checkPhone(phone) &&
+                Validation.checkCard(card) &&
+                Validation.checkAddress(address)
+        ){
 
-        if(db.openDB()){
-            User user = User.readUserByEmail(db.getConn(), email);
+            DB db = new DB();
 
-            if(user == null){
-                user = User.createUser(db.getConn(), email, BCrypt.hashpw(password, BCrypt.gensalt()));
-                status = response.SC_INTERNAL_SERVER_ERROR;
-                msg = "An error has occurred";
-            }
+            if(db.openDB()){
+                User user = User.readUserByEmail(db.getConn(), email);
 
-            if(user != null){
-
-                Customer customer = Customer.readCustomerByUserID(db.getConn(), user.getUserID());
-
-                status = response.SC_FOUND;
-                msg = "Customer already registered";
-
-                if(customer == null){
-                    customer = Customer.createCustomer(db.getConn(), name, phone, card, address, user.getUserID());
-                    HttpSession session = request.getSession();
-                    session.setAttribute("email", email);
-                    session.setAttribute("isAdmin", user.isAdmin());
-
-                    status = response.SC_OK;
-                    msg = "Customer registered successfully";
+                if(user == null){
+                    user = User.createUser(db.getConn(), email, BCrypt.hashpw(password, BCrypt.gensalt()));
                 }
 
+                if(user != null){
+
+                    Customer customer = Customer.readCustomerByUserID(db.getConn(), user.getUserID());
+
+                    if(customer == null){
+                        customer = Customer.createCustomer(db.getConn(), name, phone, card, address, user.getUserID());
+                        HttpSession session = request.getSession();
+                        session.setAttribute("email", email);
+                        session.setAttribute("isAdmin", user.isAdmin());
+
+                        status = response.SC_OK;
+                        msg = "Customer registered successfully";
+                    }else{
+                        status = response.SC_FOUND;
+                        msg = "Customer already registered";
+                    }
+
+                }else{
+                    status = response.SC_NOT_FOUND;
+                    msg = "User not found.";
+                }
+
+                db.closeDB();
+            }else{
+                status = response.SC_INTERNAL_SERVER_ERROR;
+                msg = "Internal Server Error";
             }
-
-            db.closeDB();
         }
-
+        
         response.setContentType("text/plain");
         response.getWriter().print(msg);
         response.setStatus(status);

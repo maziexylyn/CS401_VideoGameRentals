@@ -26,37 +26,40 @@ public class SignInOut extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        int status = response.SC_NOT_FOUND;
-        String msg = "Not Found";
 
-        DB db = new DB();
+        int status = response.SC_NOT_ACCEPTABLE;
+        String msg = "Invalid information";
 
-        if(db.openDB()){
+        if(Validation.checkEmail(email) && Validation.checkPassword(password)){
 
-            User user = User.readUserByEmail(db.getConn(), email);
-            db.closeDB();
+            DB db = new DB();
+            if(db.openDB()){
 
-            if(user != null){
-                if(BCrypt.checkpw(password, user.getPasswordHash())){
+                User user = User.readUserByEmail(db.getConn(), email);
+                db.closeDB();
 
-                    HttpSession session = request.getSession();
-                    session.setAttribute("email", email);
-                    session.setAttribute("isAdmin", user.isAdmin());
+                if(user != null){
+                    if(BCrypt.checkpw(password, user.getPasswordHash())){
 
-                    status = response.SC_OK;
-                    msg = "User credentials valid";
+                        HttpSession session = request.getSession();
+                        session.setAttribute("email", email);
+                        session.setAttribute("isAdmin", user.isAdmin());
 
-                    System.out.println("User logged in");
+                        status = response.SC_OK;
+                        msg = "User credentials valid";
 
+                    }else{
+                        status = response.SC_UNAUTHORIZED;
+                        msg = "Email and password combination is invalid";
+                    }
                 }else{
-                    System.out.println("User NOT logged in");
-                    status = response.SC_UNAUTHORIZED;
-                    msg = "Email and password combination is invalid";
+                    status = response.SC_NOT_FOUND;
+                    msg = "Email does not exist";
                 }
             }else{
-                msg = "Email does not exist";
+                status = response.SC_INTERNAL_SERVER_ERROR;
+                msg = "Internal Server Error";
             }
-
         }
 
         response.setContentType("text/plain");
