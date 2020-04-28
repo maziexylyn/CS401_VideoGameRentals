@@ -42,6 +42,7 @@
                             <i class="material-icons prefix text1">mail_outline</i>
                             <input id="signin_email" type="email" class="validate white-text">
                             <label for="signin_email">E-mail</label>
+                            <p id="signin_email_error" hidden class="red-text"></p>
                         </div>
                     </div>
                     <div class="row">
@@ -49,6 +50,7 @@
                             <i class="material-icons prefix text1">lock_outline</i>
                             <input id="signin_password" type="password" class="validate white-text">
                             <label for="signin_password">Password</label>
+                            <p id="signin_password_error" hidden class="red-text"></p>
                         </div>
                     </div>
                 </div>
@@ -72,6 +74,7 @@
                             <i class="material-icons prefix text1">person_outline</i>
                             <input id="register_name" type="text" class="validate white-text">
                             <label for="register_name">Name</label>
+                            <p id="register_name_error" hidden class="red-text"></p>
                         </div>
                     </div>
                     <div class="row">
@@ -79,6 +82,7 @@
                             <i class="material-icons prefix text1">mail_outline</i>
                             <input id="register_email" type="email" class="validate white-text">
                             <label for="register_email">E-mail</label>
+                            <p id="register_email_error" hidden class="red-text"></p>
                         </div>
                     </div>
                     <div class="row">
@@ -86,6 +90,7 @@
                             <i class="material-icons prefix text1">phone</i>
                             <input id="register_phone" type="number" class="validate white-text">
                             <label for="register_phone">Phone</label>
+                            <p id="register_phone_error" hidden class="red-text"></p>
                         </div>
                     </div>
                     <div class="row">
@@ -93,13 +98,15 @@
                             <i class="material-icons prefix text1">home</i>
                             <input id="register_address" type="text" class="validate white-text">
                             <label for="register_address">Shipping Address</label>
+                            <p id="register_address_error" hidden class="red-text"></p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix text1">credit_card</i>
-                            <input id="register_card" type="number" class="validate white-text">
+                            <input id="register_card" type="text" class="validate white-text">
                             <label for="register_card">Card Number</label>
+                            <p id="register_card_error" hidden class="red-text"></p>
                         </div>
                     </div>
                     <div class="row">
@@ -107,6 +114,7 @@
                             <i class="material-icons prefix text1">lock_outline</i>
                             <input id="register_password" type="password" class="validate white-text">
                             <label for="register_password">Password</label>
+                            <p id="register_password_error" hidden class="red-text"></p>
                         </div>
                     </div>
                 </div>
