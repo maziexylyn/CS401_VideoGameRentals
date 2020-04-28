@@ -36,7 +36,7 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <% if(isAdmin){ %>
             <li>
-                <a href="jsp/admin-home.jsp">Admin</a>
+                <a href="jsp/admin/admin-home.jsp">Admin</a>
             </li>
             <% } %>
             <li><a href="jsp/game-library.jsp">
