@@ -152,7 +152,7 @@ function signIn(){
     if( validateSignIn() ) {
 
         var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "../Auth.SignInOut", true);
+        xhttp.open("POST", "../Servlets.Auth.SignInOut", true);
         xhttp.setRequestHeader('Content-Type', "application/x-www-form-urlencoded");
         xhttp.send(
             "email=" + document.getElementById("signin_email").value + "&" +
@@ -178,7 +178,7 @@ function register(){
     if( validateRegister() ){
 
         var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "../Auth.Register", true);
+        xhttp.open("POST", "../Servlets.Auth.Register", true);
         xhttp.setRequestHeader('Content-Type', "application/x-www-form-urlencoded");
         xhttp.send(
             "email="+document.getElementById("register_email").value + "&" +

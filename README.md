@@ -15,14 +15,14 @@ Overview
 --------
 - This project will be an online service which rents out physical copies of video games to customers for a cheap weekly fee across the United States. 
 
-- We’ll allow customers to sign onto a premium membership which will allow for great perks such as a discounted weekly fee and an increased rental limit.
+- We’ll allow customers to sign onto a Classes.premium membership which will allow for great perks such as a discounted weekly fee and an increased rental limit.
 
-- Customers can pre-order a game with release day delivery for an extra charge. 
+- Customers can pre-Classes.order a Classes.game with release day delivery for an extra charge. 
 
-- We’ll host our inventory on a user-friendly website. We won’t have every game available--but we will have the popular ones with enough copies to meet demand.
+- We’ll host our Classes.inventory on a user-friendly website. We won’t have every Classes.game available--but we will have the popular ones with enough copies to meet demand.
 
-- We’ll maintain a database of customers and inventory on our servers at our office in California.
-There will be two warehouses, one in California, and one in New York to maintain our inventory.
+- We’ll maintain a database of customers and Classes.inventory on our servers at our office in California.
+There will be two warehouses, one in California, and one in New York to maintain our Classes.inventory.
 
 ROLES
 -----
@@ -30,4 +30,4 @@ Melinda - Database / assistance with front end and back end -> all-around code m
 
 Sitara - Classes / Objects (making sure all the object content is correct)
 
-Mazie Xylyn - Front End / GUI / UI work / simulated objects (video game names, details, pricing, etc) / general code editing
+Mazie Xylyn - Front End / GUI / UI work / simulated objects (video Classes.game names, details, pricing, etc) / general code editing
