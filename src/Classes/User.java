@@ -5,24 +5,24 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class User {
-	private int userID;
+	private int id;
 	private String passwordHash;
 	private String email;
 	private boolean isAdmin;
 
-    public User(int userID, String email, String passwordHash, boolean isAdmin) {
-        this.userID = userID;
+    public User(int id, String email, String passwordHash, boolean isAdmin) {
+        this.id = id;
         this.passwordHash = passwordHash;
         this.email = email;
         this.isAdmin = isAdmin;
     }
 
-    public int getUserID() {
-        return userID;
+    public int getId() {
+        return id;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getPasswordHash() {
@@ -65,10 +65,11 @@ public class User {
 
             }
         }catch (Exception error){
-            System.out.println(error);
+            error.printStackTrace();
         }
         return temp;
     }
+
     public static User readUserByEmail(Connection conn, String email){
         System.out.println("Getting User...");
 
@@ -77,12 +78,12 @@ public class User {
         try{
             if(conn != null){
                 Statement stmt = conn.createStatement();
-                String sql = "SELECT userID, email, passwordHash, isAdmin FROM user WHERE email='"+email+"' LIMIT 1;";
+                String sql = "SELECT id, email, passwordHash, isAdmin FROM user WHERE email='"+email+"' LIMIT 1;";
                 ResultSet rs = stmt.executeQuery(sql);
 
                 while(rs.next()){
                     temp = new User(
-                            rs.getInt("userID"),
+                            rs.getInt("id"),
                             rs.getString("email"),
                             rs.getString("passwordHash"),
                             rs.getBoolean("isAdmin")
@@ -91,7 +92,7 @@ public class User {
 
             }
         }catch(Exception error){
-            System.out.println(error);
+            error.printStackTrace();
         }
 
         return temp;

@@ -5,27 +5,36 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class Customer {
-	
+
+	private int id;
 	private String name;
 	private String phone;
 	private String cardNumber;
 	private String shippingAddress;
-	private int userID;
+	private int user_id;
 
 	public Customer( String name, String phone, String cardNumber, String shippingAddress, int userID) {
 		this.name = name;
 		this.phone = phone;
 		this.cardNumber = cardNumber;
 		this.shippingAddress = shippingAddress;
-		this.userID = userID;
+		this.user_id = userID;
 	}
 
-	public int getUserID() {
-		return userID;
+	public int getId() {
+		return id;
 	}
 
-	public void setUserID(int userID) {
-		this.userID = userID;
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
 
 	public String getName() {
@@ -65,37 +74,38 @@ public class Customer {
 	////// DB Access Functions //////
 	/////////////////////////////////
 
-	public static Customer createCustomer(Connection conn, String name, String phone, String cardNumber, String shippingAddress, int userID){
+	public static Customer createCustomer(Connection conn, String name, String phone, String cardNumber, String shippingAddress, int user_id){
 		Customer temp = null;
 		try{
 			if(conn != null){
 				Statement stmt = conn.createStatement();
-				String sql = "INSERT INTO customer (cName, phone, cardNumber, shippingAddress, userID)" +
-						" VALUES ('"+name+"','"+phone+"', '"+cardNumber+"','"+shippingAddress+"', "+userID+");";
+				String sql = "INSERT INTO customer (name, phone, cardNumber, shippingAddress, user_id)" +
+						" VALUES ('"+name+"','"+phone+"', '"+cardNumber+"','"+shippingAddress+"', "+user_id+");";
 				stmt.executeUpdate(sql);
 
-				temp = Customer.readCustomerByUserID(conn, userID);
+				temp = Customer.readCustomerByUserID(conn, user_id);
 
 			}
 		}catch (Exception error){
-			System.out.println(error);
+			error.printStackTrace();
 		}
 		return temp;
 	}
 
-	public static Customer readCustomerByUserID(Connection conn, int userID){
+	public static Customer readCustomerByUserID(Connection conn, int user_id){
 		Customer temp = null;
 
 		try{
 			if(conn != null){
 				Statement stmt = conn.createStatement();
-				String sql = "SELECT customerID, cName , phone, cardNumber, shippingAddress, userID" +
-						" FROM customer WHERE userID="+userID+" LIMIT 1;";
+				String sql = "SELECT id, name , phone, cardNumber, shippingAddress, user_id" +
+						" FROM customer WHERE user_id="+user_id+" LIMIT 1;";
 				ResultSet rs = stmt.executeQuery(sql);
 
 				while(rs.next()){
 					temp = new Customer(
-							rs.getString("cName"),
+
+							rs.getString("name"),
 							rs.getString("phone"),
 							rs.getString("cardNumber"),
 							rs.getString("shippingAddress"),
@@ -105,7 +115,7 @@ public class Customer {
 
 			}
 		}catch(Exception error){
-			System.out.println(error);
+			error.printStackTrace();
 		}
 
 		return temp;

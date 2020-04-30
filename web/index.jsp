@@ -93,7 +93,7 @@
                         STANDARD FEATURES:<br>
                         --------------------------<br>
                         - Only $2 a week<br>
-                        - No late fees! Pay weekly until you own the game or return it!<br>
+                        - No late fees! Pay weekly until you own the Classes.game or return it!<br>
                         - 2 games per customer MAX at a time<br>
                         - Free shipping in 3-5 business days<br><br>
                         PREMIUM FEATURES:<br>
@@ -111,7 +111,7 @@
             </div>
         </div>
 
-        <!-- Card: game library -->
+        <!-- Card: Classes.game library -->
         <div class="col s4">
             <div class="card primary1">
                 <div class="card-image">

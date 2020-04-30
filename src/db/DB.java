@@ -1,10 +1,9 @@
 package db;
+import Classes.Platform;
 import Classes.User;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
+
 
 public class DB {
 
@@ -20,8 +19,13 @@ public class DB {
     public static void main(String[] args){
         DB db = new DB();
 
-        if(db.openDB()){
+        if(db.openDB()) {
             System.out.println("Database is connected");
+            System.out.println(Platform.create(db.getConn(),"MaziePlatform"));
+//            Platform[] platforms = Platform.readList(db.getConn());
+//            for(Platform p: platforms){
+//                System.out.println(p.getName());
+//            }
         }
         db.closeDB();
         System.out.println("Database is closed");
@@ -35,7 +39,7 @@ public class DB {
             this.conn = DriverManager.getConnection(DB.host, DB.username, DB.password);
             isOpen = true;
         }catch(Exception err){
-            System.out.println(err);
+            err.printStackTrace();
         }
         return isOpen;
     }
@@ -44,8 +48,9 @@ public class DB {
         try{
             this.conn.close();
         }catch(Exception err){
-            System.out.println(err);
+            err.printStackTrace();
         }
+        System.out.println("Closed DB...");
     }
 
     public Connection getConn() {

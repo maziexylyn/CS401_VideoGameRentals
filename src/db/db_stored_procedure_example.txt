@@ -1,0 +1,30 @@
+When creating a stored procedure follow this format:
+
+TableName_CRUD_Noun
+
+CRUD stands for Create, Read, Update, Delete
+
+Acceptable Nouns: List, FilteredList, table column names, Exists
+
+Examples:
+    Platform_Create
+    Platform_Read
+    Platform_Read_List
+    Platform_Update
+    Platform_Delete
+    GameLibrary_Read_FilteredList
+    User_Read_Exists
+    etc.
+
+MySQL console command to create a stored procedure:
+
+    CREATE PROCEDURE Platform_Read(
+        IN platform_id int
+    )
+    BEGIN
+        SELECT *
+        FROM platform
+        WHERE id=platform_id;
+    END
+
+Java implementation to call stored procedure: refer to platform class create, read, readList, update.
