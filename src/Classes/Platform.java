@@ -103,7 +103,6 @@ public class Platform {
                 stmt.registerOutParameter(2, Types.TINYINT);
                 stmt.execute();
                 isCreated = stmt.getBoolean(2);
-
             }
         }catch(Exception error){
             error.printStackTrace();

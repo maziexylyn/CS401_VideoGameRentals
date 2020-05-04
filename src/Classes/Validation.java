@@ -47,4 +47,6 @@ public class Validation {
         return status.equals("1") || status.equals("0");
     }
 
+    public static boolean checkRoleCode(String rolecode){ return rolecode.equals("1") || rolecode.equals("2") || rolecode.equals("3");}
+
 }

@@ -14,7 +14,7 @@ public class ResponsePackage {
     public ResponsePackage(){
         this.msg = Status.INTERNAL_SERVER_ERROR.toString();
         this.response = 500;
-        this.data = "";
+        this.data = "{}";
     }
 
     public enum Status {
@@ -56,6 +56,10 @@ public class ResponsePackage {
     public void setMsgResponse(Status status){
         this.msg = status.toString();
         this.response = status.getCode();
+    }
+
+    public void setMsg(String msg){
+        this.msg = msg;
     }
 
     public String formatData(){

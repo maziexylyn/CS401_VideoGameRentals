@@ -1,20 +1,20 @@
 package Classes;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import com.mysql.cj.protocol.Resultset;
+
+import java.sql.*;
 
 public class User {
 	private int id;
 	private String passwordHash;
 	private String email;
-	private boolean isAdmin;
+	private int role_id;
 
-    public User(int id, String email, String passwordHash, boolean isAdmin) {
+    public User(int id, String email, String passwordHash, int role_id ) {
         this.id = id;
         this.passwordHash = passwordHash;
         this.email = email;
-        this.isAdmin = isAdmin;
+        this.role_id = role_id;
     }
 
     public int getId() {
@@ -41,52 +41,68 @@ public class User {
         this.email = email;
     }
 
-    public boolean isAdmin() {
-        return isAdmin;
+    public int getRole_id() {
+        return role_id;
     }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
+    public void setRole_id(int role_id) {
+        this.role_id = role_id;
     }
 
     /////////////////////////////////
     ////// DB Access Functions //////
     /////////////////////////////////
 
-    public static User createUser(Connection conn, String email, String passwordHash){
-        User temp = null;
+    public static boolean create(Connection conn, String user_email, String user_password, Role.Type role) {
+        boolean isCreated = false;
+
         try{
             if(conn != null){
-                Statement stmt = conn.createStatement();
-                String sql = "INSERT INTO user (email, passwordHash) VALUES ('"+email+"','"+passwordHash+"');";
-                stmt.executeUpdate(sql);
-
-                temp = readUserByEmail(conn, email);
-
+                CallableStatement stmt = conn.prepareCall("CALL User_Create(?, ?, ?, ?)");
+                stmt.setString(1, user_email);
+                stmt.setString(2, user_password);
+                stmt.setInt(3, role.getCode());
+                stmt.registerOutParameter(4, Types.TINYINT);
+                stmt.execute();
+                isCreated = stmt.getBoolean(4);
             }
-        }catch (Exception error){
+        }catch(Exception error){
             error.printStackTrace();
         }
-        return temp;
+        return isCreated;
     }
 
-    public static User readUserByEmail(Connection conn, String email){
-        System.out.println("Getting User...");
+    public static boolean existsByEmail(Connection conn, String user_email){
+        boolean exists = false;
+        try{
+            if(conn != null){
+                CallableStatement stmt = conn.prepareCall("CALL User_Exists_ByEmail(?, ?)");
+                stmt.setString(1, user_email);
+                stmt.registerOutParameter(2, Types.TINYINT);
+                stmt.execute();
+                exists = stmt.getBoolean(2);
+            }
+        }catch(Exception error){
+            error.printStackTrace();
+        }
+        return exists;
+    }
 
+    public static User readByEmail(Connection conn, String user_email) {
         User temp = null;
 
         try{
             if(conn != null){
-                Statement stmt = conn.createStatement();
-                String sql = "SELECT id, email, passwordHash, isAdmin FROM user WHERE email='"+email+"' LIMIT 1;";
-                ResultSet rs = stmt.executeQuery(sql);
+                CallableStatement stmt = conn.prepareCall("CALL User_Read_ByEmail(?)");
+                stmt.setString(1, user_email);
+                ResultSet rs = stmt.executeQuery();
 
                 while(rs.next()){
                     temp = new User(
                             rs.getInt("id"),
                             rs.getString("email"),
                             rs.getString("passwordHash"),
-                            rs.getBoolean("isAdmin")
+                            rs.getInt("role_id")
                     );
                 }
 
@@ -94,9 +110,7 @@ public class User {
         }catch(Exception error){
             error.printStackTrace();
         }
-
         return temp;
-
     }
 
 }

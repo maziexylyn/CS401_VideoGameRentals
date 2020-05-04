@@ -29,18 +29,14 @@ public class Create extends HttpServlet {
         String platform_name = request.getParameter("name");
 
         ResponsePackage rp = new ResponsePackage();
-        String data = rp.formatData();
-        int status = rp.getResponse();
 
         if(Validation.checkPlatformName(platform_name)){
             rp = createPlatform(platform_name);
-            data = rp.formatData();
-            status = rp.getResponse();
         }
 
         response.setContentType("text/plain");
-        response.getWriter().print(data);
-        response.setStatus(status);
+        response.getWriter().print(rp.formatData());
+        response.setStatus(rp.getResponse());
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

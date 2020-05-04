@@ -160,16 +160,13 @@ function signIn(){
         );
 
         xhttp.onreadystatechange = function () {
+            console.log(this.responseText);
             if (this.readyState === 4 && this.status === 200) {
                 window.location.href = "../index.jsp";
             } else if (this.readyState === 4) {
-                M.toast({html: this.responseText})
-                console.log(this.responseText);
+                M.toast({html: JSON.parse(this.responseText).msg})
             }
         };
-
-
-        console.log("sent request");
 
     }
 }
@@ -193,8 +190,7 @@ function register(){
             if(this.readyState === 4 && this.status === 200) {
                 window.location.href = "../index.jsp";
             }else if(this.readyState === 4){
-                M.toast({html: this.responseText})
-                console.log(this.responseText);
+                M.toast({html: JSON.parse(this.responseText).msg})
             }
         }
 

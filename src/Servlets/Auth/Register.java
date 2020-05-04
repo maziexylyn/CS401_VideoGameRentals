@@ -1,8 +1,6 @@
 package Servlets.Auth;
 
-import Classes.Customer;
-import Classes.User;
-import Classes.Validation;
+import Classes.*;
 import db.DB;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -24,8 +22,7 @@ public class Register extends HttpServlet {
         String card = request.getParameter("card");
         String address = request.getParameter("address");
 
-        int status = response.SC_NOT_ACCEPTABLE;
-        String msg = "Invalid information";
+        ResponsePackage rp = new ResponsePackage();
 
         if(     Validation.checkEmail(email) &&
                 Validation.checkPassword(password) &&
@@ -34,52 +31,47 @@ public class Register extends HttpServlet {
                 Validation.checkCard(card) &&
                 Validation.checkAddress(address)
         ){
-
-            DB db = new DB();
-
-            if(db.openDB()){
-                User user = User.readUserByEmail(db.getConn(), email);
-
-                if(user == null){
-                    user = User.createUser(db.getConn(), email, BCrypt.hashpw(password, BCrypt.gensalt()));
-                }
-
-                if(user != null){
-
-                    Customer customer = Customer.readCustomerByUserID(db.getConn(), user.getId());
-
-                    if(customer == null){
-                        customer = Customer.createCustomer(db.getConn(), name, phone, card, address, user.getId());
-                        HttpSession session = request.getSession();
-                        session.setAttribute("email", email);
-                        session.setAttribute("isAdmin", user.isAdmin());
-
-                        status = response.SC_OK;
-                        msg = "Customer registered successfully";
-                    }else{
-                        status = response.SC_FOUND;
-                        msg = "Customer already registered";
-                    }
-
-                }else{
-                    status = response.SC_NOT_FOUND;
-                    msg = "User not found.";
-                }
-
-                db.closeDB();
-            }else{
-                status = response.SC_INTERNAL_SERVER_ERROR;
-                msg = "Internal Server Error";
-            }
+            rp = register(email,password,name,phone,card,address);
         }
         
         response.setContentType("text/plain");
-        response.getWriter().print(msg);
-        response.setStatus(status);
+        response.getWriter().print(rp.formatData());
+        response.setStatus(rp.getResponse());
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
+
+    private static ResponsePackage register(String email, String password, String name, String phone, String card, String address){
+        ResponsePackage rp = new ResponsePackage();
+        try{
+            DB db = new DB();
+
+            if(db.openDB()){
+
+                if(!User.existsByEmail(db.getConn(), email)){
+                    User.create(db.getConn(), email, BCrypt.hashpw(password, BCrypt.gensalt()), Role.Type.CUSTOMER );
+                }
+
+                User user = User.readByEmail(db.getConn(), email);
+
+                if(!Customer.existsByUserID(db.getConn(), user.getId())) {
+                    if(Customer.create(db.getConn(), name,phone,card,address,user.getId())) {
+                        rp.setMsgResponse(ResponsePackage.Status.OK);
+                    }else {
+                        rp.setMsgResponse(ResponsePackage.Status.NOT_IMPLEMENTED);
+                    }
+                }
+
+                db.closeDB();
+            }
+
+        }catch(Exception err){
+            err.printStackTrace();
+        }
+        return rp;
+    }
+
 }
