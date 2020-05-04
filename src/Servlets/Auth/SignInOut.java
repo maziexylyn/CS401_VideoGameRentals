@@ -3,6 +3,8 @@ package Servlets.Auth;
 
 
 
+import Classes.Platform;
+import Classes.ResponsePackage;
 import Classes.User;
 import Classes.Validation;
 import db.DB;
@@ -23,49 +25,48 @@ public class SignInOut extends HttpServlet {
 
     // Sign In
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("In SignIn Post");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-
-        int status = response.SC_NOT_ACCEPTABLE;
-        String msg = "Invalid information";
+        ResponsePackage rp = new ResponsePackage();
 
         if(Validation.checkEmail(email) && Validation.checkPassword(password)){
 
             DB db = new DB();
             if(db.openDB()){
 
-                User user = User.readUserByEmail(db.getConn(), email);
-                db.closeDB();
+                if(User.existsByEmail(db.getConn(), email)){
 
-                if(user != null){
+                    User user = User.readByEmail(db.getConn(), email);
+                    db.closeDB();
+
                     if(BCrypt.checkpw(password, user.getPasswordHash())){
 
                         HttpSession session = request.getSession();
                         session.setAttribute("email", email);
-                        session.setAttribute("isAdmin", user.isAdmin());
+                        session.setAttribute("role", user.getRole_id());
 
-                        status = response.SC_OK;
-                        msg = "User credentials valid";
-
+                        rp.setMsgResponse(ResponsePackage.Status.OK);
+                        rp.setMsg("User credentials valid");
                     }else{
-                        status = response.SC_UNAUTHORIZED;
-                        msg = "Email and password combination is invalid";
+                        rp.setMsgResponse(ResponsePackage.Status.UNAUTHORIZED);
+                        rp.setMsg("Email and password combination is invalid");
                     }
+
                 }else{
-                    status = response.SC_NOT_FOUND;
-                    msg = "Email does not exist";
+                    rp.setMsgResponse(ResponsePackage.Status.NOT_FOUND);
+                    rp.setMsg("Email does not exist");
                 }
+
             }else{
-                status = response.SC_INTERNAL_SERVER_ERROR;
-                msg = "Internal Server Error";
+                rp.setMsgResponse(ResponsePackage.Status.INTERNAL_SERVER_ERROR);
+                rp.setMsg("Internal Server Error");
             }
         }
 
         response.setContentType("text/plain");
-        response.getWriter().print(msg);
-        response.setStatus(status);
+        response.getWriter().print(rp.formatData());
+        response.setStatus(rp.getResponse());
 
     }
 

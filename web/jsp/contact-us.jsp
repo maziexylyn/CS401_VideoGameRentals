@@ -2,8 +2,8 @@
 <%@ page import="Classes.Validation" %><%--
   Created by IntelliJ IDEA.
   User: Mazie
-  Date: 4/21/2020
-  Time: 4:54 PM
+  Date: 5/2/2020
+  Time: 9:54 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -12,7 +12,7 @@
     Role.Type role = Role.Type.CUSTOMER;
     boolean isSignedIn = false;
     if (session.getAttribute("email") != null && session.getAttribute("email") != "") {
-        activity = "../../jsp/sign-out.jsp";
+        activity = "../jsp/sign-out.jsp";
         activityText = "Sign Out";
         String temp = session.getAttribute("role").toString();
         if(Validation.checkRoleCode(temp)){
@@ -23,7 +23,7 @@
             }
         }
     } else {
-        activity = "../../jsp/signin-register.jsp";
+        activity = "../jsp/signin-register.jsp";
         activityText = "Sign In";
     }
 %>
@@ -34,24 +34,24 @@
 <body>
 <nav>
     <div class="nav-wrapper primary1">
-        <a href="../../index.jsp" class="brand-logo text1">VGRentalZ</a>
+        <a href="../index.jsp" class="brand-logo text1">VGRentalZ</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <% if(role.equals(Role.Type.ADMIN)){ %>
             <li>
-                <a href="../../jsp/admin/admin-home.jsp">Admin</a>
+                <a href="../jsp/admin/admin-home.jsp">Admin</a>
             </li>
             <% } %>
             <% if(role.equals(Role.Type.MANAGER)){ %>
             <li>
-                <a href="../../jsp/manager/manager-home.jsp">Admin</a>
+                <a href="../jsp/manager/manager-home.jsp">Admin</a>
             </li>
             <% } %>
-            <li><a href="../../jsp/game-library.jsp">
+            <li><a href="../jsp/game-library.jsp">
                 Game Library</a></li>
-            <li><a href="../../jsp/contact-us.jsp">Contact Us</a></li>
+            <li><a href="../jsp/contact-us.jsp">Contact Us</a></li>
             <li><a href="<%=activity%>" ><%=activityText%></a></li>
             <% if(role.equals(Role.Type.CUSTOMER) && isSignedIn){ %>
-            <li><a href="../../jsp/customer/shopping-cart.jsp">
+            <li><a href="../jsp/customer/shopping-cart.jsp">
                 <i class="small material-icons">shopping_cart</i></a>
             </li>
             <% } %>
