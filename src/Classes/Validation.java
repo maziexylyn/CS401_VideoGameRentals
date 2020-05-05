@@ -39,6 +39,10 @@ public class Validation {
         return regexChecker("[\\w]{3,50}", name);
     }
 
+    public static boolean checkGameName(String name) {
+        return regexChecker("[\\w]{1,100}", name);
+    }
+
     public static boolean checkID(String id){
         return regexChecker("[\\d]+", id);
     }
