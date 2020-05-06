@@ -43,11 +43,12 @@ public class Update extends javax.servlet.http.HttpServlet {
 
     private static ResponsePackage updateGame(int game_id, String game_name, boolean game_isActive){
         ResponsePackage rp = new ResponsePackage();
+        /*
         try{
             DB db = new DB();
 
             if(db.openDB()){
-                boolean isUpdated = Platform.update(db.getConn(), game_id, game_name, game_isActive);
+                boolean isUpdated = Game.update(db.getConn(), game_id, game_name, game_isActive);
                 db.closeDB();
 
                 if(isUpdated){
@@ -59,6 +60,8 @@ public class Update extends javax.servlet.http.HttpServlet {
         }catch(Exception err){
             err.printStackTrace();
         }
+        
+         */
         return rp;
     }
 }

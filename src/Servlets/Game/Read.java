@@ -3,12 +3,13 @@ package Servlets.Game;
 
 import Classes.ResponsePackage;
 import Classes.Validation;
+import com.google.gson.Gson;
+import db.DB;
 
 import javax.servlet.annotation.WebServlet;
 import java.io.IOException;
 
-@WebServlet("/Servlets.Game.Read")
-
+@WebServlet("/Servlets.Publisher.Read")
 public class Read extends javax.servlet.http.HttpServlet {
     public static void main(String[] args){
         int game_id = 1;

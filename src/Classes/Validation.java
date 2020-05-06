@@ -43,7 +43,39 @@ public class Validation {
         return regexChecker("[\\w]{1,100}", name);
     }
 
+    public static boolean checkPublisherName(String name) {
+        return regexChecker("[\\w]{1,100}", name);
+    }
+
+    public static boolean checkRatingName(String name) {
+        return regexChecker("[\\w]{1,100}", name);
+    }
+
+    public static boolean checkGamePlatformName(String name) {
+        return regexChecker("[\\w]{1,100}", name);
+    }
+
+    public static boolean checkGenreName(String name) {
+        return regexChecker("[\\w]{1,100}", name);
+    }
+
     public static boolean checkID(String id){
+        return regexChecker("[\\d]+", id);
+    }
+
+    public static boolean checkPublisherID(String id){
+        return regexChecker("[\\d]+", id);
+    }
+
+    public static boolean checkRatingID(String id){
+        return regexChecker("[\\d]+", id);
+    }
+
+    public static boolean checkGamePlatformID(String id){
+        return regexChecker("[\\d]+", id);
+    }
+
+    public static boolean checkGenreID(String id){
         return regexChecker("[\\d]+", id);
     }
 

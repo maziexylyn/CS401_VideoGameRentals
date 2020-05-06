@@ -28,18 +28,16 @@ public class ReadList extends HttpServlet {
         String platform_isActive = request.getParameter("isActive");
 
         ResponsePackage rp = new ResponsePackage();
-        String data = rp.formatData();
-        int status = rp.getResponse();
+
 
         if(Validation.checkBoolean(platform_isActive)){
             rp = readListPlatform(Boolean.parseBoolean(platform_isActive));
-            data = rp.formatData();
-            status = rp.getResponse();
+
         }
 
         response.setContentType("text/plain");
-        response.getWriter().print(data);
-        response.setStatus(status);
+        response.getWriter().print(rp.formatData());
+        response.setStatus(rp.getResponse());
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

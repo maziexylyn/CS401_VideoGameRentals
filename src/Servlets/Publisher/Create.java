@@ -1,29 +1,33 @@
-package Servlets.Game;
+package Servlets.Publisher;
 
+import Classes.Platform;
 import Classes.ResponsePackage;
 import Classes.Validation;
+import com.google.gson.Gson;
 import db.DB;
-import javax.servlet.annotation.WebServlet;
-import java.io.IOException;
 
-@WebServlet("/Servlets.Game.Create")
-public class Create extends javax.servlet.http.HttpServlet {
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.ResultSet;
+public class Create extends javax.servlet.http.HttpServlet{
     public static void main(String[] args){
         String name = "MazieBox";
-        ResponsePackage rp = Create.createGameName(name);
+        ResponsePackage rp = Create.createPublisherName(name);
         System.out.println(rp.formatData());
         System.out.println(rp.getResponse());
     }
-
-    protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-
-        String game_name = request.getParameter("name");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String publisher_name = request.getParameter("name");
         ResponsePackage rp = new ResponsePackage();
 
 
-        if(Validation.checkGameName(game_name))
+        if(Validation.checkPublisherName(publisher_name))
         {
-           rp = createGameName(game_name);
+            rp = createPublisherName(publisher_name);
 
 
         }
@@ -34,11 +38,10 @@ public class Create extends javax.servlet.http.HttpServlet {
 
     }
 
-    protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-
-    private static ResponsePackage createGameName(String game_name) {
+    private static ResponsePackage createPublisherName(String publisher_name) {
         ResponsePackage rp2 = new ResponsePackage();
         /*
         try {
@@ -46,7 +49,7 @@ public class Create extends javax.servlet.http.HttpServlet {
 
             if (db.openDB()) {
 
-                boolean isCreated = Game.create(db.getConn(), game_name);
+                boolean isCreated = Publisher.create(db.getConn(), publisher_name);
                 db.closeDB();
 
                 if (isCreated) {
@@ -63,6 +66,4 @@ public class Create extends javax.servlet.http.HttpServlet {
         return rp2;
     }
 
-
 }
-

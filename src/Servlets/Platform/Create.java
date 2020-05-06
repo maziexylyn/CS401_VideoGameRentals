@@ -30,7 +30,7 @@ public class Create extends HttpServlet {
 
         ResponsePackage rp = new ResponsePackage();
 
-        if(Validation.checkPlatformName(platform_name)){
+        if(Validation.checkGenreName(platform_name)){
             rp = createPlatform(platform_name);
         }
 
