@@ -6,12 +6,12 @@ import java.sql.ResultSet;
 import java.sql.Types;
 import java.util.ArrayList;
 
-public class Genre {
+public class Rating {
     private int id;
     private String name;
     private boolean isActive;
 
-    Genre(int id, String name, boolean isActive){
+    Rating(int id, String name, boolean isActive){
         this.id = id;
         this.name = name;
         this.isActive = isActive;
@@ -41,18 +41,19 @@ public class Genre {
         isActive = active;
     }
 
-    public static Genre read(Connection conn, int genre_id)
+
+    public static Rating read(Connection conn, int rating_id)
     {
-        Genre temp = null;
+        Rating temp = null;
 
         try{
             if(conn != null){
-                CallableStatement stmt = conn.prepareCall("CALL Genre_Read(?)");
-                stmt.setInt(1, genre_id);
+                CallableStatement stmt = conn.prepareCall("CALL Rating_Read(?)");
+                stmt.setInt(1, rating_id);
                 ResultSet rs = stmt.executeQuery();
 
                 while(rs.next()){
-                    temp = new Genre(
+                    temp = new Rating(
                             rs.getInt("id"),
                             rs.getString("name"),
                             rs.getBoolean("isActive")
@@ -67,18 +68,19 @@ public class Genre {
         return temp;
     }
 
-    public static Genre[] readList(Connection conn, boolean genre_isActive)
+
+    public static Rating[] readList(Connection conn, boolean rating_isActive)
     {
-        ArrayList<Genre> genres = new ArrayList<>();
+        ArrayList<Rating> ratings = new ArrayList<>();
 
         try{
             if(conn != null){
-                CallableStatement stmt = conn.prepareCall("CALL Genre_Read_List(?)");
-                stmt.setBoolean(1, genre_isActive);
+                CallableStatement stmt = conn.prepareCall("CALL Rating_Read_List(?)");
+                stmt.setBoolean(1, rating_isActive);
                 ResultSet rs = stmt.executeQuery();
 
                 while(rs.next()){
-                    genres.add(new Genre(
+                    ratings.add(new Rating(
                             rs.getInt("id"),
                             rs.getString("name"),
                             rs.getBoolean("isActive")
@@ -90,18 +92,18 @@ public class Genre {
             error.printStackTrace();
         }
 
-        return genres.toArray(new Genre[0]);
+        return ratings.toArray(new Rating[0]);
     }
 
 
-    public static boolean create(Connection conn, String genre_name)
+    public static boolean create(Connection conn, String rating_name)
     {
         boolean isCreated = false;
 
         try{
             if(conn != null){
-                CallableStatement stmt = conn.prepareCall("CALL Genre_Create(?, ?)");
-                stmt.setString(1, genre_name);
+                CallableStatement stmt = conn.prepareCall("CALL Rating_Create(?, ?)");
+                stmt.setString(1, rating_name);
                 stmt.registerOutParameter(2, Types.TINYINT);
                 stmt.execute();
                 isCreated = stmt.getBoolean(2);
@@ -114,16 +116,16 @@ public class Genre {
     }
 
 
-    public static boolean update(Connection conn, int genre_id, String genre_name, boolean genre_isActive)
+    public static boolean update(Connection conn, int rating_id, String rating_name, boolean rating_isActive)
     {
         boolean isUpdated = false;
 
         try{
             if(conn != null){
-                CallableStatement stmt = conn.prepareCall("CALL Genre_Update(?, ?, ?, ?)");
-                stmt.setInt(1, genre_id);
-                stmt.setString(2, genre_name);
-                stmt.setBoolean(3, genre_isActive);
+                CallableStatement stmt = conn.prepareCall("CALL Rating_Update(?, ?, ?, ?)");
+                stmt.setInt(1, rating_id);
+                stmt.setString(2, rating_name);
+                stmt.setBoolean(3, rating_isActive);
                 stmt.registerOutParameter(4, Types.TINYINT);
                 stmt.execute();
                 isUpdated = stmt.getBoolean(4);
@@ -135,4 +137,3 @@ public class Genre {
         return isUpdated;
     }
 }
-
