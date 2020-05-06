@@ -1,8 +1,10 @@
-package Servlets.Platform;
+package Servlets.Rating;
+
 
 import Classes.Platform;
 import Classes.ResponsePackage;
 import Classes.Validation;
+import com.google.gson.Gson;
 import db.DB;
 
 import javax.servlet.ServletException;
@@ -11,31 +13,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.http.HttpResponse;
 
-@WebServlet("/Servlets.Platform.Update")
-public class Update extends HttpServlet {
-
-    // quick code test for function
+@WebServlet("/Servlets.Rating.Create")
+public class Create extends HttpServlet {
     public static void main(String[] args){
-        int platform_id = 7;
-        String platform_name = "MazieStation";
-        boolean platform_isActive = true;
-        ResponsePackage rp = updatePlatform(platform_id, platform_name, platform_isActive);
+        String name = "MazieBox";
+        ResponsePackage rp = Create.createRating(name);
         System.out.println(rp.formatData());
         System.out.println(rp.getResponse());
     }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String platform_id_string = request.getParameter("id");
-        String platform_name = request.getParameter("name");
-        String platform_isActive = request.getParameter("isActive");
+        String rating_name = request.getParameter("name");
 
         ResponsePackage rp = new ResponsePackage();
 
-
-        if(Validation.checkPlatformName(platform_name) && Validation.checkID(platform_id_string) && Validation.checkBoolean(platform_isActive)){
-            rp = updatePlatform(Integer.parseInt(platform_id_string), platform_name, Boolean.parseBoolean(platform_isActive));
-
+        if(Validation.checkRatingName(rating_name)){
+            rp = createRating(rating_name);
         }
 
         response.setContentType("text/plain");
@@ -47,24 +41,30 @@ public class Update extends HttpServlet {
 
     }
 
-    private static ResponsePackage updatePlatform(int platform_id, String platform_name, boolean platform_isActive){
+    private static ResponsePackage createRating(String rating_name){
         ResponsePackage rp = new ResponsePackage();
+       /*
         try{
             DB db = new DB();
 
             if(db.openDB()){
-                boolean isUpdated = Platform.update(db.getConn(), platform_id, platform_name, platform_isActive);
+
+                boolean isCreated = Rating.create(db.getConn(), rating_name);
                 db.closeDB();
 
-                if(isUpdated){
+                if(isCreated){
                     rp.setMsgResponse(ResponsePackage.Status.OK);
                 }else{
-                    rp.setMsgResponse(ResponsePackage.Status.NOT_MODIFIED);
+                    rp.setMsgResponse(ResponsePackage.Status.NOT_IMPLEMENTED);
                 }
             }
+
         }catch(Exception err){
             err.printStackTrace();
         }
+
+        */
         return rp;
+
     }
 }

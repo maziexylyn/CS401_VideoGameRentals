@@ -29,18 +29,16 @@ public class Read extends HttpServlet {
         String platform_id_string = request.getParameter("id");
 
         ResponsePackage rp = new ResponsePackage();
-        String data = rp.formatData();
-        int status = rp.getResponse();
+
 
         if(Validation.checkID(platform_id_string)){
             rp = readPlatform(Integer.parseInt(platform_id_string));
-            data = rp.formatData();
-            status = rp.getResponse();
+
         }
 
         response.setContentType("text/plain");
-        response.getWriter().print(data);
-        response.setStatus(status);
+        response.getWriter().print(rp.formatData());
+        response.setStatus(rp.getResponse());
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

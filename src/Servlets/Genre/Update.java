@@ -1,4 +1,4 @@
-package Servlets.Platform;
+package Servlets.Genre;
 
 import Classes.Platform;
 import Classes.ResponsePackage;
@@ -12,29 +12,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/Servlets.Platform.Update")
+@WebServlet("/Servlets.Genre.Update")
 public class Update extends HttpServlet {
-
-    // quick code test for function
     public static void main(String[] args){
-        int platform_id = 7;
-        String platform_name = "MazieStation";
-        boolean platform_isActive = true;
-        ResponsePackage rp = updatePlatform(platform_id, platform_name, platform_isActive);
+        int genre_id = 7;
+        String genre_name = "MazieStation";
+        boolean genre_isActive = true;
+        ResponsePackage rp = updateGenre(genre_id, genre_name, genre_isActive);
         System.out.println(rp.formatData());
         System.out.println(rp.getResponse());
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String platform_id_string = request.getParameter("id");
-        String platform_name = request.getParameter("name");
-        String platform_isActive = request.getParameter("isActive");
+        String genre_id_string = request.getParameter("id");
+        String genre_name = request.getParameter("name");
+        String genre_isActive = request.getParameter("isActive");
 
         ResponsePackage rp = new ResponsePackage();
 
 
-        if(Validation.checkPlatformName(platform_name) && Validation.checkID(platform_id_string) && Validation.checkBoolean(platform_isActive)){
-            rp = updatePlatform(Integer.parseInt(platform_id_string), platform_name, Boolean.parseBoolean(platform_isActive));
+        if(Validation.checkGenreName(genre_name) && Validation.checkID(genre_id_string) && Validation.checkBoolean(genre_isActive)){
+            rp = updateGenre(Integer.parseInt(genre_id_string), genre_name, Boolean.parseBoolean(genre_isActive));
 
         }
 
@@ -46,14 +44,14 @@ public class Update extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-
-    private static ResponsePackage updatePlatform(int platform_id, String platform_name, boolean platform_isActive){
+    private static ResponsePackage updateGenre(int genre_id, String genre_name, boolean genre_isActive){
         ResponsePackage rp = new ResponsePackage();
+       /*
         try{
             DB db = new DB();
 
             if(db.openDB()){
-                boolean isUpdated = Platform.update(db.getConn(), platform_id, platform_name, platform_isActive);
+                boolean isUpdated = Genre.update(db.getConn(), genre_id, genre_name, genre_isActive);
                 db.closeDB();
 
                 if(isUpdated){
@@ -65,6 +63,8 @@ public class Update extends HttpServlet {
         }catch(Exception err){
             err.printStackTrace();
         }
+
+        */
         return rp;
     }
 }

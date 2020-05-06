@@ -1,4 +1,4 @@
-package Servlets.Platform;
+package Servlets.Publisher;
 
 import Classes.Platform;
 import Classes.ResponsePackage;
@@ -12,29 +12,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/Servlets.Platform.Update")
+@WebServlet("/Servlets.Publisher.Update")
 public class Update extends HttpServlet {
-
-    // quick code test for function
     public static void main(String[] args){
-        int platform_id = 7;
-        String platform_name = "MazieStation";
-        boolean platform_isActive = true;
-        ResponsePackage rp = updatePlatform(platform_id, platform_name, platform_isActive);
+        int publisher_id = 7;
+        String publisher_name = "MazieStation";
+        boolean publisher_isActive = true;
+        ResponsePackage rp = updatePublisher(publisher_id, publisher_name, publisher_isActive);
         System.out.println(rp.formatData());
         System.out.println(rp.getResponse());
     }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String platform_id_string = request.getParameter("id");
-        String platform_name = request.getParameter("name");
-        String platform_isActive = request.getParameter("isActive");
+        String publisher_id_string = request.getParameter("id");
+        String publisher_name = request.getParameter("name");
+        String publisher_isActive = request.getParameter("isActive");
 
         ResponsePackage rp = new ResponsePackage();
 
 
-        if(Validation.checkPlatformName(platform_name) && Validation.checkID(platform_id_string) && Validation.checkBoolean(platform_isActive)){
-            rp = updatePlatform(Integer.parseInt(platform_id_string), platform_name, Boolean.parseBoolean(platform_isActive));
+        if(Validation.checkPublisherName(publisher_name) && Validation.checkID(publisher_id_string) && Validation.checkBoolean(publisher_isActive)){
+            rp = updatePublisher(Integer.parseInt(publisher_id_string), publisher_name, Boolean.parseBoolean(publisher_isActive));
 
         }
 
@@ -47,13 +44,14 @@ public class Update extends HttpServlet {
 
     }
 
-    private static ResponsePackage updatePlatform(int platform_id, String platform_name, boolean platform_isActive){
+    private static ResponsePackage updatePublisher(int publisher_id, String publisher_name, boolean publisher_isActive){
         ResponsePackage rp = new ResponsePackage();
+        /*
         try{
             DB db = new DB();
 
             if(db.openDB()){
-                boolean isUpdated = Platform.update(db.getConn(), platform_id, platform_name, platform_isActive);
+                boolean isUpdated = Publisher.update(db.getConn(), publisher_id, publisher_name, publisher_isActive);
                 db.closeDB();
 
                 if(isUpdated){
@@ -65,6 +63,8 @@ public class Update extends HttpServlet {
         }catch(Exception err){
             err.printStackTrace();
         }
+
+         */
         return rp;
     }
 }
