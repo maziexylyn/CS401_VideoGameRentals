@@ -1,4 +1,4 @@
-package Servlets.Platform;
+package Servlets.Publisher;
 
 import Classes.Platform;
 import Classes.ResponsePackage;
@@ -12,58 +12,58 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
-@WebServlet("/Servlets.Platform.ReadList")
-public class ReadList extends HttpServlet {
-
-    // quick code test for function
+import java.sql.ResultSet;
+public class Create extends javax.servlet.http.HttpServlet{
     public static void main(String[] args){
-        boolean platform_isActive = true;
-        ResponsePackage rp = readListPlatform(platform_isActive);
+        String name = "MazieBox";
+        ResponsePackage rp = Create.createPublisherName(name);
         System.out.println(rp.formatData());
         System.out.println(rp.getResponse());
     }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String platform_isActive = request.getParameter("isActive");
-
+        String publisher_name = request.getParameter("name");
         ResponsePackage rp = new ResponsePackage();
 
 
-        if(Validation.checkBoolean(platform_isActive)){
-            rp = readListPlatform(Boolean.parseBoolean(platform_isActive));
+        if(Validation.checkPublisherName(publisher_name))
+        {
+            rp = createPublisherName(publisher_name);
+
 
         }
-
         response.setContentType("text/plain");
         response.getWriter().print(rp.formatData());
         response.setStatus(rp.getResponse());
+
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-
-    private static ResponsePackage readListPlatform(boolean platform_isActive) {
-        ResponsePackage rp = new ResponsePackage();
-        try{
+    private static ResponsePackage createPublisherName(String publisher_name) {
+        ResponsePackage rp2 = new ResponsePackage();
+        /*
+        try {
             DB db = new DB();
 
-            if(db.openDB()) {
-                Platform[] platforms = Platform.readList(db.getConn(), platform_isActive);
+            if (db.openDB()) {
+
+                boolean isCreated = Publisher.create(db.getConn(), publisher_name);
                 db.closeDB();
 
-                if (platforms.length > 0) {
-                    Gson gson = new Gson();
-                    rp.setData(gson.toJson(platforms));
-                    rp.setMsgResponse(ResponsePackage.Status.OK);
+                if (isCreated) {
+                    rp2.setMsgResponse(ResponsePackage.Status.OK);
                 } else {
-                    rp.setMsgResponse(ResponsePackage.Status.NOT_FOUND);
+                    rp2.setMsgResponse(ResponsePackage.Status.NOT_IMPLEMENTED);
                 }
             }
-        }catch(Exception err){
+        } catch(Exception err){
             err.printStackTrace();
         }
-        return rp;
+
+         */
+        return rp2;
     }
+
 }

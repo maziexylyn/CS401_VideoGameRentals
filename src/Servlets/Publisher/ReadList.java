@@ -1,8 +1,10 @@
-package Servlets.Platform;
+package Servlets.Publisher;
+
 
 import Classes.Platform;
 import Classes.ResponsePackage;
 import Classes.Validation;
+import com.google.gson.Gson;
 import db.DB;
 
 import javax.servlet.ServletException;
@@ -12,29 +14,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/Servlets.Platform.Update")
-public class Update extends HttpServlet {
-
-    // quick code test for function
+@WebServlet("/Servlets.Publisher.ReadList")
+public class ReadList extends HttpServlet {
     public static void main(String[] args){
-        int platform_id = 7;
-        String platform_name = "MazieStation";
-        boolean platform_isActive = true;
-        ResponsePackage rp = updatePlatform(platform_id, platform_name, platform_isActive);
+        boolean publisher_isActive = true;
+        ResponsePackage rp = readListPublisher(publisher_isActive);
         System.out.println(rp.formatData());
         System.out.println(rp.getResponse());
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String platform_id_string = request.getParameter("id");
-        String platform_name = request.getParameter("name");
-        String platform_isActive = request.getParameter("isActive");
+        String publisher_isActive = request.getParameter("isActive");
 
         ResponsePackage rp = new ResponsePackage();
 
 
-        if(Validation.checkPlatformName(platform_name) && Validation.checkID(platform_id_string) && Validation.checkBoolean(platform_isActive)){
-            rp = updatePlatform(Integer.parseInt(platform_id_string), platform_name, Boolean.parseBoolean(platform_isActive));
+        if(Validation.checkBoolean(publisher_isActive)){
+            rp = readListPublisher(Boolean.parseBoolean(publisher_isActive));
 
         }
 
@@ -47,24 +43,29 @@ public class Update extends HttpServlet {
 
     }
 
-    private static ResponsePackage updatePlatform(int platform_id, String platform_name, boolean platform_isActive){
+    private static ResponsePackage readListPublisher(boolean publisher_isActive) {
         ResponsePackage rp = new ResponsePackage();
+        /*
         try{
             DB db = new DB();
 
-            if(db.openDB()){
-                boolean isUpdated = Platform.update(db.getConn(), platform_id, platform_name, platform_isActive);
+            if(db.openDB()) {
+                Publisher[] publisher = Publisher.readList(db.getConn(), platform_isActive);
                 db.closeDB();
 
-                if(isUpdated){
+                if (publisher.length > 0) {
+                    Gson gson = new Gson();
+                    rp.setData(gson.toJson(publisher));
                     rp.setMsgResponse(ResponsePackage.Status.OK);
-                }else{
-                    rp.setMsgResponse(ResponsePackage.Status.NOT_MODIFIED);
+                } else {
+                    rp.setMsgResponse(ResponsePackage.Status.NOT_FOUND);
                 }
             }
         }catch(Exception err){
             err.printStackTrace();
         }
+
+         */
         return rp;
     }
 }
