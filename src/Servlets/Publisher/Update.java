@@ -1,10 +1,9 @@
 package Servlets.Publisher;
 
-import Classes.Platform;
+import Classes.Publisher;
 import Classes.ResponsePackage;
 import Classes.Validation;
 import db.DB;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,22 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/Servlets.Publisher.Update")
+
 public class Update extends HttpServlet {
-    public static void main(String[] args){
-        int publisher_id = 7;
-        String publisher_name = "MazieStation";
-        boolean publisher_isActive = true;
-        ResponsePackage rp = updatePublisher(publisher_id, publisher_name, publisher_isActive);
-        System.out.println(rp.formatData());
-        System.out.println(rp.getResponse());
-    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String publisher_id_string = request.getParameter("id");
         String publisher_name = request.getParameter("name");
         String publisher_isActive = request.getParameter("isActive");
 
         ResponsePackage rp = new ResponsePackage();
-
 
         if(Validation.checkPublisherName(publisher_name) && Validation.checkID(publisher_id_string) && Validation.checkBoolean(publisher_isActive)){
             rp = updatePublisher(Integer.parseInt(publisher_id_string), publisher_name, Boolean.parseBoolean(publisher_isActive));
@@ -46,7 +38,7 @@ public class Update extends HttpServlet {
 
     private static ResponsePackage updatePublisher(int publisher_id, String publisher_name, boolean publisher_isActive){
         ResponsePackage rp = new ResponsePackage();
-        /*
+
         try{
             DB db = new DB();
 
@@ -64,7 +56,6 @@ public class Update extends HttpServlet {
             err.printStackTrace();
         }
 
-         */
         return rp;
     }
 }

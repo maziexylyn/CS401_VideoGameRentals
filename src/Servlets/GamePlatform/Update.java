@@ -1,10 +1,9 @@
 package Servlets.GamePlatform;
 
-import Classes.Platform;
+import Classes.GamePlatform;
 import Classes.ResponsePackage;
 import Classes.Validation;
 import db.DB;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,27 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/Servlets.GamePlatform.Update")
+
 public class Update extends HttpServlet {
-    public static void main(String[] args){
-        int game_platform_id = 7;
-        String game_platform_name = "MazieStation";
-        boolean game_platform_isActive = true;
-        ResponsePackage rp = updateGamePlatform(game_platform_id, game_platform_name, game_platform_isActive);
-        System.out.println(rp.formatData());
-        System.out.println(rp.getResponse());
-    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String game_platform_id_string = request.getParameter("id");
-        String game_platform_name = request.getParameter("name");
-        String game_platform_isActive = request.getParameter("isActive");
+        String game_id_text = request.getParameter("game_id");
+        String platform_id_text = request.getParameter("platform_id");
+        String add_times_rented_text = request.getParameter("add_times_rented");
 
         ResponsePackage rp = new ResponsePackage();
 
-
-        if(Validation.checkGamePlatformName(game_platform_name) && Validation.checkID(game_platform_id_string) && Validation.checkBoolean(game_platform_isActive)){
-            rp = updateGamePlatform(Integer.parseInt(game_platform_id_string), game_platform_name, Boolean.parseBoolean(game_platform_isActive));
-
+        if(Validation.checkID(game_id_text) && Validation.checkID(platform_id_text) && Validation.checkAddTimesRented(add_times_rented_text)){
+            rp = updateGamePlatform(Integer.parseInt(game_id_text), Integer.parseInt(platform_id_text), Integer.parseInt(add_times_rented_text));
         }
 
         response.setContentType("text/plain");
@@ -44,14 +34,14 @@ public class Update extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-    private static ResponsePackage updateGamePlatform(int game_platform_id, String game_platform_name, boolean game_platform_isActive){
+    private static ResponsePackage updateGamePlatform(int game_id, int platform_id, int add_times_rented){
         ResponsePackage rp = new ResponsePackage();
-        /*
+
         try{
             DB db = new DB();
 
             if(db.openDB()){
-                boolean isUpdated = GamePlatform.update(db.getConn(), game_platform_id, game_platform_name, game_platform_isActive);
+                boolean isUpdated = GamePlatform.update(db.getConn(), game_id, platform_id, add_times_rented);
                 db.closeDB();
 
                 if(isUpdated){
@@ -64,7 +54,6 @@ public class Update extends HttpServlet {
             err.printStackTrace();
         }
 
-         */
         return rp;
     }
 }

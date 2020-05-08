@@ -1,8 +1,6 @@
-package Servlets.Rating;
+package Servlets.GamePlatformInfo;
 
-import Classes.Rating;
-import Classes.ResponsePackage;
-import Classes.Validation;
+import Classes.*;
 import com.google.gson.Gson;
 import db.DB;
 
@@ -13,25 +11,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/Servlets.Rating.ReadList")
-
-public class ReadList extends HttpServlet {
-
+@WebServlet("/Servlets.GamePlatformInfo.Read")
+public class Read extends HttpServlet {
+    // quick code test for function
     public static void main(String[] args){
-        boolean rating_isActive = true;
-        ResponsePackage rp = readListRating(rating_isActive);
+        ResponsePackage rp = readGamePlatformInfo();
         System.out.println(rp.formatData());
         System.out.println(rp.getResponse());
     }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String rating_isActive = request.getParameter("isActive");
 
-        ResponsePackage rp = new ResponsePackage();
-
-
-        if(Validation.checkBoolean(rating_isActive)){
-            rp = readListRating(Boolean.parseBoolean(rating_isActive));
-        }
+        ResponsePackage rp = readGamePlatformInfo();
 
         response.setContentType("text/plain");
         response.getWriter().print(rp.formatData());
@@ -42,28 +33,26 @@ public class ReadList extends HttpServlet {
 
     }
 
-    private static ResponsePackage readListRating(boolean rating_isActive) {
+    private static ResponsePackage readGamePlatformInfo(){
         ResponsePackage rp = new ResponsePackage();
-
         try{
             DB db = new DB();
 
-            if(db.openDB()) {
-                Rating[] rating = Rating.readList(db.getConn(), rating_isActive);
+            if(db.openDB()){
+                GamePlatformInfo[] gamePlatformInfo = GamePlatformInfo.read(db.getConn());
                 db.closeDB();
 
-                if (rating.length > 0) {
+                if(gamePlatformInfo.length > 0){
                     Gson gson = new Gson();
-                    rp.setData(gson.toJson(rating));
+                    rp.setData(gson.toJson(gamePlatformInfo));
                     rp.setMsgResponse(ResponsePackage.Status.OK);
-                } else {
+                }else{
                     rp.setMsgResponse(ResponsePackage.Status.NOT_FOUND);
                 }
             }
         }catch(Exception err){
             err.printStackTrace();
         }
-
         return rp;
     }
 }

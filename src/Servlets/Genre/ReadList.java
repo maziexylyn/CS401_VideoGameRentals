@@ -1,11 +1,10 @@
 package Servlets.Genre;
 
-import Classes.Platform;
+import Classes.Genre;
 import Classes.ResponsePackage;
 import Classes.Validation;
 import com.google.gson.Gson;
 import db.DB;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/Servlets.Genre.ReadList")
+
 public class ReadList extends HttpServlet {
     public static void main(String[] args){
         boolean genre_isActive = true;
@@ -42,7 +42,7 @@ public class ReadList extends HttpServlet {
     }
     private static ResponsePackage readListGenre(boolean genre_isActive) {
         ResponsePackage rp = new ResponsePackage();
-       /*
+
         try{
             DB db = new DB();
 
@@ -62,7 +62,6 @@ public class ReadList extends HttpServlet {
             err.printStackTrace();
         }
 
-        */
         return rp;
     }
 }

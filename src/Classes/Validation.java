@@ -39,43 +39,23 @@ public class Validation {
         return regexChecker("[\\w]{3,50}", name);
     }
 
-    public static boolean checkGameName(String name) {
+    public static boolean checkGameTitle(String name) {
         return regexChecker("[\\w]{1,100}", name);
     }
 
     public static boolean checkPublisherName(String name) {
-        return regexChecker("[\\w]{1,100}", name);
+        return regexChecker("[\\w]{1,50}", name);
     }
 
     public static boolean checkRatingName(String name) {
-        return regexChecker("[\\w]{1,100}", name);
-    }
-
-    public static boolean checkGamePlatformName(String name) {
-        return regexChecker("[\\w]{1,100}", name);
+        return regexChecker("[\\w]{1,6}", name);
     }
 
     public static boolean checkGenreName(String name) {
-        return regexChecker("[\\w]{1,100}", name);
+        return regexChecker("[\\w]{1,50}", name);
     }
 
     public static boolean checkID(String id){
-        return regexChecker("[\\d]+", id);
-    }
-
-    public static boolean checkPublisherID(String id){
-        return regexChecker("[\\d]+", id);
-    }
-
-    public static boolean checkRatingID(String id){
-        return regexChecker("[\\d]+", id);
-    }
-
-    public static boolean checkGamePlatformID(String id){
-        return regexChecker("[\\d]+", id);
-    }
-
-    public static boolean checkGenreID(String id){
         return regexChecker("[\\d]+", id);
     }
 
@@ -84,5 +64,15 @@ public class Validation {
     }
 
     public static boolean checkRoleCode(String rolecode){ return rolecode.equals("1") || rolecode.equals("2") || rolecode.equals("3");}
+
+    public static boolean checkAddTimesRented(String num){
+        return regexChecker("[\\d]{1}", num);
+    }
+
+    public static boolean checkGameDescription(String description) { return regexChecker("[\\d\\s]{1,700}", description);}
+
+    public static boolean checkGameImagePath(String image) { return regexChecker("[\\d]{1,200}", image);}
+
+    public static boolean checkGamePrice(String price){ return regexChecker("[\\d]{1,}[.][\\d]{2}", price);}
 
 }

@@ -108,21 +108,18 @@ public class GamePlatform {
         return gameplatforms.toArray(new GamePlatform[0]);
     }
 
-
-    public static boolean create(Connection conn, int game_id, int platform_id, int times_rented, String last_time_rented)
+    public static boolean create(Connection conn, int game_id, int platform_id)
     {
         boolean isCreated = false;
 
         try{
             if(conn != null){
-                CallableStatement stmt = conn.prepareCall("CALL GamePlatform_Create(?, ?, ?, ?, ?)");
+                CallableStatement stmt = conn.prepareCall("CALL GamePlatform_Create(?, ?, ?)");
                 stmt.setInt(1, game_id);
                 stmt.setInt(2, platform_id);
-                stmt.setInt(3, times_rented);
-                stmt.setString(4, last_time_rented);
-                stmt.registerOutParameter(5, Types.TINYINT);
+                stmt.registerOutParameter(3, Types.TINYINT);
                 stmt.execute();
-                isCreated = stmt.getBoolean(5);
+                isCreated = stmt.getBoolean(3);
             }
         }catch(Exception error){
             error.printStackTrace();
@@ -132,20 +129,19 @@ public class GamePlatform {
     }
 
 
-    public static boolean update(Connection conn, int game_id, int publisher_id, int times_rented, String last_rent_date)
+    public static boolean update(Connection conn, int game_id, int platform_id, int add_times_rented)
     {
         boolean isUpdated = false;
 
         try{
             if(conn != null){
-                CallableStatement stmt = conn.prepareCall("CALL GamePlatform_Update(?, ?, ?, ?, ?)");
+                CallableStatement stmt = conn.prepareCall("CALL GamePlatform_Update(?, ?, ?, ?)");
                 stmt.setInt(1, game_id);
-                stmt.setInt(2, publisher_id);
-                stmt.setInt(3, times_rented);
-                stmt.setString(4, last_rent_date);
-                stmt.registerOutParameter(5, Types.TINYINT);
+                stmt.setInt(2, platform_id);
+                stmt.setInt(3, add_times_rented);
+                stmt.registerOutParameter(4, Types.TINYINT);
                 stmt.execute();
-                isUpdated = stmt.getBoolean(5);
+                isUpdated = stmt.getBoolean(4);
             }
         }catch(Exception error){
             error.printStackTrace();

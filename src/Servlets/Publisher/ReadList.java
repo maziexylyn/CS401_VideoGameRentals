@@ -1,12 +1,10 @@
 package Servlets.Publisher;
 
-
-import Classes.Platform;
+import Classes.Publisher;
 import Classes.ResponsePackage;
 import Classes.Validation;
 import com.google.gson.Gson;
 import db.DB;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/Servlets.Publisher.ReadList")
+
 public class ReadList extends HttpServlet {
+
     public static void main(String[] args){
         boolean publisher_isActive = true;
         ResponsePackage rp = readListPublisher(publisher_isActive);
@@ -27,7 +27,6 @@ public class ReadList extends HttpServlet {
         String publisher_isActive = request.getParameter("isActive");
 
         ResponsePackage rp = new ResponsePackage();
-
 
         if(Validation.checkBoolean(publisher_isActive)){
             rp = readListPublisher(Boolean.parseBoolean(publisher_isActive));
@@ -45,12 +44,12 @@ public class ReadList extends HttpServlet {
 
     private static ResponsePackage readListPublisher(boolean publisher_isActive) {
         ResponsePackage rp = new ResponsePackage();
-        /*
+
         try{
             DB db = new DB();
 
             if(db.openDB()) {
-                Publisher[] publisher = Publisher.readList(db.getConn(), platform_isActive);
+                Publisher[] publisher = Publisher.readList(db.getConn(), publisher_isActive);
                 db.closeDB();
 
                 if (publisher.length > 0) {
@@ -65,7 +64,6 @@ public class ReadList extends HttpServlet {
             err.printStackTrace();
         }
 
-         */
         return rp;
     }
 }

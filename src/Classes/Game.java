@@ -168,24 +168,23 @@ public class Game {
     }
 
 
-    public static boolean create(Connection conn, int game_id, String game_title, String game_description, String game_image, int publisher_id, int genre_id, int rating_id, float game_price)
+    public static boolean create(Connection conn, String game_title, String game_description, String game_image, int publisher_id, int genre_id, int rating_id, float game_price)
     {
         boolean isCreated = false;
 
         try{
             if(conn != null){
-                CallableStatement stmt = conn.prepareCall("CALL Game_Create(?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                stmt.setInt(1, game_id);
-                stmt.setString(2, game_title);
-                stmt.setString(3, game_description);
-                stmt.setString(4, game_image);
-                stmt.setInt(5, publisher_id);
-                stmt.setInt(6, genre_id);
-                stmt.setInt(7, rating_id);
-                stmt.setFloat(8, game_price);
-                stmt.registerOutParameter(9, Types.TINYINT);
+                CallableStatement stmt = conn.prepareCall("CALL Game_Create(?, ?, ?, ?, ?, ?, ?, ?)");
+                stmt.setString(1, game_title);
+                stmt.setString(2, game_description);
+                stmt.setString(3, game_image);
+                stmt.setInt(4, publisher_id);
+                stmt.setInt(5, genre_id);
+                stmt.setInt(6, rating_id);
+                stmt.setFloat(7, game_price);
+                stmt.registerOutParameter(8, Types.TINYINT);
                 stmt.execute();
-                isCreated = stmt.getBoolean(9);
+                isCreated = stmt.getBoolean(8);
             }
         }catch(Exception error){
             error.printStackTrace();

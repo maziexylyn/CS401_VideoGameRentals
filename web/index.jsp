@@ -100,27 +100,27 @@
         <div class="col s4">
             <!-- Basic card: about the company -->
             <div class="card primary1">
-                <div class="card-content white-text">
-                    <span class="card-title text1"><i class="small material-icons">gamepad</i> Gaming with VGRentalZ</span>
-                    <p>
-                        Our goal is to provide you with a wide variety of video games at an affordable price!<br><br>
-                        STANDARD FEATURES:<br>
-                        --------------------------<br>
-                        - Only $2 a week<br>
-                        - No late fees! Pay weekly until you own the Classes.game or return it!<br>
-                        - 2 games per customer MAX at a time<br>
-                        - Free shipping in 3-5 business days<br><br>
-                        PREMIUM FEATURES:<br>
-                        -----------------------<br>
-                        - Only $10 a month<br>
-                        - $1.50/week instead of $2/week for standard members<br>
-                        - 4 games per customer MAX at a time<br>
-                        - Free 2-day shipping guarantee!
-                    </p>
+                <div class="card-image">
+                    <img src="https://png.pngtree.com/thumb_back/fw800/background/20190903/pngtree-dark-abstract-background-with-black-image_313626.jpg">
+                    <span class="card-title">Gaming with VGRentalZ</span>
                 </div>
-                <div class="card-action">
-                    <a href="#">This is a link</a>
-                    <a href="#">This is a link</a>
+                <div class="card-content white-text">
+                    <p class = "text1">
+                        Our goal is to provide you with a wide variety of video games at an affordable price!
+                    </p>
+                    <br>
+                    <span class="text1">
+                        <i class="material-icons tiny">check_box</i> No late fees
+                    </span>
+                    <br>
+                    <span class="text1">
+                        <i class="material-icons tiny">check_box</i> 5 games per customer at a time
+                    </span>
+                    <br>
+                    <span class="text1">
+                        <i class="material-icons tiny">check_box</i> Free shipping in 3-5 business days
+                    </span>
+                    <br>
                 </div>
             </div>
         </div>
@@ -151,14 +151,17 @@
             <div class="card primary1">
                 <div class="card-image">
                     <img src="https://png.pngtree.com/thumb_back/fw800/background/20190903/pngtree-dark-abstract-background-with-black-image_313626.jpg">
-                    <span class="card-title">Sign Up</span>
+                    <span class="card-title">Sign Up Now!</span>
                 </div>
-                <div class="card-content">
-                    <span class = "text1"> Register now!!!<br>
+                <div class="card-content ">
+                    <div class="center-align">
+                        <i class = "material-icons medium text1 ">videogame_asset</i><br>
+                    </div>
+                    <span class = "text1">Register now to get your game on :)<br>
                     </span>
                 </div>
                 <div class="card-action">
-                    <a href="jsp/game-library.jsp">Browse Game Library</a>
+                    <a href="jsp/signin-register.jsp">Click to Register</a>
                 </div>
             </div>
         </div>

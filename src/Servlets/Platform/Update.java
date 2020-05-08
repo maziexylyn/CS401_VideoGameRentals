@@ -15,16 +15,6 @@ import java.io.IOException;
 @WebServlet("/Servlets.Platform.Update")
 public class Update extends HttpServlet {
 
-    // quick code test for function
-    public static void main(String[] args){
-        int platform_id = 7;
-        String platform_name = "MazieStation";
-        boolean platform_isActive = true;
-        ResponsePackage rp = updatePlatform(platform_id, platform_name, platform_isActive);
-        System.out.println(rp.formatData());
-        System.out.println(rp.getResponse());
-    }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String platform_id_string = request.getParameter("id");
         String platform_name = request.getParameter("name");

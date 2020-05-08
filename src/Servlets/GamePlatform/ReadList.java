@@ -1,11 +1,10 @@
 package Servlets.GamePlatform;
 
-import Classes.Platform;
+import Classes.GamePlatform;
 import Classes.ResponsePackage;
 import Classes.Validation;
 import com.google.gson.Gson;
 import db.DB;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,24 +12,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/Servlets.Platform.ReadList")
+@WebServlet("/Servlets.GamePlatform.ReadList")
+
 public class ReadList extends HttpServlet {
     public static void main(String[] args){
-        boolean game_platform_isActive = true;
-        ResponsePackage rp = readListGamePlatform(game_platform_isActive);
+        ResponsePackage rp = readListGamePlatform();
         System.out.println(rp.formatData());
         System.out.println(rp.getResponse());
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String game_platform_isActive = request.getParameter("isActive");
-
-        ResponsePackage rp = new ResponsePackage();
-
-
-        if(Validation.checkBoolean(game_platform_isActive)){
-            rp = readListGamePlatform(Boolean.parseBoolean(game_platform_isActive));
-
-        }
+        ResponsePackage rp = readListGamePlatform();
 
         response.setContentType("text/plain");
         response.getWriter().print(rp.formatData());
@@ -40,14 +31,14 @@ public class ReadList extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-    private static ResponsePackage readListGamePlatform(boolean game_platform_isActive) {
+    private static ResponsePackage readListGamePlatform() {
         ResponsePackage rp = new ResponsePackage();
-        /*
+
         try{
             DB db = new DB();
 
             if(db.openDB()) {
-                GamePlatform[] gamePlatforms = GamePlatform.readList(db.getConn(), game_platform_isActive);
+                GamePlatform[] gamePlatforms = GamePlatform.readList(db.getConn());
                 db.closeDB();
 
                 if (gamePlatforms.length > 0) {
@@ -61,8 +52,6 @@ public class ReadList extends HttpServlet {
         }catch(Exception err){
             err.printStackTrace();
         }
-
-         */
         return rp;
     }
 }

@@ -1,11 +1,10 @@
 package Servlets.GamePlatform;
 
-import Classes.Platform;
+import Classes.GamePlatform;
 import Classes.ResponsePackage;
 import Classes.Validation;
 import com.google.gson.Gson;
 import db.DB;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,22 +14,25 @@ import java.io.IOException;
 import java.sql.ResultSet;
 
 @WebServlet("/Servlets.GamePlatform.Read")
+
 public class Read extends HttpServlet {
+
     public static void main(String[] args){
-        int game_platform_id = 1;
-        ResponsePackage rp = readGamePlatform(game_platform_id);
+        int game_id = 1;
+        int platform_id = 1;
+        ResponsePackage rp = readGamePlatform(game_id,platform_id);
         System.out.println(rp.formatData());
         System.out.println(rp.getResponse());
     }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String game_platform_id_string = request.getParameter("id");
+        String game_id_text = request.getParameter("game_id");
+        String platform_id_text = request.getParameter("platform_id");
 
         ResponsePackage rp = new ResponsePackage();
 
-
-        if(Validation.checkGamePlatformID(game_platform_id_string)){
-            rp = readGamePlatform(Integer.parseInt(game_platform_id_string));
-
+        if(Validation.checkID(game_id_text) && Validation.checkID(platform_id_text)){
+            rp = readGamePlatform(Integer.parseInt(game_id_text), Integer.parseInt(platform_id_text));
         }
 
         response.setContentType("text/plain");
@@ -41,14 +43,15 @@ public class Read extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-    private static ResponsePackage readGamePlatform(int game_platform_id){
+
+    private static ResponsePackage readGamePlatform(int game_id, int platform_id){
         ResponsePackage rp = new ResponsePackage();
-       /*
+
         try{
             DB db = new DB();
 
             if(db.openDB()){
-                GamePlatform gamePlatform = GamePlatform.read(db.getConn(),game_platform_id);
+                GamePlatform gamePlatform = GamePlatform.read(db.getConn(), game_id, platform_id);
                 db.closeDB();
 
                 if(gamePlatform != null){
@@ -62,8 +65,6 @@ public class Read extends HttpServlet {
         }catch(Exception err){
             err.printStackTrace();
         }
-
-        */
         return rp;
     }
 }

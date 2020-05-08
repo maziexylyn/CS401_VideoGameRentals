@@ -1,11 +1,10 @@
 package Servlets.Genre;
 
-import Classes.Platform;
+import Classes.Genre;
 import Classes.ResponsePackage;
 import Classes.Validation;
 import com.google.gson.Gson;
 import db.DB;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +14,7 @@ import java.io.IOException;
 import java.sql.ResultSet;
 
 @WebServlet("/Servlets.Genre.Read")
+
 public class Read extends HttpServlet {
 
     public static void main(String[] args){
@@ -23,15 +23,14 @@ public class Read extends HttpServlet {
         System.out.println(rp.formatData());
         System.out.println(rp.getResponse());
     }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String genre_id_string = request.getParameter("id");
 
         ResponsePackage rp = new ResponsePackage();
 
-
-        if(Validation.checkGenreID(genre_id_string)){
+        if(Validation.checkID(genre_id_string)){
             rp = readGenre(Integer.parseInt(genre_id_string));
-
         }
 
         response.setContentType("text/plain");
@@ -44,7 +43,7 @@ public class Read extends HttpServlet {
     }
     private static ResponsePackage readGenre(int genre_id){
         ResponsePackage rp = new ResponsePackage();
-        /*
+
         try{
             DB db = new DB();
 
@@ -64,7 +63,6 @@ public class Read extends HttpServlet {
             err.printStackTrace();
         }
 
-         */
         return rp;
     }
 }
