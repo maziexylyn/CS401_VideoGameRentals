@@ -13,12 +13,6 @@ import java.io.IOException;
 
 @WebServlet("/Servlets.GamePlatformInfo.Read")
 public class Read extends HttpServlet {
-    // quick code test for function
-    public static void main(String[] args){
-        ResponsePackage rp = readGamePlatformInfo();
-        System.out.println(rp.formatData());
-        System.out.println(rp.getResponse());
-    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

@@ -72,6 +72,8 @@ public class GamePlatform {
                             rs.getString("last_rent_date")
                     );
                 }
+                rs.close();
+                stmt.close();
 
             }
         }catch(Exception error){
@@ -99,6 +101,8 @@ public class GamePlatform {
                             rs.getString("last_rent_date")
                     ));
                 }
+                rs.close();
+                stmt.close();
 
             }
         }catch(Exception error){
@@ -120,6 +124,7 @@ public class GamePlatform {
                 stmt.registerOutParameter(3, Types.TINYINT);
                 stmt.execute();
                 isCreated = stmt.getBoolean(3);
+                stmt.close();
             }
         }catch(Exception error){
             error.printStackTrace();
@@ -142,6 +147,7 @@ public class GamePlatform {
                 stmt.registerOutParameter(4, Types.TINYINT);
                 stmt.execute();
                 isUpdated = stmt.getBoolean(4);
+                stmt.close();
             }
         }catch(Exception error){
             error.printStackTrace();

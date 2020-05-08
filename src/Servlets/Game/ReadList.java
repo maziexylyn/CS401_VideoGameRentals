@@ -13,13 +13,6 @@ import java.io.IOException;
 
 public class ReadList extends HttpServlet {
 
-    public static void main(String[] args){
-        boolean game_isActive = true;
-        ResponsePackage rp = readListGame(game_isActive);
-        System.out.println(rp.formatData());
-        System.out.println(rp.getResponse());
-    }
-
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         String game_isActive = request.getParameter("isActive");
 

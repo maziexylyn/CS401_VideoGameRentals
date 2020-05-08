@@ -100,6 +100,8 @@ public class GamePlatformInfo {
                             rs.getString("platform_ids")
                     ));
                 }
+                rs.close();
+                stmt.close();
 
             }
         }catch(Exception error){

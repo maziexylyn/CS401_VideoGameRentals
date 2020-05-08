@@ -17,12 +17,6 @@ import java.sql.ResultSet;
 
 public class Read extends HttpServlet {
 
-    public static void main(String[] args){
-        int publisher_id = 1;
-        ResponsePackage rp = readPublisher(publisher_id);
-        System.out.println(rp.formatData());
-        System.out.println(rp.getResponse());
-    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String publisher_id_string = request.getParameter("id");
 

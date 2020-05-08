@@ -15,12 +15,7 @@ import java.io.IOException;
 @WebServlet("/Servlets.Genre.ReadList")
 
 public class ReadList extends HttpServlet {
-    public static void main(String[] args){
-        boolean genre_isActive = true;
-        ResponsePackage rp = readListGenre(genre_isActive);
-        System.out.println(rp.formatData());
-        System.out.println(rp.getResponse());
-    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String genre_isActive = request.getParameter("isActive");
 

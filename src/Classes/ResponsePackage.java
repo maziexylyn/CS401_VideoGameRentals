@@ -6,11 +6,6 @@ public class ResponsePackage {
     private int response;
     private String data;
 
-    public static void main(String[] args){
-        System.out.println(Status.ACCEPTED);
-
-    }
-
     public ResponsePackage(){
         this.msg = Status.INTERNAL_SERVER_ERROR.toString();
         this.response = 500;

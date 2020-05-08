@@ -17,12 +17,6 @@ import java.sql.ResultSet;
 @WebServlet("/Servlets.Rating.Read")
 
 public class Read extends HttpServlet {
-    public static void main(String[] args){
-        int rating_id = 1;
-        ResponsePackage rp = readRating(rating_id);
-        System.out.println(rp.formatData());
-        System.out.println(rp.getResponse());
-    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String rating_id_string = request.getParameter("id");

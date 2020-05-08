@@ -16,14 +16,6 @@ import java.io.IOException;
 @WebServlet("/Servlets.Platform.ReadList")
 public class ReadList extends HttpServlet {
 
-    // quick code test for function
-    public static void main(String[] args){
-        boolean platform_isActive = true;
-        ResponsePackage rp = readListPlatform(platform_isActive);
-        System.out.println(rp.formatData());
-        System.out.println(rp.getResponse());
-    }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String platform_isActive = request.getParameter("isActive");
 

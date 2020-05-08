@@ -59,6 +59,8 @@ public class Rating {
                             rs.getBoolean("isActive")
                     );
                 }
+                rs.close();
+                stmt.close();
 
             }
         }catch(Exception error){
@@ -86,6 +88,8 @@ public class Rating {
                             rs.getBoolean("isActive")
                     ));
                 }
+                rs.close();
+                stmt.close();
 
             }
         }catch(Exception error){
@@ -107,6 +111,7 @@ public class Rating {
                 stmt.registerOutParameter(2, Types.TINYINT);
                 stmt.execute();
                 isCreated = stmt.getBoolean(2);
+                stmt.close();
             }
         }catch(Exception error){
             error.printStackTrace();
@@ -129,6 +134,7 @@ public class Rating {
                 stmt.registerOutParameter(4, Types.TINYINT);
                 stmt.execute();
                 isUpdated = stmt.getBoolean(4);
+                stmt.close();
             }
         }catch(Exception error){
             error.printStackTrace();

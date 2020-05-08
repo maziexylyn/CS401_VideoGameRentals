@@ -16,13 +16,6 @@ import java.io.IOException;
 
 public class ReadList extends HttpServlet {
 
-    public static void main(String[] args){
-        boolean publisher_isActive = true;
-        ResponsePackage rp = readListPublisher(publisher_isActive);
-        System.out.println(rp.formatData());
-        System.out.println(rp.getResponse());
-    }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String publisher_isActive = request.getParameter("isActive");
 

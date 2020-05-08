@@ -17,12 +17,6 @@ import java.io.IOException;
 
 public class ReadList extends HttpServlet {
 
-    public static void main(String[] args){
-        boolean rating_isActive = true;
-        ResponsePackage rp = readListRating(rating_isActive);
-        System.out.println(rp.formatData());
-        System.out.println(rp.getResponse());
-    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String rating_isActive = request.getParameter("isActive");
 

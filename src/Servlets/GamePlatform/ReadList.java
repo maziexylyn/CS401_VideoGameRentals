@@ -15,11 +15,7 @@ import java.io.IOException;
 @WebServlet("/Servlets.GamePlatform.ReadList")
 
 public class ReadList extends HttpServlet {
-    public static void main(String[] args){
-        ResponsePackage rp = readListGamePlatform();
-        System.out.println(rp.formatData());
-        System.out.println(rp.getResponse());
-    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ResponsePackage rp = readListGamePlatform();
 

@@ -17,14 +17,6 @@ import java.sql.ResultSet;
 
 public class Read extends HttpServlet {
 
-    public static void main(String[] args){
-        int game_id = 1;
-        int platform_id = 1;
-        ResponsePackage rp = readGamePlatform(game_id,platform_id);
-        System.out.println(rp.formatData());
-        System.out.println(rp.getResponse());
-    }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String game_id_text = request.getParameter("game_id");
         String platform_id_text = request.getParameter("platform_id");

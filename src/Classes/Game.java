@@ -125,6 +125,8 @@ public class Game {
                             rs.getBoolean("isActive")
                     );
                 }
+                rs.close();
+                stmt.close();
 
             }
         }catch(Exception error){
@@ -158,6 +160,8 @@ public class Game {
                             rs.getBoolean("isActive")
                     ));
                 }
+                rs.close();
+                stmt.close();
 
             }
         }catch(Exception error){
@@ -185,6 +189,7 @@ public class Game {
                 stmt.registerOutParameter(8, Types.TINYINT);
                 stmt.execute();
                 isCreated = stmt.getBoolean(8);
+                stmt.close();
             }
         }catch(Exception error){
             error.printStackTrace();
@@ -211,6 +216,7 @@ public class Game {
                 stmt.registerOutParameter(8, Types.TINYINT);
                 stmt.execute();
                 isUpdated = stmt.getBoolean(8);
+                stmt.close();
             }
         }catch(Exception error){
             error.printStackTrace();
