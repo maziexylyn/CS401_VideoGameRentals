@@ -43,7 +43,8 @@ public class Read extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-    private static ResponsePackage readRating(int rating_id){
+
+    protected static ResponsePackage readRating(int rating_id){
         ResponsePackage rp = new ResponsePackage();
 
         try{

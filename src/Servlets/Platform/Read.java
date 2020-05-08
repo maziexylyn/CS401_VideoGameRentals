@@ -45,7 +45,7 @@ public class Read extends HttpServlet {
 
     }
 
-    private static ResponsePackage readPlatform(int platform_id){
+    protected static ResponsePackage readPlatform(int platform_id){
         ResponsePackage rp = new ResponsePackage();
         try{
             DB db = new DB();

@@ -35,7 +35,7 @@ public class Create extends HttpServlet{
 
     }
 
-    private static ResponsePackage createPublisher(String publisher_name) {
+    protected static ResponsePackage createPublisher(String publisher_name) {
         ResponsePackage rp2 = new ResponsePackage();
 
         try {

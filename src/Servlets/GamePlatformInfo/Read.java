@@ -33,7 +33,7 @@ public class Read extends HttpServlet {
 
     }
 
-    private static ResponsePackage readGamePlatformInfo(){
+    protected static ResponsePackage readGamePlatformInfo(){
         ResponsePackage rp = new ResponsePackage();
         try{
             DB db = new DB();

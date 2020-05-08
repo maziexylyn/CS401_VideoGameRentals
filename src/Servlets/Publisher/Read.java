@@ -40,7 +40,8 @@ public class Read extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-    private static ResponsePackage readPublisher(int publisher_id){
+
+    protected static ResponsePackage readPublisher(int publisher_id){
         ResponsePackage rp = new ResponsePackage();
 
         try{

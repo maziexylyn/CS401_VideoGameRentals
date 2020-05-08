@@ -37,7 +37,7 @@ public class Update extends HttpServlet {
 
     }
 
-    private static ResponsePackage updateRating(int rating_id, String rating_name, boolean rating_isActive){
+    protected static ResponsePackage updateRating(int rating_id, String rating_name, boolean rating_isActive){
         ResponsePackage rp = new ResponsePackage();
 
         try{

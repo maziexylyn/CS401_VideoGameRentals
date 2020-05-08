@@ -35,8 +35,7 @@ public class Create extends HttpServlet {
 
     }
 
-
-    private static ResponsePackage createPlatform(String platform_name){
+    protected static ResponsePackage createPlatform(String platform_name){
         ResponsePackage rp = new ResponsePackage();
         try{
             DB db = new DB();

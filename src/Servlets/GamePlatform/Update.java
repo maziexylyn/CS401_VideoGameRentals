@@ -34,7 +34,8 @@ public class Update extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-    private static ResponsePackage updateGamePlatform(int game_id, int platform_id, int add_times_rented){
+
+    protected static ResponsePackage updateGamePlatform(int game_id, int platform_id, int add_times_rented){
         ResponsePackage rp = new ResponsePackage();
 
         try{

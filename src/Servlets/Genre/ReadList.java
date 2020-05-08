@@ -40,7 +40,8 @@ public class ReadList extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-    private static ResponsePackage readListGenre(boolean genre_isActive) {
+
+    protected static ResponsePackage readListGenre(boolean genre_isActive) {
         ResponsePackage rp = new ResponsePackage();
 
         try{

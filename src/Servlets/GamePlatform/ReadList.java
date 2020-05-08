@@ -31,7 +31,8 @@ public class ReadList extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-    private static ResponsePackage readListGamePlatform() {
+
+    protected static ResponsePackage readListGamePlatform() {
         ResponsePackage rp = new ResponsePackage();
 
         try{

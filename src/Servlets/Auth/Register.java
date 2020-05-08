@@ -44,7 +44,7 @@ public class Register extends HttpServlet {
 
     }
 
-    private static ResponsePackage register(String email, String password, String name, String phone, String card, String address){
+    protected static ResponsePackage register(String email, String password, String name, String phone, String card, String address){
         ResponsePackage rp = new ResponsePackage();
         try{
             DB db = new DB();

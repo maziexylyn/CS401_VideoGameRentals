@@ -42,7 +42,7 @@ public class ReadList extends HttpServlet {
 
     }
 
-    private static ResponsePackage readListPublisher(boolean publisher_isActive) {
+    protected static ResponsePackage readListPublisher(boolean publisher_isActive) {
         ResponsePackage rp = new ResponsePackage();
 
         try{

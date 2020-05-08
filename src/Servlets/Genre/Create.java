@@ -35,7 +35,7 @@ public class Create extends HttpServlet {
 
     }
 
-    private static ResponsePackage createGenre(String genre_name){
+    protected static ResponsePackage createGenre(String genre_name){
         ResponsePackage rp = new ResponsePackage();
 
         try{

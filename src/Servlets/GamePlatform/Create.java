@@ -36,7 +36,7 @@ public class Create extends HttpServlet {
 
     }
 
-    private static ResponsePackage createGamePlatform(int game_id, int platform_id){
+    protected static ResponsePackage createGamePlatform(int game_id, int platform_id){
         ResponsePackage rp = new ResponsePackage();
 
         try{

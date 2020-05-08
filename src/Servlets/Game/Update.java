@@ -46,7 +46,7 @@ public class Update extends HttpServlet {
 
     }
 
-    private static ResponsePackage updateGame(String title, String description, String imagePath, int publisher_id, int genre_id, int rating_id, float currentPrice, boolean isActive) {
+    protected static ResponsePackage updateGame(String title, String description, String imagePath, int publisher_id, int genre_id, int rating_id, float currentPrice, boolean isActive) {
         ResponsePackage rp = new ResponsePackage();
 
         try{

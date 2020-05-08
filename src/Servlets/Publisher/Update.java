@@ -36,7 +36,7 @@ public class Update extends HttpServlet {
 
     }
 
-    private static ResponsePackage updatePublisher(int publisher_id, String publisher_name, boolean publisher_isActive){
+    protected static ResponsePackage updatePublisher(int publisher_id, String publisher_name, boolean publisher_isActive){
         ResponsePackage rp = new ResponsePackage();
 
         try{

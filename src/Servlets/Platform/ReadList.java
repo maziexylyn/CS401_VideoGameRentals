@@ -44,7 +44,7 @@ public class ReadList extends HttpServlet {
 
     }
 
-    private static ResponsePackage readListPlatform(boolean platform_isActive) {
+    protected static ResponsePackage readListPlatform(boolean platform_isActive) {
         ResponsePackage rp = new ResponsePackage();
         try{
             DB db = new DB();

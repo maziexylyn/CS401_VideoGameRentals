@@ -40,7 +40,7 @@ public class ReadList extends HttpServlet {
 
     }
 
-    private static ResponsePackage readListGame(boolean game_isActive) {
+    protected static ResponsePackage readListGame(boolean game_isActive) {
         ResponsePackage rp = new ResponsePackage();
 
         try{

@@ -13,12 +13,14 @@ import java.io.IOException;
 @WebServlet("/Servlets.Game.Read")
 
 public class Read extends HttpServlet {
+
     public static void main(String[] args){
         int game_id = 1;
         ResponsePackage rp = readGame(game_id);
         System.out.println(rp.formatData());
         System.out.println(rp.getResponse());
     }
+
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         String game_id_string = request.getParameter("id");
 
@@ -37,9 +39,7 @@ public class Read extends HttpServlet {
 
     }
 
-
-
-    private static ResponsePackage readGame(int game_id){
+    protected static ResponsePackage readGame(int game_id){
         ResponsePackage rp = new ResponsePackage();
 
         try{
@@ -62,6 +62,5 @@ public class Read extends HttpServlet {
         }
         return rp;
     }
-
 
 }

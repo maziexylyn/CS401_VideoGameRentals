@@ -37,7 +37,7 @@ public class Update extends HttpServlet {
 
     }
 
-    private static ResponsePackage updatePlatform(int platform_id, String platform_name, boolean platform_isActive){
+    protected static ResponsePackage updatePlatform(int platform_id, String platform_name, boolean platform_isActive){
         ResponsePackage rp = new ResponsePackage();
         try{
             DB db = new DB();

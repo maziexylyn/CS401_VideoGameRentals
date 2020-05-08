@@ -42,7 +42,7 @@ public class ReadList extends HttpServlet {
 
     }
 
-    private static ResponsePackage readListRating(boolean rating_isActive) {
+    protected static ResponsePackage readListRating(boolean rating_isActive) {
         ResponsePackage rp = new ResponsePackage();
 
         try{

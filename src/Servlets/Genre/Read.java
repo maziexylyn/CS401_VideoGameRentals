@@ -41,7 +41,8 @@ public class Read extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-    private static ResponsePackage readGenre(int genre_id){
+
+    protected static ResponsePackage readGenre(int genre_id){
         ResponsePackage rp = new ResponsePackage();
 
         try{

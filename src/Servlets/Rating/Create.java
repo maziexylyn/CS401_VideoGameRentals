@@ -36,7 +36,7 @@ public class Create extends HttpServlet {
 
     }
 
-    private static ResponsePackage createRating(String rating_name){
+    protected static ResponsePackage createRating(String rating_name){
         ResponsePackage rp = new ResponsePackage();
 
         try{

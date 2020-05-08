@@ -44,7 +44,7 @@ public class Read extends HttpServlet {
 
     }
 
-    private static ResponsePackage readGamePlatform(int game_id, int platform_id){
+    protected static ResponsePackage readGamePlatform(int game_id, int platform_id){
         ResponsePackage rp = new ResponsePackage();
 
         try{

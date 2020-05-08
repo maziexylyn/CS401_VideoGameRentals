@@ -43,7 +43,7 @@ public class Create extends HttpServlet {
 
     }
 
-    private static ResponsePackage createGame(String title, String description, String imagePath, int publisher_id, int genre_id, int rating_id, float currentPrice) {
+    protected static ResponsePackage createGame(String title, String description, String imagePath, int publisher_id, int genre_id, int rating_id, float currentPrice) {
         ResponsePackage rp2 = new ResponsePackage();
 
         try {
