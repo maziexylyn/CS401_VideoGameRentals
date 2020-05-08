@@ -1,11 +1,10 @@
 package Servlets.Publisher;
 
-import Classes.Platform;
+import Classes.Publisher;
 import Classes.ResponsePackage;
 import Classes.Validation;
 import com.google.gson.Gson;
 import db.DB;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,22 +16,14 @@ import java.sql.ResultSet;
 @WebServlet("/Servlets.Publisher.Read")
 
 public class Read extends HttpServlet {
-    public static void main(String[] args){
-        int publisher_id = 1;
-        ResponsePackage rp = readPublisherName(publisher_id);
-        System.out.println(rp.formatData());
-        System.out.println(rp.getResponse());
-    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String publisher_id_string = request.getParameter("id");
 
         ResponsePackage rp = new ResponsePackage();
 
-
-        if(Validation.checkPublisherID(publisher_id_string)){
-            rp = readPublisherName(Integer.parseInt(publisher_id_string));
-
-
+        if(Validation.checkID(publisher_id_string)){
+            rp = readPublisher(Integer.parseInt(publisher_id_string));
         }
 
         response.setContentType("text/plain");
@@ -43,9 +34,10 @@ public class Read extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-    private static ResponsePackage readPublisherName(int publisher_id){
+
+    protected static ResponsePackage readPublisher(int publisher_id){
         ResponsePackage rp = new ResponsePackage();
-        /*
+
         try{
             DB db = new DB();
 
@@ -65,7 +57,6 @@ public class Read extends HttpServlet {
             err.printStackTrace();
         }
 
-         */
         return rp;
     }
 }

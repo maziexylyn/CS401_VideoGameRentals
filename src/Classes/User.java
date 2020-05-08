@@ -65,6 +65,7 @@ public class User {
                 stmt.registerOutParameter(4, Types.TINYINT);
                 stmt.execute();
                 isCreated = stmt.getBoolean(4);
+                stmt.close();
             }
         }catch(Exception error){
             error.printStackTrace();
@@ -81,6 +82,7 @@ public class User {
                 stmt.registerOutParameter(2, Types.TINYINT);
                 stmt.execute();
                 exists = stmt.getBoolean(2);
+                stmt.close();
             }
         }catch(Exception error){
             error.printStackTrace();
@@ -105,7 +107,8 @@ public class User {
                             rs.getInt("role_id")
                     );
                 }
-
+                rs.close();
+                stmt.close();
             }
         }catch(Exception error){
             error.printStackTrace();

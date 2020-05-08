@@ -1,6 +1,6 @@
 package Servlets.Rating;
 
-import Classes.Platform;
+import Classes.Rating;
 import Classes.ResponsePackage;
 import Classes.Validation;
 import db.DB;
@@ -15,21 +15,13 @@ import java.io.IOException;
 @WebServlet("/Servlets.Rating.Update")
 
 public class Update extends HttpServlet {
-    public static void main(String[] args){
-        int rating_id = 7;
-        String rating_name = "MazieStation";
-        boolean rating_isActive = true;
-        ResponsePackage rp = updateRating(rating_id, rating_name, rating_isActive);
-        System.out.println(rp.formatData());
-        System.out.println(rp.getResponse());
-    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String rating_id_string = request.getParameter("id");
         String rating_name = request.getParameter("name");
         String rating_isActive = request.getParameter("isActive");
 
         ResponsePackage rp = new ResponsePackage();
-
 
         if(Validation.checkRatingName(rating_name) && Validation.checkID(rating_id_string) && Validation.checkBoolean(rating_isActive)){
             rp = updateRating(Integer.parseInt(rating_id_string), rating_name, Boolean.parseBoolean(rating_isActive));
@@ -45,9 +37,9 @@ public class Update extends HttpServlet {
 
     }
 
-    private static ResponsePackage updateRating(int rating_id, String rating_name, boolean rating_isActive){
+    protected static ResponsePackage updateRating(int rating_id, String rating_name, boolean rating_isActive){
         ResponsePackage rp = new ResponsePackage();
-        /*
+
         try{
             DB db = new DB();
 
@@ -65,7 +57,6 @@ public class Update extends HttpServlet {
             err.printStackTrace();
         }
 
-         */
         return rp;
     }
 }

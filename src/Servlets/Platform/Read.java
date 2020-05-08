@@ -17,14 +17,6 @@ import java.sql.ResultSet;
 @WebServlet("/Servlets.Platform.Read")
 public class Read extends HttpServlet {
 
-    // quick code test for function
-    public static void main(String[] args){
-        int platform_id = 1;
-        ResponsePackage rp = readPlatform(platform_id);
-        System.out.println(rp.formatData());
-        System.out.println(rp.getResponse());
-    }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String platform_id_string = request.getParameter("id");
 
@@ -45,7 +37,7 @@ public class Read extends HttpServlet {
 
     }
 
-    private static ResponsePackage readPlatform(int platform_id){
+    protected static ResponsePackage readPlatform(int platform_id){
         ResponsePackage rp = new ResponsePackage();
         try{
             DB db = new DB();

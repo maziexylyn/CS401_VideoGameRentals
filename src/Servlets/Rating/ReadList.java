@@ -1,6 +1,6 @@
 package Servlets.Rating;
 
-import Classes.Platform;
+import Classes.Rating;
 import Classes.ResponsePackage;
 import Classes.Validation;
 import com.google.gson.Gson;
@@ -14,13 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/Servlets.Rating.ReadList")
+
 public class ReadList extends HttpServlet {
-    public static void main(String[] args){
-        boolean rating_isActive = true;
-        ResponsePackage rp = readListRating(rating_isActive);
-        System.out.println(rp.formatData());
-        System.out.println(rp.getResponse());
-    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String rating_isActive = request.getParameter("isActive");
 
@@ -29,7 +25,6 @@ public class ReadList extends HttpServlet {
 
         if(Validation.checkBoolean(rating_isActive)){
             rp = readListRating(Boolean.parseBoolean(rating_isActive));
-
         }
 
         response.setContentType("text/plain");
@@ -41,9 +36,9 @@ public class ReadList extends HttpServlet {
 
     }
 
-    private static ResponsePackage readListRating(boolean rating_isActive) {
+    protected static ResponsePackage readListRating(boolean rating_isActive) {
         ResponsePackage rp = new ResponsePackage();
-        /*
+
         try{
             DB db = new DB();
 
@@ -63,7 +58,6 @@ public class ReadList extends HttpServlet {
             err.printStackTrace();
         }
 
-         */
         return rp;
     }
 }

@@ -1,32 +1,26 @@
 package Servlets.Game;
 
-
+import Classes.Game;
 import Classes.ResponsePackage;
 import Classes.Validation;
 import com.google.gson.Gson;
 import db.DB;
 
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import java.io.IOException;
 
-@WebServlet("/Servlets.Publisher.Read")
-public class Read extends javax.servlet.http.HttpServlet {
-    public static void main(String[] args){
-        int game_id = 1;
-        ResponsePackage rp = readGameName(game_id);
-        System.out.println(rp.formatData());
-        System.out.println(rp.getResponse());
-    }
-    protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+@WebServlet("/Servlets.Game.Read")
 
+public class Read extends HttpServlet {
+
+    protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         String game_id_string = request.getParameter("id");
 
         ResponsePackage rp = new ResponsePackage();
 
         if(Validation.checkID(game_id_string)){
-            rp = readGameName(Integer.parseInt(game_id_string));
-
-
+            rp = readGame(Integer.parseInt(game_id_string));
         }
 
         response.setContentType("text/plain");
@@ -38,21 +32,19 @@ public class Read extends javax.servlet.http.HttpServlet {
 
     }
 
-
-
-    private static ResponsePackage readGameName(int game_id){
+    protected static ResponsePackage readGame(int game_id){
         ResponsePackage rp = new ResponsePackage();
-        /*
+
         try{
             DB db = new DB();
 
             if(db.openDB()){
-                Game game1 = Game.read(db.getConn(),game_id);
+                Game game = Game.read(db.getConn(),game_id);
                 db.closeDB();
 
-                if(game1 != null){
+                if(game != null){
                     Gson gson = new Gson();
-                    rp.setData(gson.toJson(game1));
+                    rp.setData(gson.toJson(game));
                     rp.setMsgResponse(ResponsePackage.Status.OK);
                 }else{
                     rp.setMsgResponse(ResponsePackage.Status.NOT_FOUND);
@@ -60,9 +52,8 @@ public class Read extends javax.servlet.http.HttpServlet {
             }
         }catch(Exception err){
             err.printStackTrace();
-        }*/
+        }
         return rp;
     }
-
 
 }

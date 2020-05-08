@@ -16,21 +16,6 @@ public class DB {
         this.conn = null;
     }
 
-    public static void main(String[] args){
-        DB db = new DB();
-
-        if(db.openDB()) {
-            System.out.println("Database is connected");
-            System.out.println(Platform.create(db.getConn(),"MaziePlatform"));
-//            Platform[] platforms = Platform.readList(db.getConn());
-//            for(Platform p: platforms){
-//                System.out.println(p.getName());
-//            }
-        }
-        db.closeDB();
-        System.out.println("Database is closed");
-    }
-
     public boolean openDB(){
         System.out.println("Opening DB...");
         boolean isOpen = false;

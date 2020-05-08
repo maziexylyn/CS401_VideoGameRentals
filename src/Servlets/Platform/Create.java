@@ -17,14 +17,6 @@ import java.net.http.HttpResponse;
 @WebServlet("/Servlets.Platform.Create")
 public class Create extends HttpServlet {
 
-    // quick code test for function
-    public static void main(String[] args){
-        String name = "MazieBox";
-        ResponsePackage rp = Create.createPlatform(name);
-        System.out.println(rp.formatData());
-        System.out.println(rp.getResponse());
-    }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String platform_name = request.getParameter("name");
 
@@ -43,8 +35,7 @@ public class Create extends HttpServlet {
 
     }
 
-
-    private static ResponsePackage createPlatform(String platform_name){
+    protected static ResponsePackage createPlatform(String platform_name){
         ResponsePackage rp = new ResponsePackage();
         try{
             DB db = new DB();

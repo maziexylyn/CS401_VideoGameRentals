@@ -1,11 +1,10 @@
 package Servlets.Genre;
 
-import Classes.Platform;
+import Classes.Genre;
 import Classes.ResponsePackage;
 import Classes.Validation;
 import com.google.gson.Gson;
 import db.DB;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,13 +14,9 @@ import java.io.IOException;
 import java.net.http.HttpResponse;
 
 @WebServlet("/Servlets.Genre.Create")
+
 public class Create extends HttpServlet {
-    public static void main(String[] args){
-        String name = "MazieBox";
-        ResponsePackage rp = Servlets.Genre.Create.createGenre(name);
-        System.out.println(rp.formatData());
-        System.out.println(rp.getResponse());
-    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String genre_name = request.getParameter("name");
 
@@ -40,15 +35,15 @@ public class Create extends HttpServlet {
 
     }
 
-    private static ResponsePackage createGenre(String genre_name){
+    protected static ResponsePackage createGenre(String genre_name){
         ResponsePackage rp = new ResponsePackage();
-        /*
+
         try{
             DB db = new DB();
 
             if(db.openDB()){
 
-                boolean isCreated = Platform.create(db.getConn(), genre_name);
+                boolean isCreated = Genre.create(db.getConn(), genre_name);
                 db.closeDB();
 
                 if(isCreated){
@@ -62,7 +57,6 @@ public class Create extends HttpServlet {
             err.printStackTrace();
         }
 
-         */
         return rp;
 
     }

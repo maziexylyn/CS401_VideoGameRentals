@@ -1,37 +1,42 @@
 package Servlets.Game;
 
+import Classes.Game;
 import Classes.Platform;
 import Classes.ResponsePackage;
 import Classes.Validation;
 import db.DB;
-
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import java.io.IOException;
 
-@WebServlet("/Servlets.Platform.Update")
+@WebServlet("/Servlets.Game.Update")
 
-public class Update extends javax.servlet.http.HttpServlet {
-    public static void main(String[] args){
-        int game_id = 7;
-        String game_name = "MazieStation";
-        boolean game_isActive = true;
-        ResponsePackage rp = updateGame(game_id, game_name, game_isActive);
-        System.out.println(rp.formatData());
-        System.out.println(rp.getResponse());
-    }
+public class Update extends HttpServlet {
+
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-        String game_id_string = request.getParameter("id");
-        String game_name = request.getParameter("name");
-        String game_isActive = request.getParameter("isActive");
+        String title = request.getParameter("title");
+        String description = request.getParameter("description");
+        String imagePath = request.getParameter("imagePath");
+        String publisher_id = request.getParameter("publisher_id");
+        String genre_id = request.getParameter("genre_id");
+        String rating_id = request.getParameter("rating_id");
+        String currentPrice = request.getParameter("currentPrice");
+        String isActive = request.getParameter("isActive");
 
         ResponsePackage rp = new ResponsePackage();
 
-
-        if(Validation.checkGameName(game_name) && Validation.checkID(game_id_string) && Validation.checkBoolean(game_isActive)){
-            rp = updateGame(Integer.parseInt(game_id_string), game_name, Boolean.parseBoolean(game_isActive));
-
+        if(
+                Validation.checkGameTitle(title) &&
+                Validation.checkGameDescription(description) &&
+                Validation.checkGameImagePath(imagePath) &&
+                Validation.checkID(publisher_id) &&
+                Validation.checkID(genre_id) &&
+                Validation.checkID(rating_id) &&
+                Validation.checkGamePrice(currentPrice) &&
+                Validation.checkBoolean(isActive)
+        ) {
+            rp = updateGame(title, description, imagePath, Integer.parseInt(publisher_id), Integer.parseInt(genre_id), Integer.parseInt(rating_id), Float.parseFloat(currentPrice), Boolean.parseBoolean(isActive));
         }
-
         response.setContentType("text/plain");
         response.getWriter().print(rp.formatData());
         response.setStatus(rp.getResponse());
@@ -41,14 +46,14 @@ public class Update extends javax.servlet.http.HttpServlet {
 
     }
 
-    private static ResponsePackage updateGame(int game_id, String game_name, boolean game_isActive){
+    protected static ResponsePackage updateGame(String title, String description, String imagePath, int publisher_id, int genre_id, int rating_id, float currentPrice, boolean isActive) {
         ResponsePackage rp = new ResponsePackage();
-        /*
+
         try{
             DB db = new DB();
 
             if(db.openDB()){
-                boolean isUpdated = Game.update(db.getConn(), game_id, game_name, game_isActive);
+                boolean isUpdated = Game.update(db.getConn(), title, description, imagePath, publisher_id, genre_id, rating_id, currentPrice, isActive);
                 db.closeDB();
 
                 if(isUpdated){
@@ -60,8 +65,7 @@ public class Update extends javax.servlet.http.HttpServlet {
         }catch(Exception err){
             err.printStackTrace();
         }
-        
-         */
+
         return rp;
     }
 }

@@ -1,7 +1,6 @@
 package Servlets.Rating;
 
-
-import Classes.Platform;
+import Classes.Rating;
 import Classes.ResponsePackage;
 import Classes.Validation;
 import com.google.gson.Gson;
@@ -16,13 +15,9 @@ import java.io.IOException;
 import java.net.http.HttpResponse;
 
 @WebServlet("/Servlets.Rating.Create")
+
 public class Create extends HttpServlet {
-    public static void main(String[] args){
-        String name = "MazieBox";
-        ResponsePackage rp = Create.createRating(name);
-        System.out.println(rp.formatData());
-        System.out.println(rp.getResponse());
-    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String rating_name = request.getParameter("name");
 
@@ -41,9 +36,9 @@ public class Create extends HttpServlet {
 
     }
 
-    private static ResponsePackage createRating(String rating_name){
+    protected static ResponsePackage createRating(String rating_name){
         ResponsePackage rp = new ResponsePackage();
-       /*
+
         try{
             DB db = new DB();
 
@@ -63,7 +58,6 @@ public class Create extends HttpServlet {
             err.printStackTrace();
         }
 
-        */
         return rp;
 
     }

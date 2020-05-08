@@ -86,6 +86,7 @@ public class Customer {
 				stmt.registerOutParameter(6, Types.TINYINT);
 				stmt.execute();
 				isCreated = stmt.getBoolean(6);
+				stmt.close();
 			}
 		}catch(Exception error){
 			error.printStackTrace();
@@ -102,6 +103,7 @@ public class Customer {
 				stmt.registerOutParameter(2, Types.TINYINT);
 				stmt.execute();
 				exists = stmt.getBoolean(2);
+				stmt.close();
 			}
 		}catch(Exception error){
 			error.printStackTrace();
@@ -128,7 +130,8 @@ public class Customer {
 							rs.getInt("user_id")
 					);
 				}
-
+				rs.close();
+				stmt.close();
 			}
 		}catch(Exception error){
 			error.printStackTrace();

@@ -1,0 +1,16 @@
+CREATE VIEW GamePlatformInfoActive AS
+SELECT
+    game.id as "game_id",
+    game.title,
+    game.imagePath,
+    game.genre_id,
+    game.rating_id,
+    CONCAT('[',GROUP_CONCAT(platform_id ORDER BY platform_id ASC) ,']') as "platform_ids"
+from game_platform
+         JOIN game on game_platform.game_id = game.id
+         JOIN genre on game.genre_id = genre.id
+         JOIN rating on game.rating_id = rating.id
+         JOIN publisher on game.publisher_id = publisher.id
+         JOIN platform on game_platform.platform_id = platform.id
+WHERE  game.isActive AND genre.isActive AND rating.isActive AND publisher.isActive AND platform.isActive  = true
+GROUP BY game_id;
