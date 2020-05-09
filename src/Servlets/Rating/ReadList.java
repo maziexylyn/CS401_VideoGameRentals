@@ -24,7 +24,7 @@ public class ReadList extends HttpServlet {
 
 
         if(Validation.checkBoolean(rating_isActive)){
-            rp = readListRating(Boolean.parseBoolean(rating_isActive));
+            rp = readListRating(Validation.convertToBoolean(rating_isActive));
         }
 
         response.setContentType("text/plain");

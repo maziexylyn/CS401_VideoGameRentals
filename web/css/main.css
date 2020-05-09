@@ -18,17 +18,23 @@
     color: #ffab40 !important;
 }
 
+
+
 body {
     background-color: #cfd8dc;
 }
 
 <!-- Footer -->
-body {
+.Site {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
 }
 
-main {
-    flex: 1 0 auto;
+.container {
+    flex: 1;
+}
+
+.card .card-image .card-title {
+    padding: 10px;
 }

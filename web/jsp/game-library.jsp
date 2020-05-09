@@ -26,6 +26,7 @@
         activity = "../jsp/signin-register.jsp";
         activityText = "Sign In";
     }
+
 %>
 <html>
 <head>
@@ -36,7 +37,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../css/main.css">
 </head>
-<body>
+<body class = "Site">
 <nav>
     <div class="nav-wrapper primary1">
         <a href="../index.jsp" class="brand-logo text1">VGRentalZ</a>
@@ -64,21 +65,38 @@
     </div>
 </nav>
 <br><br>
-<div class="container hide-on-small-only">
-    <div class="row">
-        <div class="col s4">
-            <div class="card">
-                <div class="card-image">
-                    <img src="https://media.gamestop.com/i/gamestop/10141904/The-Legend-of-Zelda-Breath-of-the-Wild?$pdp$">
-                    <span class="card-title">Card Title</span>
-                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                </div>
-                <div class="card-content">
-                    <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+
+<div class="container" id="library-root">
+
+
+<%--    <div class="row">--%>
+
+<%--        <div class="col s4">--%>
+<%--            <div class="card">--%>
+<%--                <div class="card-image">--%>
+<%--                    <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/Animal_Crossing_New_Horizons.jpg" alt="" onClick=loadModal(game_id)>--%>
+<%--                    <span class="card-title red"><b>$59.99</b></span>--%>
+<%--                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>--%>
+<%--                </div>--%>
+<%--                <div class="card-content">--%>
+<%--                    <h5>Animal Crossing New Horizons</h5>--%>
+<%--                    <div class="chip">--%>
+<%--                        <img src="https://p7.hiclipart.com/preview/326/357/198/nintendo-switch-super-nintendo-entertainment-system-%E4%BB%BB%E5%A4%A9%E5%A0%82switch%E5%9C%A8%E7%BA%BF%E6%9C%8D%E5%8A%A1-video-games-nintendo.jpg" alt="img">--%>
+<%--                        Nintendo Switch--%>
+<%--                    </div>--%>
+<%--                    <div class="chip">--%>
+<%--                        Simulator--%>
+<%--                    </div>--%>
+<%--                    <div class="chip">--%>
+<%--                        Rated E--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+
+<%--    </div>--%>
+
+
 </div>
 
 

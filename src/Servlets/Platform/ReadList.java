@@ -23,7 +23,7 @@ public class ReadList extends HttpServlet {
 
 
         if(Validation.checkBoolean(platform_isActive)){
-            rp = readListPlatform(Boolean.parseBoolean(platform_isActive));
+            rp = readListPlatform(Validation.convertToBoolean(platform_isActive));
 
         }
 

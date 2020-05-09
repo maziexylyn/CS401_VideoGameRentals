@@ -19,12 +19,14 @@ public class Update extends HttpServlet {
         String platform_id_string = request.getParameter("id");
         String platform_name = request.getParameter("name");
         String platform_isActive = request.getParameter("isActive");
+        String platform_imagePath = request.getParameter("imagePath");
+
 
         ResponsePackage rp = new ResponsePackage();
 
 
-        if(Validation.checkPlatformName(platform_name) && Validation.checkID(platform_id_string) && Validation.checkBoolean(platform_isActive)){
-            rp = updatePlatform(Integer.parseInt(platform_id_string), platform_name, Boolean.parseBoolean(platform_isActive));
+        if(Validation.checkPlatformName(platform_name) && Validation.checkID(platform_id_string) && Validation.checkBoolean(platform_isActive) && Validation.checkGameImagePath(platform_imagePath)){
+            rp = updatePlatform(Integer.parseInt(platform_id_string), platform_name, Validation.convertToBoolean(platform_isActive), platform_imagePath);
 
         }
 
@@ -37,13 +39,13 @@ public class Update extends HttpServlet {
 
     }
 
-    protected static ResponsePackage updatePlatform(int platform_id, String platform_name, boolean platform_isActive){
+    protected static ResponsePackage updatePlatform(int platform_id, String platform_name, boolean platform_isActive, String platform_imagePath){
         ResponsePackage rp = new ResponsePackage();
         try{
             DB db = new DB();
 
             if(db.openDB()){
-                boolean isUpdated = Platform.update(db.getConn(), platform_id, platform_name, platform_isActive);
+                boolean isUpdated = Platform.update(db.getConn(), platform_id, platform_name, platform_isActive, platform_imagePath);
                 db.closeDB();
 
                 if(isUpdated){

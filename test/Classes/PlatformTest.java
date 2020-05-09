@@ -12,15 +12,29 @@ class PlatformTest {
     private int test_id = 100;
     private String test_name = "Test Name";
     private boolean test_activity = true;
+    private String test_imagePath = "imagePath";
     private Platform platform;
 
     @BeforeEach
     void setUp() {
-        platform = new Platform(test_id,test_name,test_activity);
+        platform = new Platform(test_id,test_name,test_activity, test_imagePath);
     }
 
     @AfterEach
     void tearDown() {
+    }
+
+    @Test
+    void getImagePath() {
+        assertEquals(test_imagePath, platform.getImagePath());
+    }
+
+    @Test
+    void setImagePath() {
+        assertEquals(test_imagePath, platform.getImagePath());
+        String newImage = "Hello";
+        platform.setImagePath(newImage);
+        assertEquals(newImage, platform.getImagePath());
     }
 
     @Test
@@ -71,8 +85,8 @@ class PlatformTest {
 
                 // Test Create
                 System.out.println("Creating...");
-                assertTrue(Platform.create(db.getConn(), "New Item"));
-                assertFalse(Platform.create(db.getConn(), "New Item"));
+                assertTrue(Platform.create(db.getConn(), "New Item", test_imagePath));
+                assertFalse(Platform.create(db.getConn(), "New Item", test_imagePath));
 
                 // Test Read
                 System.out.println("Reading...");
@@ -83,7 +97,7 @@ class PlatformTest {
                 // Test Update
                 System.out.println("Updating...");
 
-                assertTrue(Platform.update(db.getConn(),1, test_name, test_activity));
+                assertTrue(Platform.update(db.getConn(),1, test_name, test_activity, test_imagePath));
                 platform = Platform.read(db.getConn(), 1);
                 assertEquals(test_name, platform.getName());
 
@@ -98,6 +112,8 @@ class PlatformTest {
                         assertEquals(1, temp.getId());
                         assertEquals(test_name, temp.getName());
                         assertEquals(test_activity, temp.isActive());
+                        assertEquals(test_imagePath, temp.getImagePath());
+
                         flag = false;
                     }
                 }

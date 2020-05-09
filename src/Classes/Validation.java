@@ -75,4 +75,8 @@ public class Validation {
 
     public static boolean checkGamePrice(String price){ return regexChecker("[\\d]{1,}[.][\\d]{2}", price);}
 
+    public static boolean convertToBoolean(String val){
+        return val.equals("1");
+    }
+
 }

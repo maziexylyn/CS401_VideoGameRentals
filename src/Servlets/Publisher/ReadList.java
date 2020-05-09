@@ -22,7 +22,7 @@ public class ReadList extends HttpServlet {
         ResponsePackage rp = new ResponsePackage();
 
         if(Validation.checkBoolean(publisher_isActive)){
-            rp = readListPublisher(Boolean.parseBoolean(publisher_isActive));
+            rp = readListPublisher(Validation.convertToBoolean(publisher_isActive));
 
         }
 

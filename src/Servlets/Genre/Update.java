@@ -23,7 +23,7 @@ public class Update extends HttpServlet {
         ResponsePackage rp = new ResponsePackage();
 
         if(Validation.checkGenreName(genre_name) && Validation.checkID(genre_id_string) && Validation.checkBoolean(genre_isActive)){
-            rp = updateGenre(Integer.parseInt(genre_id_string), genre_name, Boolean.parseBoolean(genre_isActive));
+            rp = updateGenre(Integer.parseInt(genre_id_string), genre_name, Validation.convertToBoolean(genre_isActive));
 
         }
 
