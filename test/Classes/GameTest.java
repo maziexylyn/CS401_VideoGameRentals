@@ -13,9 +13,9 @@ class GameTest {
     private String test_title = "Test Title";
     private String test_description = "Test Description";
     private String test_imagePath = "imagePath";
-    private int test_publisher_id = 100;
-    private int test_genre_id = 100;
-    private int test_rating_id = 100;
+    private int test_publisher_id = 1;
+    private int test_genre_id = 1;
+    private int test_rating_id = 1;
     private float test_price = 100.0f;
     private boolean test_activity = true;
     private Game game;
@@ -112,8 +112,8 @@ class GameTest {
 
                 // Test Create
                 System.out.println("Creating...");
-                assertTrue(Game.create(db.getConn(), "New Title", "New Description", test_imagePath, test_publisher_id, test_genre_id, test_rating_id, test_price));
-                assertFalse(Game.create(db.getConn(), "New Title", "New Description", test_imagePath, test_publisher_id, test_genre_id, test_rating_id, test_price));
+                assertTrue(Game.create(db.getConn(), "New Title", "New Description", "New Image", test_publisher_id, test_genre_id, test_rating_id, test_price));
+                assertFalse(Game.create(db.getConn(), "New Title", "New Description", "New Image", test_publisher_id, test_genre_id, test_rating_id, test_price));
 
                 // Test Read
                 System.out.println("Reading...");
