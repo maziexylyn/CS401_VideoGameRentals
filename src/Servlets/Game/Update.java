@@ -1,7 +1,6 @@
 package Servlets.Game;
 
 import Classes.Game;
-import Classes.Platform;
 import Classes.ResponsePackage;
 import Classes.Validation;
 import db.DB;
