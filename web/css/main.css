@@ -18,23 +18,21 @@
     color: #ffab40 !important;
 }
 
-
+.card .card-image .card-title {
+    padding: 10px;
+}
 
 body {
     background-color: #cfd8dc;
-}
-
-<!-- Footer -->
-.Site {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
 }
 
-.container {
-    flex: 1;
+main {
+    flex: 1 0 auto;
 }
 
-.card .card-image .card-title {
-    padding: 10px;
+.brand-logo > span,.brand-logo > img{
+    vertical-align: middle;
 }

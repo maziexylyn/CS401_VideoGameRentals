@@ -39,7 +39,7 @@
 <body>
 <nav>
     <div class="nav-wrapper primary1">
-        <a href="index.jsp" class="brand-logo text1">VGRentalZ</a>
+        <a href="index.jsp" class="brand-logo text1"><img src="icon.png"><span> VGRentalZ</span></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <% if(role.equals(Role.Type.ADMIN)){ %>
             <li>
@@ -53,7 +53,6 @@
             <% } %>
             <li><a href="jsp/game-library.jsp">
                 Game Library</a></li>
-            <li><a href="jsp/contact-us.jsp">Contact Us</a></li>
             <li><a href="<%=activity%>" ><%=activityText%></a></li>
             <% if(role.equals(Role.Type.CUSTOMER) && isSignedIn){ %>
             <li><a href="jsp/customer/shopping-cart.jsp">
@@ -65,6 +64,7 @@
 </nav>
 
 <br><br>
+<main>
 <!-- Banner container -->
 <div class="container hide-on-small-only">
     <div class="slider">
@@ -101,8 +101,9 @@
             <!-- Basic card: about the company -->
             <div class="card primary1">
                 <div class="card-image">
-                    <img src="https://png.pngtree.com/thumb_back/fw800/background/20190903/pngtree-dark-abstract-background-with-black-image_313626.jpg">
-                    <span class="card-title">Gaming with VGRentalZ</span>
+<%--                    <img src="https://png.pngtree.com/thumb_back/fw800/background/20190903/pngtree-dark-abstract-background-with-black-image_313626.jpg">--%>
+                    <img src="https://c1.wallpaperflare.com/preview/184/835/736/arcade-game-pacman-retro.jpg">
+                    <span class="card-title"><b>Gaming with VGRentalZ</b></span>
                 </div>
                 <div class="card-content white-text">
                     <p class = "text1">
@@ -118,26 +119,27 @@
                     </span>
                     <br>
                     <span class="text1">
-                        <i class="material-icons tiny">check_box</i> Free shipping in 3-5 business days
+                        <i class="material-icons tiny">check_box</i> Free shipping within 3-5 business days
                     </span>
                     <br>
                 </div>
             </div>
         </div>
 
-        <!-- Card: Classes.game library -->
+        <!-- Card: Game library -->
         <div class="col s4">
             <div class="card primary1">
                 <div class="card-image">
-                    <img src="https://c1.wallpaperflare.com/preview/184/835/736/arcade-game-pacman-retro.jpg">
-<%--                    <img src="https://miro.medium.com/max/3200/0*Pyrf3so4KxTQwMto">--%>
-                    <span class="card-title">Game Library</span>
+<%--                    <img src="https://png.pngtree.com/thumb_back/fw800/background/20190903/pngtree-dark-abstract-background-with-black-image_313626.jpg">--%>
+<%--                    <img src="https://c1.wallpaperflare.com/preview/184/835/736/arcade-game-pacman-retro.jpg">--%>
+                    <img src="https://miro.medium.com/max/3200/0*Pyrf3so4KxTQwMto">
+                    <span class="card-title"><b>Game Library</b></span>
                 </div>
                 <div class="card-content">
-                    <span class = "text1"> We carry games for the following gaming consoles:<br>
-                        - Xbox One<br>
-                        - PS4<br>
+                    <span class = "text1"> We carry games for the following gaming consoles:<br><br>
                         - Nintendo Switch<br>
+                        - Playstation 4<br>
+                        - Xbox One
                     </span>
                 </div>
                 <div class="card-action">
@@ -151,13 +153,11 @@
             <div class="card primary1">
                 <div class="card-image">
                     <img src="https://png.pngtree.com/thumb_back/fw800/background/20190903/pngtree-dark-abstract-background-with-black-image_313626.jpg">
-                    <span class="card-title">Sign Up Now!</span>
+<%--                    <img src="https://miro.medium.com/max/3200/0*Pyrf3so4KxTQwMto">--%>
+                    <span class="card-title"><b> Start Gaming Now!</b></span>
                 </div>
                 <div class="card-content ">
-                    <div class="center-align">
-                        <i class = "material-icons medium text1 ">videogame_asset</i><br>
-                    </div>
-                    <span class = "text1">Register now to get your game on :)<br>
+                    <span class = "text1">Register to get your game on :)<br>
                     </span>
                 </div>
                 <div class="card-action">
@@ -168,22 +168,25 @@
     </div>
 
 </div>
-
-<!--    <script-->
-<!--            src="https://code.jquery.com/jquery-3.4.1.slim.min.js"-->
-<!--            integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="-->
-<!--            crossorigin="anonymous"></script>-->
+</main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="js/generic.js"></script>
 <script src="js/index.js"></script>
 </body>
 
+<!-- Footer container -->
 <footer class="page-footer primary1">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="text1">You can use rows and columns here to organize your footer content.</p>
+                <h5 class="white-text">Contact Us</h5>
+                <p class="text1">
+                    <u>VGRentalZ Office</u><br>
+                    525 S Winchester Blvd<br>
+                    San Jose, CA 95128<br><br>
+                    Phone: (510) 123-4567<br>
+                    Email: VGRentalZ-support@email.com<br>
+                </p>
             </div>
             <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Let Us Help You</h5>

@@ -1,3 +1,9 @@
+let gameModal = document.getElementById('game-modal');
+let gameModalInstance;
+document.addEventListener('DOMContentLoaded', function() {
+    gameModalInstance = M.Modal.init(gameModal, {});
+});
+
 var ratings = [];
 var publishers = [];
 var genres = [];
@@ -167,6 +173,7 @@ function createCardImage(index){
     image.src = gamePlatformInfos[index].imagePath;
     image.alt = gamePlatformInfos[index].title + " cover image";
     image.height = "400";
+    image.setAttribute('onclick', 'createModal('+gamePlatformInfos[index].game_id+',"'+ gamePlatformInfos[index].platform_ids+'")');
 
     let span = document.createElement("span");
     span.classList.add("card-title", "red");
@@ -176,11 +183,11 @@ function createCardImage(index){
 
     let anchor = document.createElement("a");
     anchor.classList.add("btn-floating","btn-large","halfway-fab","waves-effect","waves-light", "red");
+    anchor.setAttribute('onclick', "createToast()")
 
     let icon = document.createElement("i");
     icon.classList.add("material-icons");
     icon.innerText = "add_shopping_cart";
-
 
     anchor.appendChild(icon);
     span.appendChild(bold);
@@ -190,6 +197,10 @@ function createCardImage(index){
     cardImage.appendChild(anchor);
 
     return cardImage;
+}
+
+function createToast(){
+    M.toast({html: "Added to Cart"});
 }
 
 function createCardContent(index){
@@ -236,6 +247,46 @@ function createChip(){
     let chip = document.createElement("div");
     chip.classList.add("chip");
     return chip;
+}
+
+function createModal(game_id, platforms){
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "../Servlets.Game.Read", true);
+    xhttp.setRequestHeader('Content-Type', "application/x-www-form-urlencoded");
+    xhttp.send("id=" + game_id);
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            //console.log(this.responseText);
+            let modalContent = JSON.parse(this.responseText).data;
+            console.log(modalContent);
+
+            let modalImage = document.getElementById("modal-img");
+            modalImage.src = modalContent.imagePath;
+            modalImage.alt = modalContent.title + " cover image";
+            // modalImage.height = "350";
+
+            document.getElementById("modal-title").innerText = modalContent.title;
+
+            let modalPlatforms = document.getElementById("modal-platforms");
+            modalPlatforms.innerText ="";
+            let platform_ids = platforms.split(",");
+            for(let ii=0; ii<platform_ids.length; ii++){
+                modalPlatforms.appendChild(createChipWithImage(platform_ids[ii] - 1));
+            }
+
+            document.getElementById("modal-rating").innerText = "Rated " + ratings[modalContent.rating_id - 1].name;
+            document.getElementById("modal-genre").innerText = genres[modalContent.genre_id - 1].name;
+            document.getElementById("modal-publisher").innerText = publishers[modalContent.publisher_id - 1].name;
+            document.getElementById("modal-description").innerText = modalContent.description;
+
+            gameModalInstance.open();
+
+        } else if (this.readyState === 4) {
+            // console.log(this.responseText);
+            // M.toast({html: JSON.parse(this.responseText).msg})
+        }
+    };
 }
 
 

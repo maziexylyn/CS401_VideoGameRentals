@@ -40,7 +40,7 @@
 <body class = "Site">
 <nav>
     <div class="nav-wrapper primary1">
-        <a href="../index.jsp" class="brand-logo text1">VGRentalZ</a>
+        <a href="../index.jsp" class="brand-logo text1"><img src="../icon.png"><span> VGRentalZ</span></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <% if(role.equals(Role.Type.ADMIN)){ %>
             <li>
@@ -54,7 +54,6 @@
             <% } %>
             <li><a href="../jsp/game-library.jsp">
                 Game Library</a></li>
-            <li><a href="../jsp/contact-us.jsp">Contact Us</a></li>
             <li><a href="<%=activity%>" ><%=activityText%></a></li>
             <% if(role.equals(Role.Type.CUSTOMER) && isSignedIn){ %>
             <li><a href="../jsp/customer/shopping-cart.jsp">
@@ -66,51 +65,74 @@
 </nav>
 <br><br>
 
-<div class="container" id="library-root">
+<main>
+    <div class="container" id="library-root">
+    </div>
 
+    <!-- Modal Structure -->
+    <div id="game-modal" class="modal">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col s4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img id="modal-img" src="" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col s8">
+                    <div class="row">
+                        <div class="col s12">
+                            <h4 id="modal-title"></h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <div id="modal-platforms"></div>
 
-<%--    <div class="row">--%>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <div id="modal-publisher" class="chip"></div>
+                            <div id="modal-rating" class="chip"></div>
+                            <div id="modal-genre" class="chip"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <h6><u>Game Description</u></h6>
+                            <p id="modal-description"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+    </div>
 
-<%--        <div class="col s4">--%>
-<%--            <div class="card">--%>
-<%--                <div class="card-image">--%>
-<%--                    <img src="https://upload.wikimedia.org/wikipedia/en/1/1f/Animal_Crossing_New_Horizons.jpg" alt="" onClick=loadModal(game_id)>--%>
-<%--                    <span class="card-title red"><b>$59.99</b></span>--%>
-<%--                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>--%>
-<%--                </div>--%>
-<%--                <div class="card-content">--%>
-<%--                    <h5>Animal Crossing New Horizons</h5>--%>
-<%--                    <div class="chip">--%>
-<%--                        <img src="https://p7.hiclipart.com/preview/326/357/198/nintendo-switch-super-nintendo-entertainment-system-%E4%BB%BB%E5%A4%A9%E5%A0%82switch%E5%9C%A8%E7%BA%BF%E6%9C%8D%E5%8A%A1-video-games-nintendo.jpg" alt="img">--%>
-<%--                        Nintendo Switch--%>
-<%--                    </div>--%>
-<%--                    <div class="chip">--%>
-<%--                        Simulator--%>
-<%--                    </div>--%>
-<%--                    <div class="chip">--%>
-<%--                        Rated E--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-
-<%--    </div>--%>
-
-
-</div>
-
+</main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="../js/generic.js"></script>
 <script src="../js/game-library.js"></script>
 </body>
 
+<!-- Footer container -->
 <footer class="page-footer primary1">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="text1">You can use rows and columns here to organize your footer content.</p>
+                <h5 class="white-text">Contact Us</h5>
+                <p class="text1">
+                    <u>VGRentalZ Office</u><br>
+                    525 S Winchester Blvd<br>
+                    San Jose, CA 95128<br><br>
+                    Phone: (510) 123-4567<br>
+                    Email: VGRentalZ-support@email.com<br>
+                </p>
             </div>
             <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Let Us Help You</h5>
@@ -125,7 +147,7 @@
     </div>
     <div class="footer-copyright">
         <div class="container">
-            <a class="text1 right" href="../index.jsp">VGRentalZ</a>
+            <a class="text1 right" href="index.jsp">VGRentalZ</a>
         </div>
     </div>
 </footer>

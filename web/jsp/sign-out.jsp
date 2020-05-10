@@ -36,7 +36,7 @@
 <body>
 <nav>
     <div class="nav-wrapper primary1">
-        <a href="../index.jsp" class="brand-logo text1">VGRentalZ</a>
+        <a href="../index.jsp" class="brand-logo text1"><img src="../icon.png"><span> VGRentalZ</span></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <% if(role.equals(Role.Type.ADMIN)){ %>
             <li>
@@ -50,7 +50,6 @@
             <% } %>
             <li><a href="../jsp/game-library.jsp">
                 Game Library</a></li>
-            <li><a href="../jsp/contact-us.jsp">Contact Us</a></li>
             <li><a href="<%=activity%>" ><%=activityText%></a></li>
             <% if(role.equals(Role.Type.CUSTOMER) && isSignedIn){ %>
             <li><a href="../jsp/customer/shopping-cart.jsp">

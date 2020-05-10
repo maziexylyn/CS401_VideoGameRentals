@@ -39,7 +39,7 @@
 <body>
 <nav>
     <div class="nav-wrapper primary1">
-        <a href="../index.jsp" class="brand-logo text1">VGRentalZ</a>
+        <a href="../index.jsp" class="brand-logo text1"><img src="../icon.png"><span> VGRentalZ</span></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <% if(role.equals(Role.Type.ADMIN)){ %>
             <li>
@@ -53,7 +53,6 @@
             <% } %>
             <li><a href="../jsp/game-library.jsp">
                 Game Library</a></li>
-            <li><a href="../jsp/contact-us.jsp">Contact Us</a></li>
             <li><a href="<%=activity%>" ><%=activityText%></a></li>
             <% if(role.equals(Role.Type.CUSTOMER) && isSignedIn){ %>
             <li><a href="../jsp/customer/shopping-cart.jsp">
@@ -167,12 +166,19 @@
 <script src="../js/signin-register.js"></script>
 </body>
 
+<!-- Footer container -->
 <footer class="page-footer primary1">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="text1">You can use rows and columns here to organize your footer content.</p>
+                <h5 class="white-text">Contact Us</h5>
+                <p class="text1">
+                    <u>VGRentalZ Office</u><br>
+                    525 S Winchester Blvd<br>
+                    San Jose, CA 95128<br><br>
+                    Phone: (510) 123-4567<br>
+                    Email: VGRentalZ-support@email.com<br>
+                </p>
             </div>
             <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Let Us Help You</h5>
@@ -187,7 +193,7 @@
     </div>
     <div class="footer-copyright">
         <div class="container">
-            <a class="text1 right" href="../index.jsp">VGRentalZ</a>
+            <a class="text1 right" href="index.jsp">VGRentalZ</a>
         </div>
     </div>
 </footer>
