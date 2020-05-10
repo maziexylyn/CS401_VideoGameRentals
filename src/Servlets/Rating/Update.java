@@ -24,7 +24,7 @@ public class Update extends HttpServlet {
         ResponsePackage rp = new ResponsePackage();
 
         if(Validation.checkRatingName(rating_name) && Validation.checkID(rating_id_string) && Validation.checkBoolean(rating_isActive)){
-            rp = updateRating(Integer.parseInt(rating_id_string), rating_name, Boolean.parseBoolean(rating_isActive));
+            rp = updateRating(Integer.parseInt(rating_id_string), rating_name, Validation.convertToBoolean(rating_isActive));
 
         }
 

@@ -19,7 +19,7 @@ public class ReadList extends HttpServlet {
         ResponsePackage rp = new ResponsePackage();
 
         if(Validation.checkBoolean(game_isActive)){
-            rp = readListGame(Boolean.parseBoolean(game_isActive));
+            rp = readListGame(Validation.convertToBoolean(game_isActive));
 
         }
 

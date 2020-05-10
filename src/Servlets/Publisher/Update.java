@@ -23,7 +23,7 @@ public class Update extends HttpServlet {
         ResponsePackage rp = new ResponsePackage();
 
         if(Validation.checkPublisherName(publisher_name) && Validation.checkID(publisher_id_string) && Validation.checkBoolean(publisher_isActive)){
-            rp = updatePublisher(Integer.parseInt(publisher_id_string), publisher_name, Boolean.parseBoolean(publisher_isActive));
+            rp = updatePublisher(Integer.parseInt(publisher_id_string), publisher_name, Validation.convertToBoolean(publisher_isActive));
 
         }
 

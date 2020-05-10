@@ -20,11 +20,8 @@ public class ReadList extends HttpServlet {
         String genre_isActive = request.getParameter("isActive");
 
         ResponsePackage rp = new ResponsePackage();
-
-
         if(Validation.checkBoolean(genre_isActive)){
-            rp = readListGenre(Boolean.parseBoolean(genre_isActive));
-
+            rp = readListGenre(Validation.convertToBoolean(genre_isActive));
         }
 
         response.setContentType("text/plain");

@@ -10,18 +10,18 @@ public class Game {
     private int id;
     private String title;
     private String description;
-    private String image;
+    private String imagePath;
     private int publisher_id;
     private int genre_id;
     private int rating_id;
     private float price;
     private boolean isActive;
 
-    Game(int id, String title, String description, String image, int publisher_id, int genre_id, int rating_id, float price, boolean isActive){
+    Game(int id, String title, String description, String imagePath, int publisher_id, int genre_id, int rating_id, float price, boolean isActive){
         this.id = id;
         this.title = title;
         this.description = description;
-        this.image = image;
+        this.imagePath = imagePath;
         this.publisher_id = publisher_id;
         this.genre_id = genre_id;
         this.rating_id = rating_id;
@@ -53,12 +53,12 @@ public class Game {
         this.description = description;
     }
 
-    public String getImage() {
-        return image;
+    public String getImagePath() {
+        return imagePath;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImagePath(String image) {
+        this.imagePath = image;
     }
 
     public float getPrice() {

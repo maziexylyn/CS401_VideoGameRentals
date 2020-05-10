@@ -19,11 +19,13 @@ public class Create extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String platform_name = request.getParameter("name");
+        String platform_imagePath = request.getParameter("imagePath");
+
 
         ResponsePackage rp = new ResponsePackage();
 
-        if(Validation.checkGenreName(platform_name)){
-            rp = createPlatform(platform_name);
+        if(Validation.checkGenreName(platform_name) && Validation.checkGameImagePath(platform_imagePath)){
+            rp = createPlatform(platform_name, platform_imagePath);
         }
 
         response.setContentType("text/plain");
@@ -35,14 +37,14 @@ public class Create extends HttpServlet {
 
     }
 
-    protected static ResponsePackage createPlatform(String platform_name){
+    protected static ResponsePackage createPlatform(String platform_name, String platform_imagePath){
         ResponsePackage rp = new ResponsePackage();
         try{
             DB db = new DB();
 
             if(db.openDB()){
 
-                boolean isCreated = Platform.create(db.getConn(), platform_name);
+                boolean isCreated = Platform.create(db.getConn(), platform_name, platform_imagePath);
                 db.closeDB();
 
                 if(isCreated){

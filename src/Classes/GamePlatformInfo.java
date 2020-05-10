@@ -12,16 +12,26 @@ public class GamePlatformInfo {
     private int genre_id;
     private int rating_id;
     private int publisher_id;
+    private float currentPrice;
     private String platform_ids;
 
-    public GamePlatformInfo(int game_id, String title, String imagePath, int genre_id, int rating_id, int publisher_id, String platform_ids){
+    public GamePlatformInfo(int game_id, String title, String imagePath, int genre_id, int rating_id, int publisher_id, float currentPrice, String platform_ids){
         this.game_id = game_id;
         this.title = title;
         this.imagePath = imagePath;
         this.genre_id = genre_id;
         this.rating_id = rating_id;
         this.publisher_id = publisher_id;
+        this.currentPrice = currentPrice;
         this.platform_ids = platform_ids;
+    }
+
+    public float getCurrentPrice() {
+        return currentPrice;
+    }
+
+    public void setCurrentPrice(float currentPrice) {
+        this.currentPrice = currentPrice;
     }
 
     public int getGame_id() {
@@ -97,6 +107,7 @@ public class GamePlatformInfo {
                             rs.getInt("genre_id"),
                             rs.getInt("rating_id"),
                             rs.getInt("publisher_id"),
+                            rs.getFloat("currentPrice"),
                             rs.getString("platform_ids")
                     ));
                 }

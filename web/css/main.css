@@ -18,12 +18,12 @@
     color: #ffab40 !important;
 }
 
-body {
-    background-color: #cfd8dc;
+.card .card-image .card-title {
+    padding: 10px;
 }
 
-<!-- Footer -->
 body {
+    background-color: #cfd8dc;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -31,4 +31,8 @@ body {
 
 main {
     flex: 1 0 auto;
+}
+
+.brand-logo > span,.brand-logo > img{
+    vertical-align: middle;
 }

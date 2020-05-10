@@ -7,11 +7,21 @@ public class Platform {
     private int id;
     private String name;
     private boolean isActive;
+    private String imagePath;
 
-    Platform(int id, String name, boolean isActive){
+    Platform(int id, String name, boolean isActive, String imagePath){
         this.id = id;
         this.name = name;
         this.isActive = isActive;
+        this.imagePath = imagePath;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     public int getId() {
@@ -38,17 +48,18 @@ public class Platform {
         isActive = active;
     }
 
-    public static boolean create(Connection conn, String platform_name) {
+    public static boolean create(Connection conn, String platform_name, String platform_imagePath) {
         boolean isCreated = false;
 
         try{
             if(conn != null){
 
-                CallableStatement stmt = conn.prepareCall("CALL Platform_Create(?, ?)");
+                CallableStatement stmt = conn.prepareCall("CALL Platform_Create(?, ?, ?)");
                 stmt.setString(1, platform_name);
-                stmt.registerOutParameter(2, Types.TINYINT);
+                stmt.setString(2, platform_imagePath);
+                stmt.registerOutParameter(3, Types.TINYINT);
                 stmt.execute();
-                isCreated = stmt.getBoolean(2);
+                isCreated = stmt.getBoolean(3);
                 stmt.close();
             }
         }catch(Exception error){
@@ -71,7 +82,8 @@ public class Platform {
                     temp = new Platform(
                             rs.getInt("id"),
                             rs.getString("name"),
-                            rs.getBoolean("isActive")
+                            rs.getBoolean("isActive"),
+                            rs.getString("imagePath")
                     );
                 }
                 rs.close();
@@ -97,7 +109,8 @@ public class Platform {
                     platforms.add(new Platform(
                             rs.getInt("id"),
                             rs.getString("name"),
-                            rs.getBoolean("isActive")
+                            rs.getBoolean("isActive"),
+                            rs.getString("imagePath")
                     ));
                 }
                 rs.close();
@@ -112,19 +125,20 @@ public class Platform {
 
     }
 
-    public static boolean update(Connection conn, int platform_id, String platform_name, boolean platform_isActive) {
+    public static boolean update(Connection conn, int platform_id, String platform_name, boolean platform_isActive, String platform_imagePath) {
         boolean isUpdated = false;
 
         try{
             if(conn != null){
 
-                CallableStatement stmt = conn.prepareCall("CALL Platform_Update(?, ?, ?, ?)");
+                CallableStatement stmt = conn.prepareCall("CALL Platform_Update(?, ?, ?, ?, ?)");
                 stmt.setInt(1, platform_id);
                 stmt.setString(2, platform_name);
                 stmt.setBoolean(3, platform_isActive);
-                stmt.registerOutParameter(4, Types.TINYINT);
+                stmt.setString(4, platform_imagePath);
+                stmt.registerOutParameter(5, Types.TINYINT);
                 stmt.execute();
-                isUpdated = stmt.getBoolean(4);
+                isUpdated = stmt.getBoolean(5);
                 stmt.close();
             }
         }catch(Exception error){

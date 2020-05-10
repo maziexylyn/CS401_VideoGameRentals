@@ -35,7 +35,7 @@ public class Update extends HttpServlet {
                 Validation.checkGamePrice(currentPrice) &&
                 Validation.checkBoolean(isActive)
         ) {
-            rp = updateGame(title, description, imagePath, Integer.parseInt(publisher_id), Integer.parseInt(genre_id), Integer.parseInt(rating_id), Float.parseFloat(currentPrice), Boolean.parseBoolean(isActive));
+            rp = updateGame(title, description, imagePath, Integer.parseInt(publisher_id), Integer.parseInt(genre_id), Integer.parseInt(rating_id), Float.parseFloat(currentPrice), Validation.convertToBoolean(isActive));
         }
         response.setContentType("text/plain");
         response.getWriter().print(rp.formatData());
