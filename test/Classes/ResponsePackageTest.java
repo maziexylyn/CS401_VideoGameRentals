@@ -23,17 +23,14 @@ class ResponsePackageTest {
     void getResponse() {assertEquals(test_response, responsePackage.getResponse());}
 
     @Test
-    void setData() {String newData = "New Data";
-        responsePackage.setData(newData);}
+    void setData() {responsePackage.setData(test_data);}
+
+    //@Test
+    //void setMsgResponse() {responsePackage.setMsgResponse(test_msg, test_response);}
 
     @Test
-    void setMsgResponse() {}
+    void setMsg() {responsePackage.setMsg(test_msg);}
 
     @Test
-    void setMsg() {String newMsg = "New Msg";
-        responsePackage.setMsg(newMsg);}
-
-    @Test
-    void formatData() {
-    }
+    void formatData() {}
 }
