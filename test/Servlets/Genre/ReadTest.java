@@ -1,4 +1,4 @@
-package Servlets.Game;
+package Servlets.Genre;
 
 import Classes.ResponsePackage;
 
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ReadListTest {
+class ReadTest {
 
     @BeforeEach
     void setUp() {
@@ -19,8 +19,10 @@ class ReadListTest {
     }
 
     @Test
-    void readListGame() {
-        ResponsePackage rp = ReadList.readListGame(true);
+    void readGenre() {
+        ResponsePackage rp = Servlets.Genre.Read.readGenre(1);
         assertEquals(ResponsePackage.Status.OK.getCode(), rp.getResponse());
+        rp = Read.readGenre(0);
+        assertEquals(ResponsePackage.Status.NOT_FOUND.getCode(), rp.getResponse());
     }
 }

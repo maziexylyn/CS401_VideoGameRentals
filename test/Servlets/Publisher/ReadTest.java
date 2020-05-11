@@ -1,4 +1,4 @@
-package Servlets.Game;
+package Servlets.Publisher;
 
 import Classes.ResponsePackage;
 
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ReadListTest {
+class ReadTest {
 
     @BeforeEach
     void setUp() {
@@ -19,8 +19,10 @@ class ReadListTest {
     }
 
     @Test
-    void readListGame() {
-        ResponsePackage rp = ReadList.readListGame(true);
+    void readPublisher() {
+        ResponsePackage rp = Servlets.Publisher.Read.readPublisher(1);
         assertEquals(ResponsePackage.Status.OK.getCode(), rp.getResponse());
+        rp = Read.readPublisher(0);
+        assertEquals(ResponsePackage.Status.NOT_FOUND.getCode(), rp.getResponse());
     }
 }
