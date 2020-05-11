@@ -14,6 +14,7 @@ import java.io.IOException;
 public class Update extends HttpServlet {
 
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+        String id = request.getParameter("id");
         String title = request.getParameter("title");
         String description = request.getParameter("description");
         String imagePath = request.getParameter("imagePath");
@@ -27,15 +28,16 @@ public class Update extends HttpServlet {
 
         if(
                 Validation.checkGameTitle(title) &&
-                Validation.checkGameDescription(description) &&
-                Validation.checkGameImagePath(imagePath) &&
-                Validation.checkID(publisher_id) &&
-                Validation.checkID(genre_id) &&
-                Validation.checkID(rating_id) &&
-                Validation.checkGamePrice(currentPrice) &&
-                Validation.checkBoolean(isActive)
+                        Validation.checkID(id) &&
+                        Validation.checkGameDescription(description) &&
+                        Validation.checkGameImagePath(imagePath) &&
+                        Validation.checkID(publisher_id) &&
+                        Validation.checkID(genre_id) &&
+                        Validation.checkID(rating_id) &&
+                        Validation.checkGamePrice(currentPrice) &&
+                        Validation.checkBoolean(isActive)
         ) {
-            rp = updateGame(title, description, imagePath, Integer.parseInt(publisher_id), Integer.parseInt(genre_id), Integer.parseInt(rating_id), Float.parseFloat(currentPrice), Validation.convertToBoolean(isActive));
+            rp = updateGame(Integer.parseInt(id), title, description, imagePath, Integer.parseInt(publisher_id), Integer.parseInt(genre_id), Integer.parseInt(rating_id), Float.parseFloat(currentPrice), Validation.convertToBoolean(isActive));
         }
         response.setContentType("text/plain");
         response.getWriter().print(rp.formatData());
@@ -58,14 +60,15 @@ public class Update extends HttpServlet {
      * @param isActive Filters for active/inactive game
      * @return ResponsePackage object
      */
-    protected static ResponsePackage updateGame(String title, String description, String imagePath, int publisher_id, int genre_id, int rating_id, float currentPrice, boolean isActive) {
+
+    protected static ResponsePackage updateGame(int id, String title, String description, String imagePath, int publisher_id, int genre_id, int rating_id, float currentPrice, boolean isActive) {
         ResponsePackage rp = new ResponsePackage();
 
         try{
             DB db = new DB();
 
             if(db.openDB()){
-                boolean isUpdated = Game.update(db.getConn(), title, description, imagePath, publisher_id, genre_id, rating_id, currentPrice, isActive);
+                boolean isUpdated = Game.update(db.getConn(), id, title, description, imagePath, publisher_id, genre_id, rating_id, currentPrice, isActive);
                 db.closeDB();
 
                 if(isUpdated){
