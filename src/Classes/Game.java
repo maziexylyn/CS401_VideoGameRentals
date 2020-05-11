@@ -65,7 +65,7 @@ public class Game {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
@@ -199,23 +199,25 @@ public class Game {
     }
 
 
-    public static boolean update(Connection conn, String game_title, String game_description, String game_image, int publisher_id, int genre_id, int rating_id, float game_price, boolean game_isActive)
+    public static boolean update(Connection conn, int game_id, String game_title, String game_description, String game_image, int publisher_id, int genre_id, int rating_id, float game_price, boolean game_isActive)
     {
         boolean isUpdated = false;
 
         try{
             if(conn != null){
-                CallableStatement stmt = conn.prepareCall("CALL Game_Update(?, ?, ?, ?, ?, ?, ?, ?)");
-                stmt.setString(1, game_title);
-                stmt.setString(2, game_description);
-                stmt.setString(3, game_image);
-                stmt.setInt(4, publisher_id);
-                stmt.setInt(5, genre_id);
-                stmt.setInt(6, rating_id);
-                stmt.setFloat(7, game_price);
-                stmt.registerOutParameter(8, Types.TINYINT);
+                CallableStatement stmt = conn.prepareCall("CALL Game_Update(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                stmt.setInt(1, game_id);
+                stmt.setString(2, game_title);
+                stmt.setString(3, game_description);
+                stmt.setString(4, game_image);
+                stmt.setFloat(5, game_price);
+                stmt.setInt(6, publisher_id);
+                stmt.setInt(7, genre_id);
+                stmt.setInt(8, rating_id);
+                stmt.setBoolean(9, game_isActive);
+                stmt.registerOutParameter(10, Types.TINYINT);
                 stmt.execute();
-                isUpdated = stmt.getBoolean(8);
+                isUpdated = stmt.getBoolean(10);
                 stmt.close();
             }
         }catch(Exception error){

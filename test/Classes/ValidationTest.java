@@ -9,16 +9,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class ValidationTest {
 
     @BeforeEach
-    void setUp() {
-    }
+    void setUp() {}
 
     @AfterEach
-    void tearDown() {
-    }
+    void tearDown() {}
 
     @Test
-    void checkEmail() {
-    }
+    void checkEmail() {}
 
     @Test
     void checkPassword() {
