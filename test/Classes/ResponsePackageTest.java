@@ -8,35 +8,31 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ResponsePackageTest {
 
+    private String test_msg = "Test message";
+    private int test_response = 500;
+    private String test_data = "Test data";
+    private ResponsePackage responsePackage;
+
     @BeforeEach
-    void setUp() {
-    }
+    void setUp() {responsePackage = new ResponsePackage();}
 
     @AfterEach
-    void tearDown() {
-    }
-
-    @Test
-    void main() {
-    }
+    void tearDown() {}
 
     @Test
     void getResponse() {
+        assertEquals(test_response, responsePackage.getResponse());
     }
 
     @Test
-    void setData() {
-    }
+    void setData() {responsePackage.setData(test_data);}
 
     @Test
-    void setMsgResponse() {
-    }
+    void setMsgResponse() {}
 
     @Test
-    void setMsg() {
-    }
+    void setMsg() {responsePackage.setMsg(test_msg);}
 
     @Test
-    void formatData() {
-    }
+    void formatData() {}
 }
