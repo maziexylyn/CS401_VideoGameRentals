@@ -2,6 +2,10 @@ package Classes;
 
 import java.sql.*;
 
+/**
+ * Customer class handles all information associated with user specified as a customer.
+ */
+
 public class Customer {
 
 	private int id;
@@ -72,12 +76,22 @@ public class Customer {
 	////// DB Access Functions //////
 	/////////////////////////////////
 
+	/**
+	 * Calls the stored procedure to create a new customer
+	 * @param conn An open connection to the database
+	 * @param name Customer's name
+	 * @param phone Customer's phone number
+	 * @param card Customer's card number
+	 * @param address Customer's shipping address
+	 * @param user_id Generated user ID
+	 * @return - Boolean dictating if the customer was created
+	 */
 	public static boolean create(Connection conn, String name, String phone, String card, String address, int user_id){
 		boolean isCreated = false;
 
 		try{
 			if(conn != null){
-				CallableStatement stmt = conn.prepareCall("CALL User_Create(?, ?, ?, ?, ?, ?)");
+				CallableStatement stmt = conn.prepareCall("CALL Customer_Create(?, ?, ?, ?, ?, ?)");
 				stmt.setString(1, name);
 				stmt.setString(2, phone);
 				stmt.setString(3, card);
@@ -94,6 +108,12 @@ public class Customer {
 		return isCreated;
 	}
 
+	/**
+	 * Checks whether a customer already exists for a user
+	 * @param conn An open connection to the database
+	 * @param user_id Generated user ID
+	 * @return Boolean dictating if the customer already exists
+	 */
 	public static boolean existsByUserID(Connection conn, int user_id){
 		boolean exists = false;
 		try{
@@ -111,6 +131,12 @@ public class Customer {
 		return exists;
 	}
 
+	/**
+	 * Reads customer by user ID
+	 * @param conn An open connection to the database
+	 * @param user_id Generated user ID
+	 * @return Boolean dictating if the customer was read
+	 */
 	public static Customer readByUserID(Connection conn, int user_id) {
 		Customer temp = null;
 
@@ -138,6 +164,4 @@ public class Customer {
 		}
 		return temp;
 	}
-
-
 }

@@ -35,6 +35,11 @@ public class Create extends HttpServlet {
 
     }
 
+    /**
+     * Creates game genre
+     * @param genre_name Genre's name
+     * @return ResponsePackage object
+     */
     protected static ResponsePackage createGenre(String genre_name){
         ResponsePackage rp = new ResponsePackage();
 

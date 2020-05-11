@@ -1,9 +1,10 @@
 package db;
-import Classes.Platform;
-import Classes.User;
 
 import java.sql.*;
 
+/**
+ * Database class handles all information associated with database connectivity.
+ */
 
 public class DB {
 
@@ -16,6 +17,10 @@ public class DB {
         this.conn = null;
     }
 
+    /**
+     * Opens the database connection
+     * @return Boolean to check if the connection is open
+     */
     public boolean openDB(){
         System.out.println("Opening DB...");
         boolean isOpen = false;
@@ -29,6 +34,9 @@ public class DB {
         return isOpen;
     }
 
+    /**
+     * Closes the database connection
+     */
     public void closeDB(){
         try{
             this.conn.close();

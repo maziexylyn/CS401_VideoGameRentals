@@ -32,6 +32,11 @@ public class Read extends HttpServlet {
 
     }
 
+    /**
+     * Reads game by game ID
+     * @param game_id Generated game ID
+     * @return ResponsePackage object
+     */
     protected static ResponsePackage readGame(int game_id){
         ResponsePackage rp = new ResponsePackage();
 

@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.Types;
 import java.util.ArrayList;
 
+/**
+ * Rating class handles all information associated with a game's rating.
+ */
 public class Rating {
     private int id;
     private String name;
@@ -41,7 +44,12 @@ public class Rating {
         isActive = active;
     }
 
-
+    /**
+     * Calls stored procedure to read a rating
+     * @param conn An open connection to the database
+     * @param rating_id Genreated rating ID
+     * @return Rating object
+     */
     public static Rating read(Connection conn, int rating_id)
     {
         Rating temp = null;
@@ -70,7 +78,12 @@ public class Rating {
         return temp;
     }
 
-
+    /**
+     * Calls stored procedure to read rating list
+     * @param conn An open connection to the database
+     * @param rating_isActive Filters for active/inactive ratings
+     * @return Rating object array
+     */
     public static Rating[] readList(Connection conn, boolean rating_isActive)
     {
         ArrayList<Rating> ratings = new ArrayList<>();
@@ -99,7 +112,12 @@ public class Rating {
         return ratings.toArray(new Rating[0]);
     }
 
-
+    /**
+     * Calls stored procedure to create a new rating
+     * @param conn An open connection to the database
+     * @param rating_name Rating's name
+     * @return Boolean to check if a new rating was created
+     */
     public static boolean create(Connection conn, String rating_name)
     {
         boolean isCreated = false;
@@ -120,7 +138,14 @@ public class Rating {
         return isCreated;
     }
 
-
+    /**
+     * Calls stored procedure to update a rating
+     * @param conn An open connection to the database
+     * @param rating_id Generated rating ID
+     * @param rating_name Rating's name
+     * @param rating_isActive Filters for active/inactive ratings
+     * @return Boolean to check if a rating was updated
+     */
     public static boolean update(Connection conn, int rating_id, String rating_name, boolean rating_isActive)
     {
         boolean isUpdated = false;

@@ -44,6 +44,17 @@ public class Register extends HttpServlet {
 
     }
 
+    /**
+     * Creates user if user does not exist
+     * Creates customer from user ID if customer does not exist
+     * @param email User's email
+     * @param password User's password
+     * @param name User's name
+     * @param phone User's phone number
+     * @param card User's card number
+     * @param address User's shipping address
+     * @return ResponsePackage object
+     */
     protected static ResponsePackage register(String email, String password, String name, String phone, String card, String address){
         ResponsePackage rp = new ResponsePackage();
         try{

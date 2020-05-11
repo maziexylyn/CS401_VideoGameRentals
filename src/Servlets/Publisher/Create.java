@@ -35,6 +35,11 @@ public class Create extends HttpServlet{
 
     }
 
+    /**
+     * Creates game publisher
+     * @param publisher_name Publisher's name
+     * @return ResponsePackage object
+     */
     protected static ResponsePackage createPublisher(String publisher_name) {
         ResponsePackage rp2 = new ResponsePackage();
 

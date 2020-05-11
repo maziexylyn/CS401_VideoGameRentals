@@ -35,6 +35,11 @@ public class Read extends HttpServlet {
 
     }
 
+    /**
+     * Reads publisher by publisher ID
+     * @param publisher_id Generated publisher ID
+     * @return ResponsePackage object
+     */
     protected static ResponsePackage readPublisher(int publisher_id){
         ResponsePackage rp = new ResponsePackage();
 

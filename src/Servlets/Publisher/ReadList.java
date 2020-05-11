@@ -35,6 +35,11 @@ public class ReadList extends HttpServlet {
 
     }
 
+    /**
+     * Reads list of active publishers
+     * @param publisher_isActive Filters for active/inactive publishers
+     * @return ResponsePackage object
+     */
     protected static ResponsePackage readListPublisher(boolean publisher_isActive) {
         ResponsePackage rp = new ResponsePackage();
 

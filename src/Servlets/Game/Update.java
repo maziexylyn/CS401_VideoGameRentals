@@ -48,6 +48,19 @@ public class Update extends HttpServlet {
 
     }
 
+    /**
+     * Updates game information
+     * @param title Game's title
+     * @param description Game's description
+     * @param imagePath Game's image path
+     * @param publisher_id Generated publisher ID
+     * @param genre_id Generated genre ID
+     * @param rating_id Generated rating ID
+     * @param currentPrice Game's price
+     * @param isActive Filters for active/inactive game
+     * @return ResponsePackage object
+     */
+
     protected static ResponsePackage updateGame(int id, String title, String description, String imagePath, int publisher_id, int genre_id, int rating_id, float currentPrice, boolean isActive) {
         ResponsePackage rp = new ResponsePackage();
 

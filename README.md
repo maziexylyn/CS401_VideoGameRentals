@@ -2,32 +2,18 @@
 Software Engineering Project: Online Video Game Rental Service - Mazie Xylyn | Melinda | Sitara
 
 Project Overview
-https://docs.google.com/document/d/1LDpaYhPCzX75q5cHbXYa34mAzub4rWQA-C1TScDW-A8/edit
+----------------
+- This project is an online service where customers can rent physical copes of video games for affordable prices across the United States.
 
-Roles & Responsibilities with updates:
-https://docs.google.com/document/d/1yhhVtQ2hxr_IgsngyoXIR0Qn6_Cdq690-yS7vwwcrCc/edit
+- Our inventory is hosted on a user-friendly website. We do not have every game available--but we will have the popular ones featured.
 
-Gantt Chart with updates:
-https://docs.google.com/spreadsheets/d/1RJE5PnGn_ld15-CJhntAmbtPWMsZg_xu7IDvpX9JgwM/edit#gid=1115838130
+- We are maintaining a database of customers and inventory on our servers at our office in California.
 
 
-Overview
---------
-- This project will be an online service which rents out physical copies of video games to customers for a cheap weekly fee across the United States. 
+Team Roles
+----------
+Mazie Xylyn - (Front End & Back End) : Web GUI / All-around coding
 
-- We’ll allow customers to sign onto a Classes.premium membership which will allow for great perks such as a discounted weekly fee and an increased rental limit.
+Melinda - (Back End) : Database / Classes / Testing
 
-- Customers can pre-Classes.order a Classes.game with release day delivery for an extra charge. 
-
-- We’ll host our Classes.inventory on a user-friendly website. We won’t have every Classes.game available--but we will have the popular ones with enough copies to meet demand.
-
-- We’ll maintain a database of customers and Classes.inventory on our servers at our office in California.
-There will be two warehouses, one in California, and one in New York to maintain our Classes.inventory.
-
-ROLES
------
-Melinda - Database / assistance with front end and back end -> all-around code management
-
-Sitara - Classes / Objects (making sure all the object content is correct)
-
-Mazie Xylyn - Front End / GUI / UI work / simulated objects (video Classes.game names, details, pricing, etc) / general code editing
+Sitara - (Back End) : Servlets / Testing

@@ -36,6 +36,11 @@ public class ReadList extends HttpServlet {
 
     }
 
+    /**
+     * Reads list of game platforms
+     * @param platform_isActive Filters for active/inactive games
+     * @return ResponsePackage object
+     */
     protected static ResponsePackage readListPlatform(boolean platform_isActive) {
         ResponsePackage rp = new ResponsePackage();
         try{

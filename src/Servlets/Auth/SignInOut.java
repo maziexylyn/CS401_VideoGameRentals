@@ -1,9 +1,5 @@
 package Servlets.Auth;
 
-
-
-
-import Classes.Platform;
 import Classes.ResponsePackage;
 import Classes.User;
 import Classes.Validation;
@@ -18,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Enumeration;
-
 
 @WebServlet("/Servlets.Auth.SignInOut")
 public class SignInOut extends HttpServlet {

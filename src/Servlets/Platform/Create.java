@@ -37,6 +37,12 @@ public class Create extends HttpServlet {
 
     }
 
+    /**
+     * Creates game platform
+     * @param platform_name Platform's name
+     * @param platform_imagePath Platform's image path
+     * @return ResponsePackage object
+     */
     protected static ResponsePackage createPlatform(String platform_name, String platform_imagePath){
         ResponsePackage rp = new ResponsePackage();
         try{

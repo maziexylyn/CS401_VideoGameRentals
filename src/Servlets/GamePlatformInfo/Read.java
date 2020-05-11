@@ -26,6 +26,10 @@ public class Read extends HttpServlet {
 
     }
 
+    /**
+     * Reads game platform information
+     * @return ResponsePackage object
+     */
     protected static ResponsePackage readGamePlatformInfo(){
         ResponsePackage rp = new ResponsePackage();
         try{

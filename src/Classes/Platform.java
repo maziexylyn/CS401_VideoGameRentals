@@ -3,6 +3,9 @@ package Classes;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * Platform class handles all information associated with a game's platform.
+ */
 public class Platform {
     private int id;
     private String name;
@@ -48,6 +51,13 @@ public class Platform {
         isActive = active;
     }
 
+    /**
+     * Calls stored procedure to create a new platform
+     * @param conn An open connection to the database
+     * @param platform_name Platform's name
+     * @param platform_imagePath Platform's image path
+     * @return Boolean to check if the platform was created
+     */
     public static boolean create(Connection conn, String platform_name, String platform_imagePath) {
         boolean isCreated = false;
 
@@ -69,6 +79,12 @@ public class Platform {
         return isCreated;
     }
 
+    /**
+     * Calls stored procedure to read a platform
+     * @param conn An open connection to the database
+     * @param platform_id Generated platform ID
+     * @return Platform object
+     */
     public static Platform read(Connection conn, int platform_id) {
         Platform temp = null;
 
@@ -95,6 +111,12 @@ public class Platform {
         return temp;
     }
 
+    /**
+     * Calls stored procedure to read platform list
+     * @param conn An open connection to the database
+     * @param platform_isActive Filters for active/inactive platforms
+     * @return Platform object array
+     */
     public static Platform[] readList(Connection conn, boolean platform_isActive) {
         ArrayList<Platform> platforms = new ArrayList<>();
 
@@ -125,6 +147,15 @@ public class Platform {
 
     }
 
+    /**
+     * Calls stored procedure to update platform
+     * @param conn An open connection to the database
+     * @param platform_id Generated platform ID
+     * @param platform_name Platform's name
+     * @param platform_isActive Filters for active/inactive platforms
+     * @param platform_imagePath Platform's image path
+     * @return Boolean to check if the platform was updated
+     */
     public static boolean update(Connection conn, int platform_id, String platform_name, boolean platform_isActive, String platform_imagePath) {
         boolean isUpdated = false;
 

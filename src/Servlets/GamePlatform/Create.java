@@ -36,6 +36,12 @@ public class Create extends HttpServlet {
 
     }
 
+    /**
+     * Creates a game platform
+     * @param game_id Generated game ID
+     * @param platform_id Generated platform ID
+     * @return ResponsePackage object
+     */
     protected static ResponsePackage createGamePlatform(int game_id, int platform_id){
         ResponsePackage rp = new ResponsePackage();
 

@@ -28,6 +28,10 @@ public class ReadList extends HttpServlet {
 
     }
 
+    /**
+     * Reads list of game platforms
+     * @return ResponsePackage object
+     */
     protected static ResponsePackage readListGamePlatform() {
         ResponsePackage rp = new ResponsePackage();
 

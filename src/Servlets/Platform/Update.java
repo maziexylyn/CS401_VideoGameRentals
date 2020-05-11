@@ -39,6 +39,14 @@ public class Update extends HttpServlet {
 
     }
 
+    /**
+     * Updates platform
+     * @param platform_id Generated platform ID
+     * @param platform_name Platform's name
+     * @param platform_isActive Filters for active/inactive platforms
+     * @param platform_imagePath Platform's image path
+     * @return ResponsePackage object
+     */
     protected static ResponsePackage updatePlatform(int platform_id, String platform_name, boolean platform_isActive, String platform_imagePath){
         ResponsePackage rp = new ResponsePackage();
         try{

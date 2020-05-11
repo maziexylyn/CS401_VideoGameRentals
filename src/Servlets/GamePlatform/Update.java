@@ -35,6 +35,13 @@ public class Update extends HttpServlet {
 
     }
 
+    /**
+     * Updates game platform information
+     * @param game_id Generated game ID
+     * @param platform_id Generated platform ID
+     * @param add_times_rented Incremented times rented value
+     * @return ResponsePackage object
+     */
     protected static ResponsePackage updateGamePlatform(int game_id, int platform_id, int add_times_rented){
         ResponsePackage rp = new ResponsePackage();
 

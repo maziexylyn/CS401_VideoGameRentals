@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ResponsePackageTest {
 
     private String test_msg = "Test message";
-    private int test_response = 10;
+    private int test_response = 500;
     private String test_data = "Test data";
     private ResponsePackage responsePackage;
 
@@ -20,7 +20,9 @@ class ResponsePackageTest {
     void tearDown() {}
 
     @Test
-    void getResponse() {assertEquals(test_response, responsePackage.getResponse());}
+    void getResponse() {
+        assertEquals(test_response, responsePackage.getResponse());
+    }
 
     @Test
     void setData() {responsePackage.setData(test_data);}
