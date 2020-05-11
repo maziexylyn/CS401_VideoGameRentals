@@ -1,4 +1,4 @@
-package Servlets.Game;
+package Servlets.Genre;
 
 import Classes.ResponsePackage;
 
@@ -19,8 +19,8 @@ class ReadListTest {
     }
 
     @Test
-    void readListGame() {
-        ResponsePackage rp = ReadList.readListGame(true);
+    void readListGenre() {
+        ResponsePackage rp = ReadList.readListGenre(true);
         assertEquals(ResponsePackage.Status.OK.getCode(), rp.getResponse());
     }
 }
