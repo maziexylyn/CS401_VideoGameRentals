@@ -25,8 +25,8 @@ class ResponsePackageTest {
     @Test
     void setData() {responsePackage.setData(test_data);}
 
-    //@Test
-    //void setMsgResponse() {responsePackage.setMsgResponse(test_msg, test_response);}
+    @Test
+    void setMsgResponse() {}
 
     @Test
     void setMsg() {responsePackage.setMsg(test_msg);}

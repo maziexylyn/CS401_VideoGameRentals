@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ValidationTest {
-    String test_email = "abcd@yahoo.com";
 
     @BeforeEach
     void setUp() {}
