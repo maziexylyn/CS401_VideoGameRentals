@@ -35,6 +35,11 @@ public class Read extends HttpServlet {
 
     }
 
+    /**
+     * Reads genre by genre ID
+     * @param genre_id Generated genre ID
+     * @return ResponsePackage object
+     */
     protected static ResponsePackage readGenre(int genre_id){
         ResponsePackage rp = new ResponsePackage();
 

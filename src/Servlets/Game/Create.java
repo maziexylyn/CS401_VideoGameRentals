@@ -43,6 +43,17 @@ public class Create extends HttpServlet {
 
     }
 
+    /**
+     * Creates game
+     * @param title Game's title
+     * @param description Game's description
+     * @param imagePath Game's image path
+     * @param publisher_id Generated publisher ID
+     * @param genre_id Generated genre ID
+     * @param rating_id Generated rating ID
+     * @param currentPrice Game's price
+     * @return ResponsePackage object
+     */
     protected static ResponsePackage createGame(String title, String description, String imagePath, int publisher_id, int genre_id, int rating_id, float currentPrice) {
         ResponsePackage rp2 = new ResponsePackage();
 

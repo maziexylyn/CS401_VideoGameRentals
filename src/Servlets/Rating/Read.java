@@ -38,6 +38,11 @@ public class Read extends HttpServlet {
 
     }
 
+    /**
+     * Reads rating by rating ID
+     * @param rating_id Generated rating ID
+     * @return ResponsePackage object
+     */
     protected static ResponsePackage readRating(int rating_id){
         ResponsePackage rp = new ResponsePackage();
 

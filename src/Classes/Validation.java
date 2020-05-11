@@ -3,6 +3,12 @@ package Classes;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Validation class handles all information associated with validating:
+ * - User information (name, email, password, shipping address, card number, phone)
+ * - Game information (title, image paths, price, description, platform, publisher, genre, rating)
+ * - IDs
+ */
 public class Validation {
 
     private static boolean regexChecker(String regex, String test) {

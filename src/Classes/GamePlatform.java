@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.Types;
 import java.util.ArrayList;
 
+/**
+ * GamePlatform class handles all information associated with a game platform.
+ */
 public class GamePlatform {
     private int game_id;
     private int platform_id;
@@ -52,7 +55,13 @@ public class GamePlatform {
         this.last_rent_date = last_rent_date;
     }
 
-
+    /**
+     * Calls stored procedure to obtain game platform information
+     * @param conn An open connection to the database
+     * @param game_id Generated game ID
+     * @param platform_id Generated platform ID
+     * @return GamePlatform object
+     */
     public static GamePlatform read(Connection conn, int game_id, int platform_id)
     {
         GamePlatform temp = null;
@@ -83,7 +92,11 @@ public class GamePlatform {
         return temp;
     }
 
-
+    /**
+     * Calls stored procedure to obtain list of game platforms
+     * @param conn An open connection to the database
+     * @return GamePlatform object array
+     */
     public static GamePlatform[] readList(Connection conn)
     {
         ArrayList<GamePlatform> gameplatforms = new ArrayList<>();
@@ -112,6 +125,13 @@ public class GamePlatform {
         return gameplatforms.toArray(new GamePlatform[0]);
     }
 
+    /**
+     * Calls stored procedure to create a new game platform
+     * @param conn An open connection to the database
+     * @param game_id Generated game ID
+     * @param platform_id Generated platform ID
+     * @return Boolean to check if the game platform was created
+     */
     public static boolean create(Connection conn, int game_id, int platform_id)
     {
         boolean isCreated = false;
@@ -133,7 +153,14 @@ public class GamePlatform {
         return isCreated;
     }
 
-
+    /**
+     * Calls the stored procedure to update a game platform
+     * @param conn An open connection to the database
+     * @param game_id Generated game ID
+     * @param platform_id Generated platform ID
+     * @param add_times_rented Incremented times rented value
+     * @return Boolean to check if the game platform was updated
+     */
     public static boolean update(Connection conn, int game_id, int platform_id, int add_times_rented)
     {
         boolean isUpdated = false;

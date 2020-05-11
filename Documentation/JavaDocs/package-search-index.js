@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"Classes"},{"l":"db"},{"l":"Servlets.Auth"},{"l":"Servlets.Game"},{"l":"Servlets.GamePlatform"},{"l":"Servlets.GamePlatformInfo"},{"l":"Servlets.Genre"},{"l":"Servlets.Platform"},{"l":"Servlets.Publisher"},{"l":"Servlets.Rating"}]

@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.Types;
 import java.util.ArrayList;
 
+/**
+ * Publisher class handles all information associated with a game's publisher.
+ */
 public class Publisher {
     private int id;
     private String name;
@@ -41,7 +44,12 @@ public class Publisher {
         isActive = active;
     }
 
-
+    /**
+     * Calls stored procedure to read a publisher
+     * @param conn An open connection to the database
+     * @param publisher_id Generated publisher ID
+     * @return Publisher object
+     */
     public static Publisher read(Connection conn, int publisher_id) {
         Publisher temp = null;
 
@@ -69,7 +77,12 @@ public class Publisher {
         return temp;
     }
 
-
+    /**
+     * Calls stored procedure to read publisher list
+     * @param conn An open connection to the database
+     * @param publisher_isActive Filters for active/inactive publishers
+     * @return Publisher object array
+     */
     public static Publisher[] readList(Connection conn, boolean publisher_isActive)
     {
         ArrayList<Publisher> publishers = new ArrayList<>();
@@ -98,7 +111,12 @@ public class Publisher {
         return publishers.toArray(new Publisher[0]);
     }
 
-
+    /**
+     * Calls stored procedure to create a new publisher
+     * @param conn An open connection to the database
+     * @param publisher_name Publisher's name
+     * @return Boolean to check if a new publisher was created
+     */
     public static boolean create(Connection conn, String publisher_name)
     {
         boolean isCreated = false;
@@ -119,7 +137,14 @@ public class Publisher {
         return isCreated;
     }
 
-
+    /**
+     * Calls stored procedure to update a publisher
+     * @param conn An open connection to the database
+     * @param publisher_id Generated publisher ID
+     * @param publisher_name Publisher's name
+     * @param publisher_isActive Filters for active/inactive publishers
+     * @return Boolean to check if a publisher was updated
+     */
     public static boolean update(Connection conn, int publisher_id, String publisher_name, boolean publisher_isActive)
     {
         boolean isUpdated = false;

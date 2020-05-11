@@ -1,5 +1,8 @@
 package Classes;
 
+/**
+ * Role class handles all information associated with a user's role.
+ */
 public class Role {
     private int id;
     private String name;
@@ -11,6 +14,9 @@ public class Role {
         this.description = description;
     }
 
+    /**
+     * Enum for types of roles a user can be.
+     */
     public enum Type {
         ADMIN(1),
         MANAGER(2),
@@ -26,6 +32,11 @@ public class Role {
             return code;
         }
 
+        /**
+         * Checks to see if the role type code exists
+         * @param code Integer value for role
+         * @return Boolean checks if the code exists
+         */
         public static boolean codeExists(int code){
             boolean exists = false;
             for(Type type: Type.values()){
@@ -37,6 +48,11 @@ public class Role {
             return exists;
         }
 
+        /**
+         * Gets type of role depending on code
+         * @param code Integer value for role
+         * @return Type Enum
+         */
         public static Type getType(int code){
             Type temp = null;
             for(Type type: Type.values()){

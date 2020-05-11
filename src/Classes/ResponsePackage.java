@@ -1,5 +1,9 @@
 package Classes;
 
+/**
+ * ResponsePackage class handles all information associated with an HTTP response.
+ * This includes a response message and data.
+ */
 public class ResponsePackage {
 
     private String msg;
@@ -12,6 +16,9 @@ public class ResponsePackage {
         this.data = "{}";
     }
 
+    /**
+     * Enum for common HTTP response codes.
+     */
     public enum Status {
         OK(200),
         CREATED(201),
@@ -48,6 +55,10 @@ public class ResponsePackage {
         this.data = data;
     }
 
+    /**
+     * Sets the message and response based off of the status
+     * @param status Enum status
+     */
     public void setMsgResponse(Status status){
         this.msg = status.toString();
         this.response = status.getCode();
@@ -57,6 +68,10 @@ public class ResponsePackage {
         this.msg = msg;
     }
 
+    /**
+     * Formats a message and data to follow JSON format
+     * @return JSON formatted string
+     */
     public String formatData(){
         return "{" + "\"msg\":\"" + this.msg + "\",\"data\":" + this.data + "}";
     }

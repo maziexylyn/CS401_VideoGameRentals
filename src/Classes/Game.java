@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.Types;
 import java.util.ArrayList;
 
+/**
+ * Game class handles all information associated with a game.
+ */
 public class Game {
     private int id;
     private String title;
@@ -101,7 +104,12 @@ public class Game {
         isActive = active;
     }
 
-
+    /**
+     * Calls stored procedure to obtain game information
+     * @param conn An open connection to the database
+     * @param game_id Generated user ID
+     * @return Game object
+     */
     public static Game read(Connection conn, int game_id)
     {
         Game temp = null;
@@ -136,7 +144,12 @@ public class Game {
         return temp;
     }
 
-
+    /**
+     * Calls stored procedure to obtain list of games
+     * @param conn An open connection to the database
+     * @param game_isActive Filters for active/inactive games
+     * @return Game object array
+     */
     public static Game[] readList(Connection conn, boolean game_isActive)
     {
         ArrayList<Game> games = new ArrayList<>();
@@ -171,7 +184,18 @@ public class Game {
         return games.toArray(new Game[0]);
     }
 
-
+    /**
+     * Calls the stored procedure to create a new game
+     * @param conn An open connection to the database
+     * @param game_title Game's title
+     * @param game_description Game's description
+     * @param game_image Game's image
+     * @param publisher_id Game's publisher
+     * @param genre_id Generated genre ID
+     * @param rating_id Generated rating ID
+     * @param game_price Game's price
+     * @return Boolean to check if the game was created
+     */
     public static boolean create(Connection conn, String game_title, String game_description, String game_image, int publisher_id, int genre_id, int rating_id, float game_price)
     {
         boolean isCreated = false;
@@ -198,7 +222,19 @@ public class Game {
         return isCreated;
     }
 
-
+    /**
+     * Calls the stored procedure to update a game
+     * @param conn An open connection to the database
+     * @param game_title Game's title
+     * @param game_description Game's description
+     * @param game_image Game's image
+     * @param publisher_id Game's publisher
+     * @param genre_id Generated genre ID
+     * @param rating_id Generated rating ID
+     * @param game_price Game's price
+     * @param game_isActive Filters for active/inactive games
+     * @return Boolean to check if the game was updated
+     */
     public static boolean update(Connection conn, String game_title, String game_description, String game_image, int publisher_id, int genre_id, int rating_id, float game_price, boolean game_isActive)
     {
         boolean isUpdated = false;

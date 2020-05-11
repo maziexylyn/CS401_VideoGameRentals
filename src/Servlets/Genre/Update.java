@@ -36,6 +36,13 @@ public class Update extends HttpServlet {
 
     }
 
+    /**
+     * Updates genre
+     * @param genre_id Generated genre ID
+     * @param genre_name Genre's name
+     * @param genre_isActive Filters for active/inactive genres
+     * @return ResponsePackage object
+     */
     protected static ResponsePackage updateGenre(int genre_id, String genre_name, boolean genre_isActive){
         ResponsePackage rp = new ResponsePackage();
 

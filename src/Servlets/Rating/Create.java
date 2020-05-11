@@ -36,6 +36,11 @@ public class Create extends HttpServlet {
 
     }
 
+    /**
+     * Creates game rating
+     * @param rating_name Rating's name
+     * @return ResponsePackage object
+     */
     protected static ResponsePackage createRating(String rating_name){
         ResponsePackage rp = new ResponsePackage();
 

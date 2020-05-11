@@ -37,6 +37,13 @@ public class Update extends HttpServlet {
 
     }
 
+    /**
+     * Updates rating information
+     * @param rating_id Generated rating ID
+     * @param rating_name Rating's name
+     * @param rating_isActive Filters for active/inactive ratings
+     * @return ResponsePackage object
+     */
     protected static ResponsePackage updateRating(int rating_id, String rating_name, boolean rating_isActive){
         ResponsePackage rp = new ResponsePackage();
 

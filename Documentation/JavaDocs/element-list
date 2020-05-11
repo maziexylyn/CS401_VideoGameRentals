@@ -1,0 +1,10 @@
+Classes
+db
+Servlets.Auth
+Servlets.Game
+Servlets.GamePlatform
+Servlets.GamePlatformInfo
+Servlets.Genre
+Servlets.Platform
+Servlets.Publisher
+Servlets.Rating

@@ -36,6 +36,13 @@ public class Update extends HttpServlet {
 
     }
 
+    /**
+     * Updates publisher information
+     * @param publisher_id Generated publisher ID
+     * @param publisher_name Publisher's name
+     * @param publisher_isActive Filters for active/inactive publishers
+     * @return ResponsePackage object
+     */
     protected static ResponsePackage updatePublisher(int publisher_id, String publisher_name, boolean publisher_isActive){
         ResponsePackage rp = new ResponsePackage();
 

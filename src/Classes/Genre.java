@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.Types;
 import java.util.ArrayList;
 
+/**
+ * Genre class handles all information associated with a game's genre.
+ */
 public class Genre {
     private int id;
     private String name;
@@ -41,6 +44,12 @@ public class Genre {
         isActive = active;
     }
 
+    /**
+     * Calls stored procedure to obtain genre information
+     * @param conn An open connection to the database
+     * @param genre_id Generated genre ID
+     * @return Genre object
+     */
     public static Genre read(Connection conn, int genre_id)
     {
         Genre temp = null;
@@ -69,6 +78,12 @@ public class Genre {
         return temp;
     }
 
+    /**
+     * Calls stored procedure to obtain list of genres
+     * @param conn An open connection to the database
+     * @param genre_isActive Filters for active/inactive genres
+     * @return Genre object array
+     */
     public static Genre[] readList(Connection conn, boolean genre_isActive)
     {
         ArrayList<Genre> genres = new ArrayList<>();
@@ -97,7 +112,12 @@ public class Genre {
         return genres.toArray(new Genre[0]);
     }
 
-
+    /**
+     * Calls stored procedure to create a new genre
+     * @param conn An open connection to the database
+     * @param genre_name Genre's name
+     * @return Boolean to check if the genre was created
+     */
     public static boolean create(Connection conn, String genre_name)
     {
         boolean isCreated = false;
@@ -118,7 +138,14 @@ public class Genre {
         return isCreated;
     }
 
-
+    /**
+     * Calls stored procedure to update a genre
+     * @param conn An open connection to the database
+     * @param genre_id Generated genre ID
+     * @param genre_name Genre's name
+     * @param genre_isActive Filters for active/inactive genres
+     * @return Boolean to check if the genre was updated
+     */
     public static boolean update(Connection conn, int genre_id, String genre_name, boolean genre_isActive)
     {
         boolean isUpdated = false;
@@ -141,4 +168,3 @@ public class Genre {
         return isUpdated;
     }
 }
-

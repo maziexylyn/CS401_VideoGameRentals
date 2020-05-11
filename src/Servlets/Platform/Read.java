@@ -37,6 +37,11 @@ public class Read extends HttpServlet {
 
     }
 
+    /**
+     * Reads platform by platform ID
+     * @param platform_id Generated platform ID
+     * @return ResponsePackage object
+     */
     protected static ResponsePackage readPlatform(int platform_id){
         ResponsePackage rp = new ResponsePackage();
         try{

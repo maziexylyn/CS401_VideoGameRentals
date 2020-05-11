@@ -5,6 +5,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+/**
+ * GamePlatformInfo class handles all information associated with a game.
+ */
 public class GamePlatformInfo {
     private int game_id;
     private String title;
@@ -90,6 +93,11 @@ public class GamePlatformInfo {
         this.platform_ids = platform_ids;
     }
 
+    /**
+     * Calls stored procedure to obtain information on currently active game platforms
+     * @param conn An open connection to the database
+     * @return GamePlatformInfo object array
+     */
     public static GamePlatformInfo[] read(Connection conn)
     {
         ArrayList<GamePlatformInfo> gamePlatformInfos = new ArrayList<>();

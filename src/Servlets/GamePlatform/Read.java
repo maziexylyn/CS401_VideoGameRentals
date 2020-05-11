@@ -36,6 +36,12 @@ public class Read extends HttpServlet {
 
     }
 
+    /**
+     * Reads a game platform by game ID and platform ID
+     * @param game_id Generated game ID
+     * @param platform_id Generated platform ID
+     * @return ResponsePackage object
+     */
     protected static ResponsePackage readGamePlatform(int game_id, int platform_id){
         ResponsePackage rp = new ResponsePackage();
 

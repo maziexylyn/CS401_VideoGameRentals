@@ -36,6 +36,11 @@ public class ReadList extends HttpServlet {
 
     }
 
+    /**
+     * Reads list of ratings
+     * @param rating_isActive Filters for active/ianctive games
+     * @return ResponsePackage object
+     */
     protected static ResponsePackage readListRating(boolean rating_isActive) {
         ResponsePackage rp = new ResponsePackage();
 

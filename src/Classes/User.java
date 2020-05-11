@@ -4,6 +4,9 @@ import com.mysql.cj.protocol.Resultset;
 
 import java.sql.*;
 
+/**
+ * User class handles all information associated with a user.
+ */
 public class User {
 	private int id;
 	private String passwordHash;
@@ -53,6 +56,14 @@ public class User {
     ////// DB Access Functions //////
     /////////////////////////////////
 
+    /**
+     * Calls stored procedure to create new user
+     * @param conn An open connection to the database
+     * @param user_email User's email
+     * @param user_password User's password
+     * @param role Type Enum for role
+     * @return Boolean to check if the user was created
+     */
     public static boolean create(Connection conn, String user_email, String user_password, Role.Type role) {
         boolean isCreated = false;
 
@@ -73,6 +84,12 @@ public class User {
         return isCreated;
     }
 
+    /**
+     * Calls stored procedure to check if user exists by user's email address
+     * @param conn An open connection to the database
+     * @param user_email User's email
+     * @return Boolean to check if the user exists by email
+     */
     public static boolean existsByEmail(Connection conn, String user_email){
         boolean exists = false;
         try{
@@ -90,6 +107,12 @@ public class User {
         return exists;
     }
 
+    /**
+     * Calls stored procedure to read a user by user's email address
+     * @param conn An open connection to the database
+     * @param user_email User's email
+     * @return User object
+     */
     public static User readByEmail(Connection conn, String user_email) {
         User temp = null;
 
