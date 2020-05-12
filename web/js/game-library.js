@@ -10,6 +10,8 @@ var genres = [];
 var platforms = [];
 var gamePlatformInfos = [];
 
+let rentRate = 0.10;
+
 readGamePlatformInfo();
 readListGenre();
 readListPlatform();
@@ -179,7 +181,7 @@ function createCardImage(index){
     span.classList.add("card-title", "red");
 
     let bold = document.createElement("b");
-    bold.innerText = "$" + gamePlatformInfos[index].currentPrice;
+    bold.innerText = "$" + (gamePlatformInfos[index].currentPrice * rentRate).toFixed(2);
 
     let anchor = document.createElement("a");
     anchor.classList.add("btn-floating","btn-large","halfway-fab","waves-effect","waves-light", "red");

@@ -188,7 +188,8 @@ function register(){
 
         xhttp.onreadystatechange = function() {
             if(this.readyState === 4 && this.status === 200) {
-                window.location.href = "../index.jsp";
+                toggleSignIn();
+                M.toast({html: "Registration complete! Please sign in."})
             }else if(this.readyState === 4){
                 M.toast({html: JSON.parse(this.responseText).msg})
             }
